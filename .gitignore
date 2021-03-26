@@ -105,3 +105,4 @@ dist
 
 # Additional
 build
+.DS_Store
