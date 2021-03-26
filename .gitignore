@@ -106,4 +106,4 @@ dist
 # Additional
 build
 .DS_Store
-database/config.json
+database/
