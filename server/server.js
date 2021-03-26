@@ -2,6 +2,15 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const { MONGO_URI } = require("../database/config.json");
+const mongoose = require('mongoose');
+
+// Connect to our database
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connection.once('open', () => {
+  console.log('Connected to Database');
+});
+
 // const employeeRouter = require('./routes/employee');
 // const signupRouter = require('./routes/signup');
 // const signoutRouter = require('./routes/signout');
