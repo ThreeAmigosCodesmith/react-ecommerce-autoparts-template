@@ -2,7 +2,11 @@ version: 2.1
 
 jobs:
   web:
+    docker:
+      - image: circleci/node:10.8.0
+    
     working_directory: ~/react-ecommerce-autoparts-template
+    
     steps:
       - checkout: echo "building your application now..."
       - run: npm install
