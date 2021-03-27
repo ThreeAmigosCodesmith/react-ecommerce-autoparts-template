@@ -1,5 +1,5 @@
 const { ObjectId } = require('bson');
-const User = require('../models/user');
+const User = require('../models/userModel');
 
 async function getUsers(req, res) {
     await User.find({}).then(users => {
