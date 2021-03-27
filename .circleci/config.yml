@@ -8,7 +8,7 @@ jobs:
     working_directory: ~/react-ecommerce-autoparts-template
     
     steps:
-      - checkout: echo "building your application now..."
+      - checkout
       - run: npm install
       - run: npm run lint
       - run: npm run build
