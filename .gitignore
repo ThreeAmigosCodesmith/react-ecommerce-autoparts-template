@@ -38,6 +38,7 @@ bower_components
 build/Release
 
 # Dependency directories
+db/
 node_modules/
 jspm_packages/
 
@@ -106,4 +107,3 @@ dist
 # Additional
 build
 .DS_Store
-database
