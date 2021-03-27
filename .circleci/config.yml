@@ -1,9 +1,46 @@
+version: 2.1
+
 orbs:
   node: circleci/node@4.0.0
 
-version: 2.1
+jobs:
+  build:
+    working_directory: ~/react-ecommerce-autoparts-template
+    executor: node/default
+    steps:
+      - run: echo "project is now building..."
+      - checkout
+      - node/install-npm
+      - node/install-packages:
+        app-dir: ~/react-ecommerce-autoparts-template
+        cache-path: node_modules
+        override-ci-command: npm i
+      - persist_to_workspace:
+          root: .
+          paths: 
+            - .
+
+      
+  test:
+    steps:
+      - run: echo "running tests..."
+      - attach_workspace:
+        at: .
+      - run:
+          name: Test
+          command: npm test
+      - run:
+          name: Generate code coverage
+          command: './node_modules/.bin/nyc report --reporter=text-1cov'
+      - store_artifacts:
+          path: coverage
+          destination: coverage
 
 workflows:
-  app-tests:
+  version: 2
+  build_and_test:
     jobs:
-      - node/test
+      - build
+      - test
+          requires:
+            - build
