@@ -1,16 +1,19 @@
 version: 2.1
-orbs:
-  react: thefrontside/react@0.2.0
+
+jobs:
+  web:
+    docker:
+      - image: circleci/node:12.13.0
+    working_directory: ~/react-ecommerce-autoparts-template
+    steps:
+      - checkout
+      - run: npm install
+      # - run: npm run lint
+      - run: npm run build
+      # - run: npm run test:coverage
+
 workflows:
-  push:
+  version: 2
+  concurrently:
     jobs:
-      - react/install
-      - react/eslint:
-          requires:
-            - react/install
-      - react/test:
-          requires:
-            - react/install
-      - react/coverage:
-          requires:
-            - react/install
+      - web
