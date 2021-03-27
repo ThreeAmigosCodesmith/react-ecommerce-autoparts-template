@@ -1,5 +1,5 @@
 const { ObjectId } = require('bson');
-const Order = require('../models/order');
+const Order = require('../models/orderModel');
 
 async function getOrders(req, res) {
     await Order.find({}).then(orders => {
