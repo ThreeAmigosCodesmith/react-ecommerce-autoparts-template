@@ -1,3 +1,3 @@
 {
-    "MONGO_URI": "SOME-KEY"
+    "MONGO_URI": "mongodb+srv://Newas:Skillz38@cluster3amigos.lvpbw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 }
