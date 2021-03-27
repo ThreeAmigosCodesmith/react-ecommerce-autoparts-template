@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   web:
     docker:
-      - image: circleci/node:10.8.0
+      - image: circleci/node:12.13.0
     
     working_directory: ~/react-ecommerce-autoparts-template
     
