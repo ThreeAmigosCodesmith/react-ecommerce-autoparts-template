@@ -8,14 +8,10 @@ sessionController.isLoggedIn = async (req, res, next) => {
   try {
     if(req.cookies['ssid']) {
       const currSession = await Session.findOne({ cookieId: req.cookies['ssid'] });
-      console.log('user is ALREADY logged in');
-    
       if(!currSession) res.locals.success = false;
       else res.locals.success = true;
-    } else {
-      console.log('SSID does not exist');
-      res.locals.success = false;
-    }
+    } 
+    else res.locals.success = false;
   } catch (error) {
     console.log(error);
   }
