@@ -4,7 +4,7 @@ const app = express();
 // const path = require('path');
 // const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
-// eslint-disable-next-line no-use-before-define
+/* eslint import/no-unresolved: 2 */
 const { MONGO_URI } = require('../db/config.json');
 
 const PORT = 8080;
