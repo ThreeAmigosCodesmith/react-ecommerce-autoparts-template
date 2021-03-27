@@ -11,14 +11,14 @@ jobs:
       - run: echo "building your app now..."
       - run: npm run build
 
-  # test:
-  #   docker:
-  #     - image: circleci/node:12.13.0
-  #   working_directory: ~/react-ecommerce-autoparts-template
-  #   steps:
-  #     - checkout
-  #     - run: echo "running your tests now..."
-      # - run: npm run test
+  test:
+    docker:
+      - image: circleci/node:12.13.0
+    working_directory: ~/react-ecommerce-autoparts-template
+    steps:
+      - checkout
+      - run: echo "running your tests now..."
+      - run: npm run test
 
 workflows:
   version: 2
