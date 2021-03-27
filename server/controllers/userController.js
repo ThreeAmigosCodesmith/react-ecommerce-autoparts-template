@@ -1,8 +1,17 @@
 const { ObjectId } = require('bson');
-var User = require('../models/user');
+const User = require('../models/user');
 
 async function getUsers(req, res) {
     await User.find({}).then(users => {
+        return res.status(200).json({ status: 200, data: users, message: "Succesfully Users Retrieved" });
+    }).catch (error => {
+        return res.status(400).json({ status: 400, message: error.message });
+    });
+}
+
+async function getUser(req, res) {
+    const {userId} = req.params;
+    await User.find({ _id: ObjectId(userId)}).then(users => {
         return res.status(200).json({ status: 200, data: users, message: "Succesfully Users Retrieved" });
     }).catch (error => {
         return res.status(400).json({ status: 400, message: error.message });
@@ -42,6 +51,7 @@ async function deleteUser(req, res) {
 }
 
 module.exports = {
+    getUser,
     getUsers,
     createUser,
     updateUser,
