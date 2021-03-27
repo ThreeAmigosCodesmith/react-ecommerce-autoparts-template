@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import moment from "moment";
-import "./App.css";
+import React, { Component } from 'react';
+import moment from 'moment';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Yard Hopping</h1>
-        <p>{ moment(date).format("MMMM Do YYYY") }</p>
+        <p>{ moment(date).format('MMMM Do YYYY') }</p>
       </div>
     );
   }
