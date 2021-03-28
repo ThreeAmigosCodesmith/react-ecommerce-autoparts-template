@@ -1,13 +1,23 @@
 const { ObjectId } = require('bson');
 const User = require('../models/userModel');
 
-async function getUsers(req, res) {
-  await User.find({}).then((users) => res.status(200).json({ status: 200, data: users, message: 'Succesfully Users Retrieved' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+async function getUsers(req, res, next) {
+  await User.find({})
+    .then((users) => {
+      res.locals.users = users;
+      return next();
+    })
+    .catch((error) => res.status(400).json({ status: 400, message: error.message }));
 }
 
-async function getUser(req, res) {
+async function getUser(req, res, next) {
   const { userId } = req.params;
-  await User.find({ _id: ObjectId(userId) }).then((users) => res.status(200).json({ status: 200, data: users, message: 'Succesfully Users Retrieved' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+  await User.findOne({ _id: ObjectId(userId) })
+    .then((user) => {
+      res.locals.user = user;
+      return next();
+    })
+    .catch((error) => res.status(400).json({ status: 400, message: error.message }));
 }
 
 async function createUser(req, res, next) {
