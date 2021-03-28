@@ -10,9 +10,19 @@ async function getUser(req, res) {
   await User.find({ _id: ObjectId(userId) }).then((users) => res.status(200).json({ status: 200, data: users, message: 'Succesfully Users Retrieved' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
 }
 
-async function createUser(req, res) {
-  const { name, email } = req.body;
-  await User.create({ name, email }).then((user) => res.status(201).json({ status: 200, data: user, message: 'Succesfully created new user' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+async function createUser(req, res, next) {
+  const {
+    name, password, email, address, orders, products,
+  } = req.body;
+
+  await User.create({
+    name, password, email, address, orders, products,
+  })
+    .then((data) => {
+      res.locals.usercreated = data;
+      return next();
+    })
+    .catch((error) => res.status(400).json({ status: 400, message: error.message }));
 }
 
 async function updateUser(req, res) {

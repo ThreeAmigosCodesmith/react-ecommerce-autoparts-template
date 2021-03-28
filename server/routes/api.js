@@ -6,10 +6,16 @@ const userController = require('../controllers/userController.js');
 const productController = require('../controllers/productController.js');
 const orderController = require('../controllers/orderController.js');
 
-router.get('/users', userController.getUsers);
 router.get('/users/:userId', userController.getUser);
-router.post('/users', userController.createUser);
+router.get('/users', userController.getUsers);
+
+router.post('/users', userController.createUser, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.usercreated);
+});
+
 router.patch('/users/:userId', userController.updateUser);
+
 router.delete('/users/:userId', userController.deleteUser);
 
 router.get('/products/:userId', productController.getProductsByUserId);
