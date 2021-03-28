@@ -44,6 +44,7 @@ async function createOrder(req, res, next) {
     });
 }
 
+// TODO: Needs fixing
 async function updateOrder(req, res, next) {
   const {
     date, productId, sellerId, buyerId,

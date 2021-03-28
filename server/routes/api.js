@@ -35,11 +35,30 @@ router.delete('/users/:userId', userController.deleteUser, (req, res) => {
 
 /* PRODUCT ROUTES */
 
-router.get('/products/:userId', productController.getProductsByUserId);
-router.get('/products/:orderId', productController.getProduct);
-router.post('/products', productController.createProduct);
-router.patch('/products/:orderId', productController.updateProduct);
-router.delete('/products/:orderId', productController.deleteProduct);
+router.get('/products/:userId', productController.getProductsByUserId, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.user);
+});
+
+router.get('/products/:orderId', productController.getProduct, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.product);
+});
+
+router.post('/products', productController.createProduct, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.product);
+});
+
+router.patch('/products/:orderId', productController.updateProduct, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.productupdated);
+});
+
+router.delete('/products/:orderId', productController.deleteProduct, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  return res.status(200).json({ status: 200, message: 'Succesfully deleted the order' });
+});
 
 /* ORDER ROUTES */
 
