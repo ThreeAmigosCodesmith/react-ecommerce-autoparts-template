@@ -52,9 +52,19 @@ async function updateUser(req, res, next) {
     .catch((error) => res.status(400).json({ status: 400, message: error.message }));
 }
 
-async function deleteUser(req, res) {
+// TODO: throw error when a specific user_id no longer exists
+async function deleteUser(req, res, next) {
   const { userId } = req.params;
-  await User.findOneAndDelete({ _id: ObjectId(userId) }).then((user) => res.status(200).json({ status: 200, data: user, message: 'Succesfully deleted the user' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+
+  await User.findOneAndDelete({ _id: ObjectId(userId) })
+    .then((user) => {
+      res.locals.deleteduser = user;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
 module.exports = {

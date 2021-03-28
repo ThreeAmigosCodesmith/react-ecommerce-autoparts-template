@@ -26,7 +26,10 @@ router.patch('/users/:userId', userController.updateUser, (req, res) => {
   else res.status(200).json(res.locals.userupdated);
 });
 
-router.delete('/users/:userId', userController.deleteUser);
+router.delete('/users/:userId', userController.deleteUser, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  return res.status(200).json({ status: 200, message: 'Succesfully deleted the user' });
+});
 
 router.get('/products/:userId', productController.getProductsByUserId);
 router.get('/products/:orderId', productController.getProduct);
