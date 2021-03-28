@@ -35,14 +35,21 @@ async function createUser(req, res, next) {
     .catch((error) => res.status(400).json({ status: 400, message: error.message }));
 }
 
-async function updateUser(req, res) {
+// TODO: need to pair on this one to let user update whatever field they want without affecting
+// other fields
+async function updateUser(req, res, next) {
   const { name, email } = req.body; // TODO: Add password here when needed.
   const bodyToUpdate = {
     ...(name && { name }),
     ...(email && { email }),
   };
   const { userId } = req.params;
-  await User.findOneAndUpdate({ _id: ObjectId(userId) }, bodyToUpdate).then((user) => res.status(200).json({ status: 200, data: user, message: 'Succesfully updated the user' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+  await User.findOneAndUpdate({ _id: ObjectId(userId) }, bodyToUpdate)
+    .then((user) => {
+      res.locals.userupdated = user;
+      return next();
+    })
+    .catch((error) => res.status(400).json({ status: 400, message: error.message }));
 }
 
 async function deleteUser(req, res) {

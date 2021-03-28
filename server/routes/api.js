@@ -21,7 +21,10 @@ router.post('/users', userController.createUser, (req, res) => {
   else res.status(200).json(res.locals.usercreated);
 });
 
-router.patch('/users/:userId', userController.updateUser);
+router.patch('/users/:userId', userController.updateUser, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.userupdated);
+});
 
 router.delete('/users/:userId', userController.deleteUser);
 
