@@ -7,7 +7,10 @@ async function getUsers(req, res, next) {
       res.locals.users = users;
       return next();
     })
-    .catch((error) => res.status(400).json({ status: 400, message: error.message }));
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
 async function getUser(req, res, next) {
@@ -17,7 +20,10 @@ async function getUser(req, res, next) {
       res.locals.user = user;
       return next();
     })
-    .catch((error) => res.status(400).json({ status: 400, message: error.message }));
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
 async function createUser(req, res, next) {
@@ -32,7 +38,10 @@ async function createUser(req, res, next) {
       res.locals.usercreated = data;
       return next();
     })
-    .catch((error) => res.status(400).json({ status: 400, message: error.message }));
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
 // TODO: need to pair on this one to let user update whatever field they want without affecting
@@ -44,12 +53,16 @@ async function updateUser(req, res, next) {
     ...(email && { email }),
   };
   const { userId } = req.params;
+
   await User.findOneAndUpdate({ _id: ObjectId(userId) }, bodyToUpdate)
     .then((user) => {
       res.locals.userupdated = user;
       return next();
     })
-    .catch((error) => res.status(400).json({ status: 400, message: error.message }));
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
 // TODO: throw error when a specific user_id no longer exists

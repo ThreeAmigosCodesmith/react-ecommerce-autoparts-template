@@ -1,25 +1,50 @@
 const { ObjectId } = require('bson');
 const Order = require('../models/orderModel');
 
-async function getOrders(req, res) {
-  await Order.find({}).then((orders) => res.status(200).json({ status: 200, data: orders, message: 'Succesfully Orders Retrieved' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+async function getOrders(req, res, next) {
+  await Order.find({})
+    .then((orders) => {
+      res.locals.orders = orders;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
-async function getOrder(req, res) {
+async function getOrder(req, res, next) {
   const { orderId } = req.params;
-  await Order.find({ _id: ObjectId(orderId) }).then((orders) => res.status(200).json({ status: 200, data: orders, message: 'Succesfully Order Retrieved' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+  await Order.find({ _id: ObjectId(orderId) })
+    .then((order) => {
+      res.locals.order = order;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
-async function createOrder(req, res) {
+async function createOrder(req, res, next) {
   const {
     date, productId, sellerId, buyerId,
   } = req.body;
+
   await Order.create({
     date, productId, sellerId, buyerId,
-  }).then((order) => res.status(201).json({ status: 200, data: order, message: 'Succesfully created new order' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+  })
+    .then((order) => {
+      res.locals.ordercreated = order;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
-async function updateOrder(req, res) {
+async function updateOrder(req, res, next) {
   const {
     date, productId, sellerId, buyerId,
   } = req.body;
@@ -30,12 +55,30 @@ async function updateOrder(req, res) {
     ...(sellerId && { sellerId }),
     ...(buyerId && { buyerId }),
   };
-  await Order.findOneAndUpdate({ _id: ObjectId(orderId) }, bodyToUpdate).then((order) => res.status(200).json({ status: 200, data: order, message: 'Succesfully updated the order' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+
+  await Order.findOneAndUpdate({ _id: ObjectId(orderId) }, bodyToUpdate, { new: true })
+    .then((order) => {
+      res.locals.order = order;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
-async function deleteOrder(req, res) {
+async function deleteOrder(req, res, next) {
   const { orderId } = req.params;
-  await Order.findOneAndDelete({ _id: ObjectId(orderId) }).then((order) => res.status(200).json({ status: 200, data: order, message: 'Succesfully deleted the order' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+
+  await Order.findOneAndDelete({ _id: ObjectId(orderId) })
+    .then((order) => {
+      res.locals.deletedorder = order;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
 module.exports = {
