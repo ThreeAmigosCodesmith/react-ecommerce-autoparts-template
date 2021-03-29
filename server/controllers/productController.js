@@ -1,30 +1,59 @@
 const { ObjectId } = require('bson');
 const Product = require('../models/productModel');
 
-async function getProduct(req, res) {
+async function getProduct(req, res, next) {
   const { productId } = req.params;
-  await Product.find({ _id: ObjectId(productId) }).then((product) => res.status(200).json({ status: 200, data: product, message: 'Succesfully Retrieved Product' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+
+  await Product.find({ _id: ObjectId(productId) })
+    .then((product) => {
+      res.locals.product = product;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
-async function getProductsByUserId(req, res) {
+async function getProductsByUserId(req, res, next) {
   const { userId } = req.params;
-  await Product.find({ sellerId: userId }).then((users) => res.status(200).json({ status: 200, data: users, message: 'Succesfully Retrieved Products' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+
+  await Product.find({ sellerId: userId })
+    .then((user) => {
+      res.locals.user = user;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
-async function createProduct(req, res) {
+async function createProduct(req, res, next) {
   const {
     name, make, model, year, imageLink, description, price, sellerId,
   } = req.body;
+
   await Product.create({
     name, make, model, year, imageLink, description, price, sellerId,
-  }).then((product) => res.status(201).json({ status: 200, data: product, message: 'Succesfully created new product' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+  })
+    .then((product) => {
+      res.locals.product = product;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
-async function updateProduct(req, res) {
+// TODO: Needs fixing
+async function updateProduct(req, res, next) {
   const { productId } = req.params;
   const {
     name, make, model, year, imageLink, description, price, sellerId,
   } = req.body;
+
   const bodyToUpdate = {
     ...(name && { name }),
     ...(make && { make }),
@@ -36,12 +65,29 @@ async function updateProduct(req, res) {
     ...(sellerId && { sellerId }),
   };
 
-  await Product.findOneAndUpdate({ _id: ObjectId(productId) }, bodyToUpdate).then((product) => res.status(200).json({ status: 200, data: product, message: 'Succesfully updated the product' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+  await Product.findOneAndUpdate({ _id: ObjectId(productId) }, bodyToUpdate)
+    .then((product) => {
+      res.locals.productupdated = product;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
-async function deleteProduct(req, res) {
+async function deleteProduct(req, res, next) {
   const { productId } = req.params;
-  await Product.findOneAndDelete({ _id: ObjectId(productId) }).then((product) => res.status(200).json({ status: 200, data: product, message: 'Succesfully deleted the product' })).catch((error) => res.status(400).json({ status: 400, message: error.message }));
+
+  await Product.findOneAndDelete({ _id: ObjectId(productId) })
+    .then((product) => {
+      res.locals.deletedproduct = product;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
 }
 
 module.exports = {
