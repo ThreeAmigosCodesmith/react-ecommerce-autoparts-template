@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Nav from './Nav';
-import Logo from '../yardhop-logo.png';
-import './styles/Header.css';
+import Nav from '../Nav/Nav';
+import Logo from '../../yardhop-logo.png';
+import './Header.css';
 
 const Header = () => (
   <div className="header-container">
@@ -15,8 +15,13 @@ const Header = () => (
       <Nav />
       <div className="searchBar">
         <form>
-          <input type="text" placeholder="Search for car parts using keywords or #..." />
-          <button type="submit" id="search-button">Search</button>
+          <input
+            type="text"
+            placeholder="Search for car parts using keywords or #..."
+          />
+          <button type="submit" id="search-button">
+            Search
+          </button>
         </form>
       </div>
     </div>
