@@ -24,12 +24,11 @@ const Nav = () => {
         </Link>
       </ul>
       <div className="reg-login-container">
-        <button>Login</button>
+        <button type="button">Login</button>
         <p>or</p>
-        <button>Create an Account</button>
-      </div>   
+        <button type="button">Create an Account</button>
+      </div>
     </div>
-    
   );
 };
 
