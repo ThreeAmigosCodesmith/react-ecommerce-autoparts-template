@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 /**
 * Check out the `createdAt` field below. This is set up to use Mongo's automatic document
@@ -10,8 +11,8 @@ const Schema = mongoose.Schema;
 */
 
 const sessionSchema = new Schema({
-    cookieId: { type: String, required: true, unique: true },
-    createdAt: { type: Date, expires: 30, default: Date.now }
-  });
-  
-  module.exports = mongoose.model('Session', sessionSchema);
+  cookieId: { type: String, required: true, unique: true },
+  createdAt: { type: Date, expires: 30, default: Date.now },
+});
+
+module.exports = mongoose.model('Session', sessionSchema);

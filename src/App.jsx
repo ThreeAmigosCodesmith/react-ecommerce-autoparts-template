@@ -31,7 +31,7 @@ class App extends Component {
           <p>{ moment(date).format('MMMM Do YYYY') }</p>
         </div>
       </BrowserRouter>
-    );    
+    );
   }
 }
 
