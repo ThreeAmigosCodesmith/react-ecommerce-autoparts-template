@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import './components/styles/App.css';
+import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './components/Home';
-import Catalog from './components/Catalog';
-import Order from './components/Order';
-import Cart from './components/Cart';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Catalog from './components/Catalog/Catalog';
+import Order from './components/Order/Order';
+import Cart from './components/Cart/Cart';
 
 class App extends Component {
   constructor(props) {
