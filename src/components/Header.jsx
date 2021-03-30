@@ -15,7 +15,7 @@ const Header = () => (
       <Nav />
       <div className="searchBar">
         <form>
-          <input type="text" placeholder="Search for car parts using keywords or #..."/>
+          <input type="text" placeholder="Search for car parts using keywords or #..." />
           <button type="submit" id="search-button">Search</button>
         </form>
       </div>
