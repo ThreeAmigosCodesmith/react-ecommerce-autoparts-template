@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../logo.png';
 
 const Nav = () => {
   const navStyle = {
@@ -9,25 +8,28 @@ const Nav = () => {
   };
 
   return (
-    <nav>
-      <Link to="/">
-        <img className="img-logo" src={Logo} alt="logo" />
-      </Link>
+    <div className="nav">
       <ul className="nav-links">
         <Link style={navStyle} to="/">
           <li className="link">Home</li>
         </Link>
-        <Link style={navStyle} to="/PastCoordinates">
+        <Link style={navStyle} to="/catalog">
           <li className="link">Catalog</li>
         </Link>
-        <Link style={navStyle} to="/PromptEntry">
+        <Link style={navStyle} to="/order">
           <li className="link">Track Order</li>
         </Link>
         <Link style={navStyle} to="/cart">
           <li className="link">Cart</li>
         </Link>
       </ul>
-    </nav>
+      <div className="reg-login-container">
+        <button>Login</button>
+        <p>or</p>
+        <button>Create an Account</button>
+      </div>   
+    </div>
+    
   );
 };
 
