@@ -24,9 +24,13 @@ const Nav = () => {
         </Link>
       </ul>
       <div className="reg-login-container">
-        <button type="button">Login</button>
+        <Link style={navStyle} to="/login">
+          <button type="button">Login</button>
+        </Link>
         <p>or</p>
-        <button type="button">Create an Account</button>
+        <Link style={navStyle} to="/signup">
+          <button type="button">Create an Account</button>
+        </Link>
       </div>
     </div>
   );
