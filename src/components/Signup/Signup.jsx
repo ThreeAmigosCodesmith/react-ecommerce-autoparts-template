@@ -1,25 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Signup.css';
+import { useHistory } from 'react-router-dom';
 
-const Signup = () => (
-  <div>
-    <div className="signup-wrapper">
-      <h1> Create a new account </h1>
-      <form>
-        <p>Email</p>
-        <input type="email" />
-        <p>Username</p>
-        <input type="text" />
-        <p>Password</p>
-        <input type="password" />
-        <p>Address</p>
-        <input type="text" />
-        <div>
-          <button type="submit"> Create </button>
-        </div>
-      </form>
+const Signup = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+
+  // const validateForm = () => {
+  // (name.length !== 0) && (email.length > 0) && (password.length > 0) };
+
+  const submitUser = (event) => {
+    event.preventDefault();
+    fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    }).then((res) => {
+      if (res.status === 200) history.push('/dashboard');
+    });
+  };
+
+  return (
+    <div>
+      <div className="signup-wrapper">
+        <h1> Create a new account </h1>
+        <form>
+          <label htmlFor="name">
+            Name
+            <input type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} />
+          </label>
+          <label htmlFor="email">
+            Email
+            <input type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </label>
+          <label htmlFor="password">
+            Password
+            <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </label>
+          <div>
+            <button type="submit" className="btn" onClick={(e) => submitUser(e)}>Register</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Signup;
