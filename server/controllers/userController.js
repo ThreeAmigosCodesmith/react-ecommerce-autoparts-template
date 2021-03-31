@@ -26,6 +26,23 @@ async function getUser(req, res, next) {
     });
 }
 
+async function verifyUser(req, res, next) {
+  const { email, password } = req.body;
+  await User.findOne({ email, password })
+    .then((user) => {
+      if (!user) {
+        res.locals.error = { message: 'login failed' };
+        return next();
+      }
+      res.locals.user = user;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next(error);
+    });
+}
+
 async function createUser(req, res, next) {
   const {
     name, password, email, address, orders, products,
@@ -83,6 +100,7 @@ async function deleteUser(req, res, next) {
 module.exports = {
   getUser,
   getUsers,
+  verifyUser,
   createUser,
   updateUser,
   deleteUser,
