@@ -2,15 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
+import { useStateValue } from '../../StateProvider';
 
 const Product = (props) => {
+  const [dispatch] = useStateValue();
+
   const {
+    id,
     title,
     price,
     image,
     location,
     condition,
   } = props;
+
+  const addToBasket = () => {
+    // dispatch item to the data layer
+    dispatch({
+      type: 'ADD_TO_BASKET',
+      item: {
+        id,
+        title,
+        image,
+        price,
+        location,
+        condition,
+      },
+    });
+  };
 
   return (
     <div className="product">
@@ -29,12 +48,13 @@ const Product = (props) => {
       <div className="product__image">
         <img src={image} alt="" />
       </div>
-      <button type="button">Add to Basket</button>
+      <button type="button" onClick={addToBasket}>Add to Basket</button>
     </div>
   );
 };
 
 Product.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
