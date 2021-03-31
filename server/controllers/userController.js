@@ -30,11 +30,8 @@ async function verifyUser(req, res, next) {
   const { email, password } = req.body;
   await User.findOne({ email, password })
     .then((user) => {
-      if (!user) {
-        res.locals.error = { message: 'login failed' };
-        return next();
-      }
-      res.locals.user = user;
+      if (!user) res.locals.error = { message: 'login failed' };
+      else res.locals.userId = user.id;
       return next();
     })
     .catch((error) => {
