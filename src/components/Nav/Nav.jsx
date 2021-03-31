@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Nav.css';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const Nav = () => {
   const navStyle = {
@@ -9,28 +11,36 @@ const Nav = () => {
 
   return (
     <div className="nav">
-      <ul className="nav-links">
+      <div className="nav__links">
         <Link style={navStyle} to="/">
-          <li className="link">Home</li>
+          <p className="link">Home</p>
         </Link>
         <Link style={navStyle} to="/catalog">
-          <li className="link">Catalog</li>
+          <p className="link">Catalog</p>
         </Link>
         <Link style={navStyle} to="/order">
-          <li className="link">Track Order</li>
+          <p className="link">Track Order</p>
         </Link>
         <Link style={navStyle} to="/cart">
-          <li className="link">Cart</li>
+          <p className="link">Cart</p>
         </Link>
-      </ul>
-      <div className="reg-login-container">
-        <Link style={navStyle} to="/login">
-          <button type="button">Login</button>
-        </Link>
-        <p>or</p>
-        <Link style={navStyle} to="/signup">
-          <button type="button">Create an Account</button>
-        </Link>
+      </div>
+      <div className="nav__left">
+        <div className="nav__login">
+          <Link to="/login">
+            <button type="button">Login</button>
+          </Link>
+          <p>or</p>
+          <Link to="/signup">
+            <button type="button">Create an Account</button>
+          </Link>
+        </div>
+        <div className="nav__basket">
+          <Link to="/checkout">
+            <ShoppingCartIcon style={{ fill: '#f8f8f8' }} />
+          </Link>
+          <span className="nav__basketCount">0</span>
+        </div>
       </div>
     </div>
   );
