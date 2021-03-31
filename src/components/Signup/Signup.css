@@ -38,8 +38,8 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
-    border-radius: 3px;
-    border: 2px solid #6ce8bd;
+    border-radius: 2px;
+    border: 3px solid #6ce8bd;
     padding: 20px;
     background-color: #64d2ab;
 }
@@ -82,6 +82,7 @@
     border: none;
     border-bottom: 1px solid gray;
     outline: none;
+    border-radius: 2px;
 }
 
 .signup__button {
