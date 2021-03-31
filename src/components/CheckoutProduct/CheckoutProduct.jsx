@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import './Product.css';
+import './CheckoutProduct.css';
 import { useStateValue } from '../../StateProvider';
 
-const Product = (props) => {
+const CheckoutProduct = (props) => {
   const [{ basket }, dispatch] = useStateValue();
 
   const {
@@ -16,47 +16,39 @@ const Product = (props) => {
     condition,
   } = props;
 
-  const addToBasket = () => {
-    // dispatch item to the data layer
+  const deleteItem = () => {
     // eslint-disable-next-line no-console
     console.log(basket);
 
     dispatch({
-      type: 'ADD_TO_BASKET',
-      item: {
-        id,
-        title,
-        image,
-        price,
-        location,
-        condition,
-      },
+      type: 'REMOVE_FROM_BASKET',
+      id,
     });
   };
 
   return (
-    <div className="product">
-      <div className="product__info">
-        <p className="product__title">{title}</p>
-        <p className="product__price">
+    <div className="checkoutProduct">
+      <div className="checkoutProduct__image">
+        <img src={image} alt="" />
+      </div>
+      <div className="checkoutProduct__info">
+        <p className="checkoutProduct__title">{title}</p>
+        <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <p>{`Condition: ${condition}`}</p>
-        <p className="product__location">
+        <p className="checkoutProduct__condition">{`Condition: ${condition}`}</p>
+        <p className="checkoutProduct__location">
           <LocationOnIcon />
           <span>{location.borough}</span>
         </p>
+        <button type="button" onClick={deleteItem}>Remove from Basket</button>
       </div>
-      <div className="product__image">
-        <img src={image} alt="" />
-      </div>
-      <button type="button" onClick={addToBasket}>Add to Basket</button>
     </div>
   );
 };
 
-Product.propTypes = {
+CheckoutProduct.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
@@ -65,4 +57,4 @@ Product.propTypes = {
   location: PropTypes.shape({ borough: PropTypes.string.isRequired }).isRequired,
 };
 
-export default Product;
+export default CheckoutProduct;
