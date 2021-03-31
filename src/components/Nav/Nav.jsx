@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { useStateValue } from '../../StateProvider';
 
 const Nav = () => {
+  const [{ basket }] = useStateValue();
+
   const navStyle = {
     color: 'rgb(128,128,128)',
     textDecoration: 'none',
@@ -35,7 +38,7 @@ const Nav = () => {
           <Link to="/checkout">
             <ShoppingCartIcon style={{ fill: '#f8f8f8' }} />
           </Link>
-          <span className="nav__basketCount">0</span>
+          <span className="nav__basketCount">{basket?.length}</span>
         </div>
       </div>
     </div>
