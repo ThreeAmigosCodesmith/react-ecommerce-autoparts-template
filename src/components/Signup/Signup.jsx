@@ -34,16 +34,16 @@ const Signup = () => {
         <h1> Create a new account </h1>
         <form>
           <label htmlFor="name">
-            <input type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} />
             Name
+            <input type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} />
           </label>
           <label htmlFor="email">
-            <input type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
             Email
+            <input type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </label>
           <label htmlFor="password">
-            <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
             Password
+            <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
           <div>
             <button type="submit" className="btn" onClick={(e) => submitUser(e)}>Register</button>
