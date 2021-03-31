@@ -12,14 +12,34 @@ import Checkout from './components/Checkout/Checkout';
 const App = () => (
   <BrowserRouter>
     <div className="App">
-      <Header />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/catalog" component={Catalog} />
-        <Route exact path="/order" component={Order} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/">
+          <Header />
+          <Home />
+        </Route>
+
+        <Route exact path="/catalog">
+          <Header />
+          <Catalog />
+        </Route>
+
+        <Route exact path="/order">
+          <Header />
+          <Order />
+        </Route>
+
+        <Route exact path="/login">
+          <Login />
+        </Route>
+
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
+
+        <Route exact path="/checkout">
+          <Header />
+          <Checkout />
+        </Route>
       </Switch>
     </div>
   </BrowserRouter>
