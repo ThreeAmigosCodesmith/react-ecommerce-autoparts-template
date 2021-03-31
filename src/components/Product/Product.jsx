@@ -18,7 +18,9 @@ const Product = (props) => {
 
   const addToBasket = () => {
     // dispatch item to the data layer
+    // eslint-disable-next-line no-console
     console.log(basket);
+
     dispatch({
       type: 'ADD_TO_BASKET',
       item: {

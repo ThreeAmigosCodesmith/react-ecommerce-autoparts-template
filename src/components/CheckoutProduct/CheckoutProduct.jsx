@@ -17,6 +17,7 @@ const CheckoutProduct = (props) => {
   } = props;
 
   const deleteItem = () => {
+    // eslint-disable-next-line no-console
     console.log(basket);
 
     dispatch({
