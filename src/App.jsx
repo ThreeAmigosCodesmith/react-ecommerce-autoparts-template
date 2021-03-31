@@ -7,6 +7,8 @@ import Home from './components/Home/Home';
 import Catalog from './components/Catalog/Catalog';
 import Order from './components/Order/Order';
 import Footer from './components/Footer/Footer';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
 import Checkout from './components/Checkout/Checkout';
 
 class App extends Component {
@@ -27,6 +29,8 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/catalog" component={Catalog} />
             <Route exact path="/order" component={Order} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/checkout" component={Checkout} />
           </Switch>
           <p>{ moment(date).format('MMMM Do YYYY') }</p>

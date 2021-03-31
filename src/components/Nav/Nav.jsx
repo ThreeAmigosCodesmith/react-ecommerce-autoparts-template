@@ -27,9 +27,13 @@ const Nav = () => {
       </div>
       <div className="nav__left">
         <div className="nav__login">
-          <button type="button">Login</button>
+          <Link to="/login">
+            <button type="button">Login</button>
+          </Link>
           <p>or</p>
-          <button type="button">Create an Account</button>
+          <Link to="/signup">
+            <button type="button">Create an Account</button>
+          </Link>
         </div>
         <div className="nav__basket">
           <Link to="/checkout">
