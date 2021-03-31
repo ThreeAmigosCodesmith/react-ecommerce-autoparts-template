@@ -21,6 +21,7 @@
     padding: 8px 20px;
     border-radius: 5px;
     color: white;
+    outline: none;
 }
 
 .checkoutProduct__info > p {
@@ -30,7 +31,12 @@
 }
 
 .checkoutProduct__price, .checkoutProduct__condition {
-    color: #304B50;
+    color: #263c3f;
+}
+
+.checkoutProduct__title {
+  color: #263a3e;
+  font-weight: 800;
 }
 
 .checkoutProduct__image {

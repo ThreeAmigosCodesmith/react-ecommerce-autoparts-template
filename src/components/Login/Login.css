@@ -1,7 +1,111 @@
-.login-wrapper {
-    margin: auto;
+.login__background {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 800px;
+    height: 100vh;
+    background-color: #182628;
+}
+
+.login {
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 500px;
+    height: 'fit-content';
+}
+
+.login__image{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login__logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    width: 150px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.login__container {
+    width: 300px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    border: 2px solid #6ce8bd;
+    padding: 20px;
+    background-color: #64d2ab;
+}
+
+.login__container > h1 {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #f8f8f8;
+}
+
+.login__input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    margin-top: 10px;
+}
+
+.login__icon {
+    position: absolute;
+    left: 10px;
+    color: gray;
+    z-index: 1;
+}
+
+.login__input > input {
+    height: 30px;
+    align-self: center;
+    background-color: white;
+    width: 300px;
+    padding: 5px 10px 5px 50px;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+    border-radius: 2px;
+}
+
+.login__signInButton {
+    background: #5ea7ff;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #77b6ff;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+.login__container > p {
+    align-self: center;
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: justify; 
+    color: white;
+    padding: 2px;
+}
+
+.login__createAccount {
+    color: white;
+    font-size: 13px;
+    margin: 10px auto;
+}
+
+.login__createAccount > a {
+    color: #22426a;
 }

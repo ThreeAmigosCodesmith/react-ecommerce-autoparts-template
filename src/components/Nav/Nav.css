@@ -47,9 +47,11 @@
   border-radius: 3px;
   font-size: 12px;
   outline: none;
+  cursor: pointer;
 }
 
 .nav__basket {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
