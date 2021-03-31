@@ -5,8 +5,7 @@ import './Product.css';
 import { useStateValue } from '../../StateProvider';
 
 const Product = (props) => {
-  const [{ basket }, dispatch] = useStateValue();
-  console.log(basket);
+  const [dispatch] = useStateValue();
 
   const {
     id,
