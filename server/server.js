@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 // const path = require('path');
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 /* eslint import/no-unresolved: 2 */
 const { MONGO_URI } = require('../db/config.json');
@@ -20,7 +20,7 @@ mongoose.connection.once('open', () => {
 // handle parsing request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//  app.use(cookieParser());
+app.use(cookieParser());
 
 // statically render index.html file when user hits / - (mandatory)
 // app.use(express.static(path.resolve(__dirname, '../dist')));
