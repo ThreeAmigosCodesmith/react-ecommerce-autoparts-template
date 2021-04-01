@@ -1,15 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Nav.css';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useStateValue } from '../../StateProvider';
 
 const Nav = () => {
   const [{ basket }] = useStateValue();
+  const history = useHistory();
 
   const navStyle = {
     color: 'rgb(128,128,128)',
     textDecoration: 'none',
+  };
+
+  const logOutButton = (event) => {
+    event.preventDefault();
+    fetch('/api/verify', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => {
+      if (res.status === 200) history.push('/');
+    });
   };
 
   return (
@@ -26,6 +39,9 @@ const Nav = () => {
         </Link>
         <Link style={navStyle} to="/cart">
           <p className="link">Cart</p>
+        </Link>
+        <Link style={navStyle} to="/">
+          <button className="link" type="button" onClick={(e) => logOutButton(e)}>Logout</button>
         </Link>
       </div>
       <div className="nav__left">
