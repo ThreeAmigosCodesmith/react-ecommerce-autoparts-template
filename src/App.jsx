@@ -8,6 +8,7 @@ import Order from './components/Order/Order';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Checkout from './components/Checkout/Checkout';
+import Dashboard from './components/Dashboard/Dashboard';
 
 const App = () => (
   <BrowserRouter>
@@ -30,6 +31,10 @@ const App = () => (
 
         <Route exact path="/login">
           <Login />
+        </Route>
+
+        <Route exact path="/dashboard">
+          <Dashboard />
         </Route>
 
         <Route exact path="/signup">
