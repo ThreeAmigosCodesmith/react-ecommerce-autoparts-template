@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Cart from './components/Cart/Cart';
+import Dashboard from './components/Dashboard/Dashboard';
 
 const App = () => (
   <BrowserRouter>
@@ -31,6 +32,10 @@ const App = () => (
 
         <Route exact path="/login">
           <Login />
+        </Route>
+
+        <Route exact path="/dashboard">
+          <Dashboard />
         </Route>
 
         <Route exact path="/signup">
