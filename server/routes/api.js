@@ -5,6 +5,7 @@ const router = express.Router();
 const userController = require('../controllers/userController.js');
 const productController = require('../controllers/productController.js');
 const orderController = require('../controllers/orderController.js');
+const cookieController = require('../controllers/cookieController.js');
 
 /* USER ROUTES */
 
@@ -16,6 +17,11 @@ router.get('/users/:userId', userController.getUser, (req, res) => {
 router.get('/users', userController.getUsers, (req, res) => {
   if (res.locals.error) res.status(400).json(res.locals.error);
   else res.status(200).json(res.locals.users);
+});
+
+router.post('/verify', userController.verifyUser, cookieController.setSSIDCookie, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json('Successfully signed in');
 });
 
 router.post('/users', userController.createUser, (req, res) => {

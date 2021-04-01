@@ -1,7 +1,118 @@
-.signup-wrapper {
-    margin: auto;
+.signup__background {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 800px;
+    height: 100vh;
+    background-color: #182628;
+}
+
+.signup {
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 500px;
+    height: 'fit-content';
+}
+
+.signup__image{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.signup__logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    width: 150px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.signup__container {
+    width: 300px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2px;
+    border: 3px solid #6ce8bd;
+    padding: 20px;
+    background-color: #64d2ab;
+}
+
+.signup__container > h1 {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #f8f8f8;
+}
+
+.signup__container > form > h5 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #f8f8f8;
+}
+
+.signup__input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    margin-top: 10px;
+}
+
+.signup__icon {
+    position: absolute;
+    left: 10px;
+    color: gray;
+    z-index: 1;
+}
+
+.signup__input > input {
+    height: 30px;
+    align-self: center;
+    background-color: white;
+    width: 300px;
+    padding: 5px 10px 5px 50px;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+    border-radius: 2px;
+}
+
+.signup__button {
+    background: #5ea7ff;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #77b6ff;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+.signup__container > p {
+    align-self: center;
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: justify; 
+    color: white;
+    padding: 2px;
+}
+
+.signup__login {
+    color: white;
+    font-size: 13px;
+    margin: 10px auto;
+}
+
+.signup__login > a {
+    color: #22426a;
 }
