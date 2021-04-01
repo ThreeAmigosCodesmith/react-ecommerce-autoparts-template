@@ -25,7 +25,7 @@ router.post('/verify', userController.verifyUser, cookieController.setSSIDCookie
   else res.status(200).json('Successfully signed in');
 });
 
-router.delete('/verify', cookieController.removeCookie, (req, res) => {
+router.delete('/verify', cookieController.removeCookie, sessionController.stopSession, (req, res) => {
   res.status(200).json('Signed out successfully');
 });
 
