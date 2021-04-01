@@ -46,7 +46,7 @@ const Home = () => (
           <Product
             id="0000000003"
             title="2014-2018 GMC Sierra Denali 1500 Engine Motor 6.2L Vin J 8th Digit Option L86"
-            price={650.90}
+            price={650.93}
             image="https://i.ebayimg.com/images/g/s8oAAOSw5ClXxKIF/s-l300.jpg"
             condition="Good"
             location={

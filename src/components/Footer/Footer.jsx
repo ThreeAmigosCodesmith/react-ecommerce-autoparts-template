@@ -1,32 +1,43 @@
 import React from 'react';
 import './Footer.css';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 
 const Footer = () => (
-  <div className="container-fluid">
-    <div className="footer">
-      <div className="title">
-        <a href="http://google.com">Social</a>
+  <div className="footer">
+    <div className="footer__top">
+      <div className="footer__section">
+        <h4>COMPANY</h4>
+        <a href="/">About us</a>
+        <a href="/">Our Services</a>
+        <a href="/">Careers</a>
+        <a href="/">Blog</a>
       </div>
 
-      <ul className="section">
-        <li><a href="https://www.facebook.com/" aria-label="fb">Services</a></li>
-        <li><a href="https://www.twitter.com/" aria-label="fb">Customers</a></li>
-        <li><a href="https://www.instagram.com/" aria-label="fb">Careers</a></li>
-      </ul>
-      <ul className="section">
-        <li><a href="https://www.facebook.com/" aria-label="fb">Help</a></li>
-        <li><a href="https://www.twitter.com/" aria-label="fb">Sales</a></li>
-        <li><a href="https://www.instagram.com/" aria-label="fb">Advertise</a></li>
-      </ul>
-      <ul className="section">
-        <li><a href="https://www.facebook.com/" aria-label="fb"><i className="fab fa-facebook-f" /></a></li>
-        <li><a href="https://www.twitter.com/" aria-label="fb"><i className="fab fa-twitter" /></a></li>
-        <li><a href="https://www.instagram.com/" aria-label="fb"><i className="fab fa-instagram" /></a></li>
-      </ul>
+      <div className="footer__section">
+        <h4>CONTACT</h4>
+        <p className="footer__email">contact@yardhop.com</p>
+        <p>+1 (800) 999-9999</p>
+        <div className="footer__icons">
+          <TwitterIcon />
+          <FacebookIcon />
+          <InstagramIcon />
+          <YouTubeIcon />
+        </div>
+      </div>
 
-      <div className="copyright">YardHop Inc. Copyright&copy;2020</div>
-
+      <div className="footer__section">
+        <h4>HELP</h4>
+        <a href="/">Seller Center</a>
+        <a href="/">Resolution Center</a>
+        <a href="/">Buying Help</a>
+        <a href="/">Registration</a>
+      </div>
     </div>
+
+    <p className="footer__copyright">Copyright &copy; 2021 YardHop Inc. All Rights Reserved.</p>
   </div>
 );
 
