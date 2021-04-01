@@ -3,6 +3,7 @@ import './Main.css';
 import Chart from './Chart';
 
 const Main = () => {
+  // eslint-disable-next-line no-console
   console.log('Main');
   return (
     <main>
