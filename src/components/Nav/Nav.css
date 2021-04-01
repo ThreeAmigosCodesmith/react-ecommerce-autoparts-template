@@ -25,6 +25,16 @@
   text-decoration: underline;
 }
 
+#nav__logOutButton {
+  border-radius: 3px;
+  color: black;
+  margin: 0px 6px;
+  padding: 3px 8px;
+  outline: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
 .nav__left {
   display: flex;
   justify-content: space-around;

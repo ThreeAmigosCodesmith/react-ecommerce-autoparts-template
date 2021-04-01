@@ -1,24 +1,24 @@
 /* eslint-disable no-case-declarations */
 export const initialState = {
-  basket: [],
+  cart: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_TO_BASKET':
+    case 'ADD_TO_CART':
       return {
         ...state,
-        basket: [...state.basket, action.item],
+        cart: [...state.cart, action.item],
       };
-    case 'REMOVE_FROM_BASKET':
-      const index = state.basket.findIndex((basketItem) => basketItem.id === action.id);
-      const newBasket = [...state.basket];
+    case 'REMOVE_FROM_CART':
+      const index = state.cart.findIndex((cartItem) => cartItem.id === action.id);
+      const newCart = [...state.cart];
       if (index >= 0) {
-        newBasket.splice(index, 1);
+        newCart.splice(index, 1);
       }
       return {
         ...state,
-        basket: newBasket,
+        cart: newCart,
       };
     default:
       return state;

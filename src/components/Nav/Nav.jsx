@@ -5,7 +5,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useStateValue } from '../../StateProvider';
 
 const Nav = () => {
-  const [{ basket }] = useStateValue();
+  const [{ cart }] = useStateValue();
   const history = useHistory();
 
   const navStyle = {
@@ -37,11 +37,8 @@ const Nav = () => {
         <Link style={navStyle} to="/order">
           <p className="link">Track Order</p>
         </Link>
-        <Link style={navStyle} to="/cart">
-          <p className="link">Cart</p>
-        </Link>
         <Link style={navStyle} to="/">
-          <button className="link" type="button" onClick={(e) => logOutButton(e)}>Logout</button>
+          <button id="nav__logOutButton" type="button" onClick={(e) => logOutButton(e)}>Logout</button>
         </Link>
       </div>
       <div className="nav__left">
@@ -55,10 +52,10 @@ const Nav = () => {
           </Link>
         </div>
         <div className="nav__basket">
-          <Link to="/checkout">
+          <Link to="/cart">
             <ShoppingCartIcon style={{ fill: '#f8f8f8' }} />
           </Link>
-          <span className="nav__basketCount">{basket?.length}</span>
+          <span className="nav__basketCount">{cart?.length}</span>
         </div>
       </div>
     </div>
