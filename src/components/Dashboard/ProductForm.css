@@ -1,0 +1,151 @@
+.productForm__container {
+    width: 100%;
+    padding: 25px;
+    max-width: 1000px;
+}
+
+.productForm {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.productForm > h2 {
+    align-self: flex-start;
+}
+
+.productForm__main {
+    display: flex; 
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.productForm__main1 {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.productForm__main1 > label > h3{
+    text-align: left;
+}
+
+.productForm__main1 > label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form__title__cont {
+    width: 60%;
+}
+
+.form__price__cont, .form__location__cont {
+    width: 20%;
+    margin-left: 15px;
+}
+
+.form__price__cont > input, .form__location__cont > select {
+    width: 100%;
+}
+
+
+#form__title {
+    width: 100%;
+}
+
+#form__title, #form__price {
+    height: 15px;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#form__location {
+    margin-top: 5px;
+    width: 100%;
+    height: 24px;
+    outline: none;
+}
+
+.productForm__main2 {
+    display: flex;
+}
+
+.form__description__cont {
+    width: 100%;
+    align-self: flex-start;
+}
+
+.form__description__cont > h3 {
+    text-align: left;
+}
+
+.form__description__cont > textarea {
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 5px;
+    outline: none;
+}
+
+.productForm__details__cont {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.productForm__details {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.productForm__details > label {
+    width: 20%;
+    margin-right: 35px;
+}
+
+.productForm__details > label > h4 {
+    text-align: left;
+}
+
+.productForm__details > label > select {
+    margin-top: 5px;
+    width: 100%;
+    height: 25px;
+    outline: none;
+}
+
+.form__buttons {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__buttons > button {
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.button__createListing {
+  background-color: goldenrod;
+  color: white;
+  outline: none;
+  border: 2px solid rgb(194, 148, 30);
+  border-radius: 2px;
+}
+
+.button__clearListing {
+    background-color: rgb(159, 159, 159);
+    color: white;
+    outline: none;
+    border: 2px solid rgb(142, 142, 142);
+    border-radius: 2px;
+}
