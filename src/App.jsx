@@ -8,7 +8,7 @@ import Order from './components/Order/Order';
 import Footer from './components/Footer/Footer';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
-import Checkout from './components/Checkout/Checkout';
+import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
 
 const App = () => (
@@ -42,9 +42,9 @@ const App = () => (
           <Signup />
         </Route>
 
-        <Route exact path="/checkout">
+        <Route exact path="/cart">
           <Header />
-          <Checkout />
+          <Cart />
         </Route>
       </Switch>
       <Footer />

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import './CheckoutProduct.css';
+import './CartProduct.css';
 import { useStateValue } from '../../StateProvider';
 
-const CheckoutProduct = (props) => {
-  const [{ basket }, dispatch] = useStateValue();
+const CartProduct = (props) => {
+  const [{ cart }, dispatch] = useStateValue();
 
   const {
     id,
@@ -18,37 +18,37 @@ const CheckoutProduct = (props) => {
 
   const deleteItem = () => {
     // eslint-disable-next-line no-console
-    console.log(basket);
+    console.log(cart);
 
     dispatch({
-      type: 'REMOVE_FROM_BASKET',
+      type: 'REMOVE_FROM_CART',
       id,
     });
   };
 
   return (
-    <div className="checkoutProduct">
-      <div className="checkoutProduct__image">
+    <div className="cartProduct">
+      <div className="cartProduct__image">
         <img src={image} alt="" />
       </div>
-      <div className="checkoutProduct__info">
-        <p className="checkoutProduct__title">{title}</p>
-        <p className="checkoutProduct__price">
+      <div className="cartProduct__info">
+        <p className="cartProduct__title">{title}</p>
+        <p className="cartProduct__price">
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <p className="checkoutProduct__condition">{`Condition: ${condition}`}</p>
-        <p className="checkoutProduct__location">
+        <p className="cartProduct__condition">{`Condition: ${condition}`}</p>
+        <p className="cartProduct__location">
           <LocationOnIcon />
           <span>{location.borough}</span>
         </p>
-        <button type="button" onClick={deleteItem}>Remove from Basket</button>
+        <button type="button" onClick={deleteItem}>Remove from Cart</button>
       </div>
     </div>
   );
 };
 
-CheckoutProduct.propTypes = {
+CartProduct.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
@@ -57,4 +57,4 @@ CheckoutProduct.propTypes = {
   location: PropTypes.shape({ borough: PropTypes.string.isRequired }).isRequired,
 };
 
-export default CheckoutProduct;
+export default CartProduct;

@@ -4,6 +4,7 @@ import Main from './Main';
 import Sidebar from './Sidebar';
 
 const Dashboard = () => {
+  // eslint-disable-next-line no-console
   console.log('dashboard');
   return (
     <div className="container">

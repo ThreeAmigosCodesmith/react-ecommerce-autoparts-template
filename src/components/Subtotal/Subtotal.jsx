@@ -4,17 +4,17 @@ import CurrencyFormat from 'react-currency-format';
 import { useStateValue } from '../../StateProvider';
 
 const Subtotal = () => {
-  const [{ basket }] = useStateValue();
+  const [{ cart }] = useStateValue();
 
   return (
     <div className="subtotal">
       <CurrencyFormat
-        value={basket.reduce((acc, curr) => (acc + curr.price), 0)}
+        value={cart.reduce((acc, curr) => (acc + curr.price), 0)}
         renderText={(value) => (
           <>
             <p>
               Subtotal (
-              {`${basket?.length} `}
+              {`${cart?.length} `}
               items):
               <strong>
                 {` ${value}`}

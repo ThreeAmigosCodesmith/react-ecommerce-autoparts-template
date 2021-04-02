@@ -2,6 +2,7 @@ import './Sidebar.css';
 import React from 'react';
 
 const Sidebar = () => {
+  // eslint-disable-next-line no-console
   console.log('Sidebar');
   return (
     <div className="sidebar_responsive" id="sidebar">
