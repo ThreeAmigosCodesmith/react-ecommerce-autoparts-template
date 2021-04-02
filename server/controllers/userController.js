@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const { ObjectId } = require('bson');
 const User = require('../models/userModel');
 
@@ -26,18 +27,26 @@ async function getUser(req, res, next) {
     });
 }
 
+// eslint-disable-next-line consistent-return
 async function verifyUser(req, res, next) {
-  const { email, password } = req.body;
-  await User.findOne({ email, password })
-    .then((user) => {
-      if (!user) res.locals.error = { message: 'login failed' };
-      else res.locals.userId = user.id;
-      return next();
-    })
-    .catch((error) => {
-      res.locals.error = error;
-      return next(error);
-    });
+  try {
+    const existinguser = await User.findOne({ email: req.body.email }).exec();
+    if (existinguser) {
+      bcrypt.compare(req.body.password, existinguser.password, (error, isMatch) => {
+        if (error) throw error;
+        else if (!isMatch) {
+          res.locals.error = 'Incorrect Password!';
+          return next();
+        } else {
+          res.locals.userId = existinguser.id;
+          return next();
+        }
+      });
+    }
+  } catch (error) {
+    res.locals.error = error;
+    return next();
+  }
 }
 
 async function createUser(req, res, next) {
