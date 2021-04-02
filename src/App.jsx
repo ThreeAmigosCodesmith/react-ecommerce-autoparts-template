@@ -16,26 +16,43 @@ const App = () => (
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <Header />
-          <Home />
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Home />
+          </div>
         </Route>
 
         <Route exact path="/catalog">
-          <Header />
-          <Catalog />
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Catalog />
+          </div>
         </Route>
 
         <Route exact path="/order">
-          <Header />
-          <Order />
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Order />
+          </div>
         </Route>
 
         <Route exact path="/login">
           <Login />
         </Route>
 
-        <Route exact path="/dashboard">
-          <Dashboard />
+        <Route path="/dashboard">
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Dashboard />
+          </div>
         </Route>
 
         <Route exact path="/signup">
@@ -43,11 +60,17 @@ const App = () => (
         </Route>
 
         <Route exact path="/cart">
-          <Header />
-          <Cart />
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Cart />
+          </div>
         </Route>
       </Switch>
-      <Footer />
+      <div className="footer-content">
+        <Footer />
+      </div>
     </div>
   </BrowserRouter>
 );

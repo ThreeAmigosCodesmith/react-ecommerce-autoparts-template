@@ -2,6 +2,13 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer-content {
+  position: relative;
+  width: 100%;
+  background-color: #182628;
 }
 
 body { 
@@ -12,4 +19,10 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   background-color: #F2F2F2;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  height: auto;
 }

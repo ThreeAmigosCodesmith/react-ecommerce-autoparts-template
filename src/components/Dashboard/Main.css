@@ -1,8 +1,8 @@
 main {
     background: #f3f4f6;
-    grid-area: main;
     overflow-y: auto;
     overflow-x: hidden;
+    width: 100%;
   }
   
   .main__container {
@@ -13,6 +13,7 @@ main {
   
   .main__title {
     display: flex;
+    text-align: left;
     align-items: center;
     margin-top: 35px;
   }

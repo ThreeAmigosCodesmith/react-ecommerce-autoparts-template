@@ -41,12 +41,9 @@ body {
   color: #3b9668;
 }
 
-.container {
-  display: grid;
-  height: 100vh;
-  grid-template-columns: 0.8fr 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 3fr;
-  grid-template-areas:
-    "sidebar main main main"
-    "sidebar main main main";
+.dashboard {
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+  justify-content: flex-start;
 }
