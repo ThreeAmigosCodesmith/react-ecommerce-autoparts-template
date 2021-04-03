@@ -43,6 +43,20 @@ async function getProductsByUserId(req, res, next) {
     });
 }
 
+async function getAllProductsByUser(req, res, next) {
+  await Product.find({
+    sellerID: req.params.id,
+  })
+    .then((products) => {
+      res.locals.products = products;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
+}
+
 async function createProduct(req, res, next) {
   const {
     title, make, model, year, borough, description, price,
@@ -109,6 +123,7 @@ async function deleteProduct(req, res, next) {
 module.exports = {
   getProduct,
   getProductsByUserId,
+  getAllProductsByUser,
   createProduct,
   updateProduct,
   deleteProduct,

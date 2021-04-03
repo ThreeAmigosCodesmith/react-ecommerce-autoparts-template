@@ -15,6 +15,7 @@ const Catalog = () => {
       },
     }).then((data) => data.json())
       .then((data) => setCatalog(data.products))
+      // eslint-disable-next-line no-console
       .catch((error) => console.log(error));
   }, []);
 
@@ -31,6 +32,7 @@ const Catalog = () => {
               make={item.make}
               year={item.year}
               condition={item.condition}
+              description={item.description}
               borough={item.borough}
             />
           ))}
