@@ -62,6 +62,11 @@ router.get('/products/:orderId', productController.getProduct, (req, res) => {
   else res.status(200).json(res.locals.product);
 });
 
+router.get('/products', productController.getAllProducts, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json({ products: res.locals.products });
+});
+
 router.get('/productsByUser/:id', productController.getAllProductsByUser, (req, res) => {
   if (res.locals.error) res.status(400).json(res.locals.error);
   else res.status(200).json(res.locals.products);
