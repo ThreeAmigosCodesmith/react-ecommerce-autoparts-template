@@ -12,7 +12,6 @@ const Login = () => {
   const history = useHistory();
   // eslint-disable-next-line no-unused-vars
   const [{ user }, dispatch] = useStateValue();
-  console.log(user);
 
   const signInButton = (event) => {
     event.preventDefault();
@@ -37,6 +36,7 @@ const Login = () => {
         });
       })
       .then(() => history.push('/dashboard'))
+      // eslint-disable-next-line no-console
       .catch((error) => console.log(error));
   };
 

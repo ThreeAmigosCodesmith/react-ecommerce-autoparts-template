@@ -28,6 +28,7 @@ const Nav = () => {
         type: 'UNAUTH_USER',
       });
     })
+      // eslint-disable-next-line no-console
       .catch((error) => console.log(error));
   };
 

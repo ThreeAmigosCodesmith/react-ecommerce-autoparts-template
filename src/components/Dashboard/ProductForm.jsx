@@ -13,7 +13,6 @@ const ProductForm = () => {
 
   const submitProduct = (event) => {
     event.preventDefault();
-    console.log(document.cookie);
     fetch('/api/products', {
       method: 'POST',
       headers: {

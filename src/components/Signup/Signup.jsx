@@ -41,6 +41,7 @@ const Signup = () => {
         });
       })
       .then(() => history.push('/dashboard'))
+      // eslint-disable-next-line no-console
       .catch((error) => console.log(error));
   };
 
