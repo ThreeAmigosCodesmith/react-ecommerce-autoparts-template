@@ -6,6 +6,7 @@ import { useStateValue } from '../../StateProvider';
 
 const Nav = () => {
   const [{ cart }] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
   const history = useHistory();
 
   const navStyle = {
@@ -20,9 +21,14 @@ const Nav = () => {
       headers: {
         'Content-Type': 'application/json',
       },
+    // eslint-disable-next-line no-unused-vars
     }).then((res) => {
-      if (res.status === 200) history.push('/');
-    });
+      history.push('/');
+      dispatch({
+        type: 'UNAUTH_USER',
+      });
+    })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -37,20 +43,26 @@ const Nav = () => {
         <Link style={navStyle} to="/order">
           <p className="link">Track Order</p>
         </Link>
-        <Link style={navStyle} to="/">
-          <button id="nav__logOutButton" type="button" onClick={(e) => logOutButton(e)}>Logout</button>
-        </Link>
       </div>
       <div className="nav__left">
-        <div className="nav__login">
-          <Link to="/login">
-            <button className="nav__loginButton" type="button">Login</button>
-          </Link>
-          <p>or</p>
-          <Link to="/signup">
-            <button className="nav__signUpButton" type="button">Create an Account</button>
-          </Link>
-        </div>
+        {user ? (
+          <div className="nav__logout">
+            <p className="nav__loggedInMsg">{`Hello, ${user.name}`}</p>
+            <Link style={navStyle} to="/">
+              <button id="nav__logOutButton" type="button" onClick={(e) => logOutButton(e)}>Logout</button>
+            </Link>
+          </div>
+        ) : (
+          <div className="nav__login">
+            <Link to="/login">
+              <button className="nav__loginButton" type="button">Login</button>
+            </Link>
+            <p>or</p>
+            <Link to="/signup">
+              <button className="nav__signUpButton" type="button">Create an Account</button>
+            </Link>
+          </div>
+        )}
         <div className="nav__basket">
           <Link to="/cart">
             <ShoppingCartIcon style={{ fill: '#f8f8f8' }} />

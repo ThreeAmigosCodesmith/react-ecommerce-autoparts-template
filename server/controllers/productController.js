@@ -31,11 +31,13 @@ async function getProductsByUserId(req, res, next) {
 
 async function createProduct(req, res, next) {
   const {
-    name, make, model, year, imageLink, description, price, sellerId,
+    title, make, model, year, borough, description, price,
   } = req.body;
 
+  const sellerID = req.cookies.ssid;
+
   await Product.create({
-    name, make, model, year, imageLink, description, price, sellerId,
+    title, make, model, year, borough, description, price, sellerID,
   })
     .then((product) => {
       res.locals.product = product;

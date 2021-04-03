@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Cookies from 'js-cookie';
 import './ProductForm.css';
 
 const ProductForm = () => {
@@ -6,25 +7,28 @@ const ProductForm = () => {
   const [price, setPrice] = useState(0.00);
   const [borough, setBorough] = useState('none');
   const [description, setDescription] = useState('');
-  const [manufacturer, setManufacturer] = useState('none');
+  const [make, setMake] = useState('none');
   const [condition, setCondition] = useState('none');
   const [year, setYear] = useState('none');
 
   const submitProduct = (event) => {
     event.preventDefault();
-    fetch('/dashboard/newProduct', {
+    console.log(document.cookie);
+    fetch('/api/products', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify({
         title,
         price,
         borough,
         description,
-        manufacturer,
+        make,
         condition,
         year,
+        sellerID: Cookies.get('ssid'),
       }),
     }).then((res) => {
       if (res.status === 200) {
@@ -32,7 +36,7 @@ const ProductForm = () => {
         setPrice(0.00);
         setBorough('none');
         setDescription('');
-        setManufacturer('none');
+        setMake('none');
         setCondition('none');
         setYear('none');
       }
@@ -44,7 +48,7 @@ const ProductForm = () => {
     setPrice(0.00);
     setBorough('none');
     setDescription('');
-    setManufacturer('none');
+    setMake('none');
     setCondition('none');
     setYear('none');
   };
@@ -94,7 +98,7 @@ const ProductForm = () => {
             <div className="productForm__details">
               <label htmlFor="form__manufacturer">
                 <h4>Make/Manufacturer</h4>
-                <select name="manufacturer" id="form__manufacturer" value={manufacturer} onChange={(e) => setManufacturer(e.target.value)}>
+                <select name="make" id="form__manufacturer" value={make} onChange={(e) => setMake(e.target.value)}>
                   <option value="none" selected disabled>Select</option>
                   <option value="Ford">Ford</option>
                   <option value="Dodge">Dodge</option>

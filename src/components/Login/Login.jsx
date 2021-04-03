@@ -4,11 +4,15 @@ import './Login.css';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockIcon from '@material-ui/icons/Lock';
 import Logo from '../../yardhop-logo.png';
+import { useStateValue } from '../../StateProvider';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
+  // eslint-disable-next-line no-unused-vars
+  const [{ user }, dispatch] = useStateValue();
+  console.log(user);
 
   const signInButton = (event) => {
     event.preventDefault();
@@ -22,9 +26,18 @@ const Login = () => {
         email,
         password,
       }),
-    }).then((res) => {
-      if (res.status === 200) history.push('/dashboard');
-    });
+    }).then((res) => res.json())
+      .then((res) => {
+        dispatch({
+          type: 'AUTH_USER',
+          item: {
+            name: res.name,
+            id: res.id,
+          },
+        });
+      })
+      .then(() => history.push('/dashboard'))
+      .catch((error) => console.log(error));
   };
 
   return (
