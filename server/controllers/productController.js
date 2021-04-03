@@ -16,9 +16,7 @@ async function getProduct(req, res, next) {
 }
 
 async function getProductsByUserId(req, res, next) {
-  const { userId } = req.params;
-
-  await Product.find({ sellerId: userId })
+  await Product.find({ sellerId: req.params.id })
     .then((user) => {
       res.locals.user = user;
       return next();
