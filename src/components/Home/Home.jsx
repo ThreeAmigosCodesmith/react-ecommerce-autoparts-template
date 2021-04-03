@@ -1,13 +1,12 @@
 import React from 'react';
 import Product from '../Product/Product';
 import './Home.css';
+import Banner from '../../banner.jpeg';
 
 const Home = () => (
   <div className="home">
     <div className="home__container">
-      <div className="home__query">
-        <h2>Query will go here</h2>
-      </div>
+      <img className="home__image" src={Banner} alt="" />
       <div className="home__productsNearby">
         <h2>Items near you:</h2>
         <div className="home__row">
