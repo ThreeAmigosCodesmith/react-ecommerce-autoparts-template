@@ -94,6 +94,11 @@ router.get('/orders', orderController.getOrders, (req, res) => {
   else res.status(200).json(res.locals.orders);
 });
 
+router.get('/ordersByUser/:id', orderController.getAllOrdersByUser, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.orders);
+});
+
 router.post('/orders', orderController.createOrder, (req, res) => {
   if (res.locals.error) res.status(400).json(res.locals.error);
   else res.status(200).json(res.locals.ordercreated);
