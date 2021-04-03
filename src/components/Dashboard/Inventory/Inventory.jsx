@@ -27,14 +27,13 @@ const Inventory = () => {
         {
           inventory.map((item) => (
             <div className="inventoryItems">
-              <p>{`title: ${item.title}`}</p>
-              <p>{`make: ${item.make}`}</p>
-              <p>{`model: ${item.model}`}</p>
-              <p>{`borough: ${item.borough}`}</p>
-              <p>{`year: ${item.year}`}</p>
+              <h4 className="inventoryItems__title">{`Title: ${item.title}`}</h4>
+              <p>{`Make: ${item.make}`}</p>
+              <p>{`Year: ${item.year}`}</p>
               <p>{`description: ${item.description}`}</p>
-              <p>{`price: ${item.price}`}</p>
-              <p>{`condition: ${item.condition}`}</p>
+              <p>{`Price: ${item.price}`}</p>
+              <p>{`Condition: ${item.condition}`}</p>
+              <p>{`Borough: ${item.borough}`}</p>
             </div>
           ))
         }
