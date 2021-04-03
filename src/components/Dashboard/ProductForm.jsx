@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Cookies from 'js-cookie';
 import './ProductForm.css';
+import { useStateValue } from '../../StateProvider';
 
 const ProductForm = () => {
   const [title, setTitle] = useState('');
@@ -10,6 +10,8 @@ const ProductForm = () => {
   const [make, setMake] = useState('none');
   const [condition, setCondition] = useState('none');
   const [year, setYear] = useState('none');
+  // eslint-disable-next-line no-unused-vars
+  const [{ user }, dispatch] = useStateValue();
 
   const submitProduct = (event) => {
     event.preventDefault();
@@ -27,7 +29,7 @@ const ProductForm = () => {
         make,
         condition,
         year,
-        sellerID: Cookies.get('ssid'),
+        sellerID: user.id,
       }),
     }).then((res) => {
       if (res.status === 200) {
