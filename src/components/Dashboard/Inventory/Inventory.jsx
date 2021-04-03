@@ -7,7 +7,7 @@ const Inventory = () => {
   const [inventory, setInventory] = useState([]);
 
   const getInventory = () => {
-    fetch(`/api/products/${user.id}`, {
+    fetch(`/api/productsByUser/${user.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

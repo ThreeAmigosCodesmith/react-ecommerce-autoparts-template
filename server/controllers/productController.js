@@ -16,9 +16,25 @@ async function getProduct(req, res, next) {
 }
 
 async function getProductsByUserId(req, res, next) {
-  await Product.find({ sellerId: req.params.id })
+  const { userId } = req.params;
+
+  await Product.find({ sellerId: userId })
     .then((user) => {
       res.locals.user = user;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
+}
+
+async function getAllProductsByUser(req, res, next) {
+  await Product.find({
+    sellerID: req.params.id,
+  })
+    .then((products) => {
+      res.locals.products = products;
       return next();
     })
     .catch((error) => {
@@ -93,6 +109,7 @@ async function deleteProduct(req, res, next) {
 module.exports = {
   getProduct,
   getProductsByUserId,
+  getAllProductsByUser,
   createProduct,
   updateProduct,
   deleteProduct,
