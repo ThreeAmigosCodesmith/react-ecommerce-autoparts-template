@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import {
   Switch,
   Route,
-  useRouteMatch,
   useHistory,
 } from 'react-router-dom';
 import './Dashboard.css';
@@ -12,9 +11,9 @@ import ProductForm from './ProductForm';
 import { useStateValue } from '../../StateProvider';
 
 const Dashboard = () => {
-  const { path } = useRouteMatch();
   // eslint-disable-next-line no-unused-vars
   const [{ user }, dispatch] = useStateValue();
+  console.log(user);
   const history = useHistory();
   // eslint-disable-next-line no-console
   console.log('dashboard');
@@ -28,11 +27,11 @@ const Dashboard = () => {
     <div className="dashboard">
       <Sidebar />
       <Switch>
-        <Route path={`${path}/newProduct`}>
+        <Route exact path="/dashboard/newProduct">
           <ProductForm />
         </Route>
 
-        <Route path={`${path}`}>
+        <Route exact path="/dashboard">
           <Main />
         </Route>
 

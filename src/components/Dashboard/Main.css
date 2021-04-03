@@ -1,21 +1,18 @@
 main {
     background: #f3f4f6;
-    overflow-y: auto;
-    overflow-x: hidden;
     width: 100%;
+    max-width: 1000px;
+    padding: 25px;
   }
   
   .main__container {
-    padding-left: 5%;
-    padding-right: 5%;
-    width: 75%;
+    width: 100%;
   }
   
   .main__title {
     display: flex;
     text-align: left;
     align-items: center;
-    margin-top: 35px;
   }
   
   .main__title > img {
