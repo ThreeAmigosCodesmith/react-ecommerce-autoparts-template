@@ -1,6 +1,7 @@
 /* eslint-disable no-case-declarations */
 export const initialState = {
   cart: [],
+  user: null,
 };
 
 const reducer = (state, action) => {
@@ -19,6 +20,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: newCart,
+      };
+    case 'AUTH_USER':
+      return {
+        ...state,
+        user: action.item,
+      };
+    case 'UNAUTH_USER':
+      return {
+        ...state,
+        user: null,
       };
     default:
       return state;

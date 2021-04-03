@@ -65,3 +65,15 @@
   align-items: center;
   cursor: pointer;
 }
+
+.nav__logout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.nav__loggedInMsg {
+  margin-right: 15px;
+  font-weight: 800;
+}

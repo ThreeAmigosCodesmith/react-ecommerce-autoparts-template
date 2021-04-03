@@ -39,6 +39,7 @@ async function verifyUser(req, res, next) {
           return next();
         } else {
           res.locals.userId = existinguser.id;
+          res.locals.name = existinguser.name;
           return next();
         }
       });
@@ -58,7 +59,9 @@ async function createUser(req, res, next) {
     name, password, email, address, orders, products,
   })
     .then((data) => {
-      res.locals.usercreated = data;
+      const { _id, name: username } = data;
+      res.locals.name = username;
+      res.locals.userId = _id;
       return next();
     })
     .catch((error) => {

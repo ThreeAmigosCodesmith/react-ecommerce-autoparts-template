@@ -5,12 +5,15 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockIcon from '@material-ui/icons/Lock';
 import Logo from '../../yardhop-logo.png';
+import { useStateValue } from '../../StateProvider';
 
 const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
+  // eslint-disable-next-line no-unused-vars
+  const [{ user }, dispatch] = useStateValue();
 
   // const validateForm = () => {
   // (name.length !== 0) && (email.length > 0) && (password.length > 0) };
@@ -27,9 +30,19 @@ const Signup = () => {
         email,
         password,
       }),
-    }).then((res) => {
-      if (res.status === 200) history.push('/dashboard');
-    });
+    }).then((res) => res.json())
+      .then((res) => {
+        dispatch({
+          type: 'AUTH_USER',
+          item: {
+            name: res.name,
+            id: res.id,
+          },
+        });
+      })
+      .then(() => history.push('/dashboard'))
+      // eslint-disable-next-line no-console
+      .catch((error) => console.log(error));
   };
 
   return (
