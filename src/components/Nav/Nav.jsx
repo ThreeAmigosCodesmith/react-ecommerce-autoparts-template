@@ -44,6 +44,11 @@ const Nav = () => {
         <Link style={navStyle} to="/order">
           <p className="link">Track Order</p>
         </Link>
+        { user && (
+          <Link style={navStyle} to="/dashboard">
+            <p className="link">Dashboard</p>
+          </Link>
+        )}
       </div>
       <div className="nav__left">
         {user ? (
