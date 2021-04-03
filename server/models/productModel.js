@@ -10,7 +10,7 @@ const ProductSchema = new mongoose.Schema({
   description: { type: String },
   price: { type: Number },
   condition: { type: String },
-  sellerId: { type: String },
+  sellerID: { type: String },
 });
 
 const Product = mongoose.model('Product', ProductSchema);
