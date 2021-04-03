@@ -1,5 +1,6 @@
 import './Inventory.css';
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import { useStateValue } from '../../../StateProvider';
 
 const Inventory = () => {
@@ -29,8 +30,8 @@ const Inventory = () => {
             <div className="inventoryItems">
               <h4 className="inventoryItems__title">{`Title: ${item.title}`}</h4>
               <p>{`Make: ${item.make}`}</p>
-              <p>{`Year: ${item.year}`}</p>
-              <p>{`description: ${item.description}`}</p>
+              <p>{`Year: ${moment(item.year).format('YYYY')}`}</p>
+              <p className="inventoryItems__description">{`description: ${item.description}`}</p>
               <p>{`Price: ${item.price}`}</p>
               <p>{`Condition: ${item.condition}`}</p>
               <p>{`Borough: ${item.borough}`}</p>
