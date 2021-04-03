@@ -13,6 +13,20 @@ async function getOrders(req, res, next) {
     });
 }
 
+async function getAllOrdersByUser(req, res, next) {
+  await Order.find({
+    buyerId: req.params.id,
+  })
+    .then((orders) => {
+      res.locals.orders = orders;
+      return next();
+    })
+    .catch((error) => {
+      res.locals.error = error;
+      return next();
+    });
+}
+
 async function getOrder(req, res, next) {
   const { orderId } = req.params;
   await Order.find({ _id: ObjectId(orderId) })
@@ -84,6 +98,7 @@ async function deleteOrder(req, res, next) {
 
 module.exports = {
   getOrder,
+  getAllOrdersByUser,
   getOrders,
   createOrder,
   updateOrder,
