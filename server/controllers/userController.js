@@ -38,8 +38,7 @@ async function verifyUser(req, res, next) {
           res.locals.error = 'Incorrect Password!';
           return next();
         } else {
-          // eslint-disable-next-line no-underscore-dangle
-          res.locals.userId = existinguser._id;
+          res.locals.userId = existinguser.id;
           res.locals.name = existinguser.name;
           return next();
         }
