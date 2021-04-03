@@ -15,6 +15,20 @@ async function getProduct(req, res, next) {
     });
 }
 
+async function getAllProducts(req, res, next) {
+  await Product.find()
+    .then((products) => {
+      res.locals.products = products;
+      console.log(products);
+      return next();
+    })
+    .catch((error) => {
+      console.log(error);
+      res.locals.error = error;
+      return next();
+    });
+}
+
 async function getProductsByUserId(req, res, next) {
   const { userId } = req.params;
 
@@ -98,4 +112,5 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  getAllProducts,
 };
