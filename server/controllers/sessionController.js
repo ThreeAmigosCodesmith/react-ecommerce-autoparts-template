@@ -13,6 +13,7 @@ sessionController.isLoggedIn = async (req, res, next) => {
       else res.locals.success = true;
     } else res.locals.success = false;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log(error);
   }
   next();

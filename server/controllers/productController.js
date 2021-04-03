@@ -19,11 +19,9 @@ async function getAllProducts(req, res, next) {
   await Product.find()
     .then((products) => {
       res.locals.products = products;
-      console.log(products);
       return next();
     })
     .catch((error) => {
-      console.log(error);
       res.locals.error = error;
       return next();
     });

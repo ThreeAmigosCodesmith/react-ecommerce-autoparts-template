@@ -14,6 +14,7 @@ const apiRouter = require('./routes/api');
 // Connect to our database
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open', () => {
+  // eslint-disable-next-line no-console
   console.log('Connected to Database');
 });
 
@@ -41,12 +42,14 @@ app.use((err, req, res, next) => {
   };
 
   const errorObj = { ...defaultErr, ...err };
+  // eslint-disable-next-line no-console
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
 
 // listens on port 8080 -> http://localhost:8080/
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Server listening on port: ${PORT}...`);
 });
 
