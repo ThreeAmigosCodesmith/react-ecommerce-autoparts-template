@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
 // Prepares the data layer
-export const StateContext = createContext();
+// eslint-disable-next-line func-names
+export const StateContext = createContext([{}, function () { }]);
 
 // Wrap our app and provide the Data Layer to every component on our app
 /* eslint react/prop-types: 0 */
