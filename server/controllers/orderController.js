@@ -1,8 +1,7 @@
-const { ObjectId } = require('bson');
-const Order = require('../models/orderModel');
+const Order = require('../models/Orders');
 
 async function getOrders(req, res, next) {
-  await Order.find({})
+  await Order.findAll()
     .then((orders) => {
       res.locals.orders = orders;
       return next();
@@ -14,8 +13,8 @@ async function getOrders(req, res, next) {
 }
 
 async function getAllOrdersByUser(req, res, next) {
-  await Order.find({
-    buyerId: req.params.id,
+  await Order.findAll({
+    customerId: req.params.id,
   })
     .then((orders) => {
       res.locals.orders = orders;
@@ -29,7 +28,11 @@ async function getAllOrdersByUser(req, res, next) {
 
 async function getOrder(req, res, next) {
   const { orderId } = req.params;
-  await Order.find({ _id: ObjectId(orderId) })
+  await Order.findOne({
+    where: {
+      orderId,
+    },
+  })
     .then((order) => {
       res.locals.order = order;
       return next();
@@ -58,7 +61,7 @@ async function createOrder(req, res, next) {
     });
 }
 
-// TODO: Needs fixing
+// // TODO: Needs fixing
 async function updateOrder(req, res, next) {
   const {
     date, productId, sellerId, buyerId,
@@ -71,7 +74,11 @@ async function updateOrder(req, res, next) {
     ...(buyerId && { buyerId }),
   };
 
-  await Order.findOneAndUpdate({ _id: ObjectId(orderId) }, bodyToUpdate, { new: true })
+  await Order.findOneAndUpdate(bodyToUpdate, {
+    where: {
+      orderId,
+    },
+  })
     .then((order) => {
       res.locals.order = order;
       return next();
@@ -85,7 +92,11 @@ async function updateOrder(req, res, next) {
 async function deleteOrder(req, res, next) {
   const { orderId } = req.params;
 
-  await Order.findOneAndDelete({ _id: ObjectId(orderId) })
+  await Order.destroy({
+    where: {
+      orderId,
+    },
+  })
     .then((order) => {
       res.locals.deletedorder = order;
       return next();
@@ -97,10 +108,10 @@ async function deleteOrder(req, res, next) {
 }
 
 module.exports = {
-  getOrder,
-  getAllOrdersByUser,
   getOrders,
-  createOrder,
+  getAllOrdersByUser,
+  getOrder,
   updateOrder,
+  createOrder,
   deleteOrder,
 };

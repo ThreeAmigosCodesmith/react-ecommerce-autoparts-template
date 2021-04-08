@@ -3,20 +3,37 @@ const express = require('express');
 const app = express();
 // const path = require('path');
 const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
-/* eslint import/no-unresolved: 2 */
-const { MONGO_URI } = require('../db/config.json');
 
+/* eslint import/no-unresolved: 2 */
 const PORT = 8080;
 
-const apiRouter = require('./routes/api');
+// const pool = new Pool({
+//   connectionString: process.env.CONNECTION_STRING,
+// });
 
-// Connect to our database
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connection.once('open', () => {
-  // eslint-disable-next-line no-console
-  console.log('Connected to Database');
-});
+// pool.connect((err) => {
+//   // eslint-disable-next-line no-console
+//   if (err) console.log(err);
+//   // eslint-disable-next-line no-console
+//   else console.log('connected to DB');
+// });
+
+const db = require('./config/database');
+
+const connectDB = async () => {
+  try {
+    await db.authenticate();
+    // eslint-disable-next-line no-console
+    console.log('Connected to db.');
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Unable to connect to the database:', error);
+  }
+};
+
+connectDB();
+
+const apiRouter = require('./routes/api');
 
 // handle parsing request body
 app.use(express.json());

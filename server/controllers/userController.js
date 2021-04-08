@@ -1,9 +1,8 @@
 const bcrypt = require('bcryptjs');
-const { ObjectId } = require('bson');
-const User = require('../models/userModel');
+const Customer = require('../models/Customer');
 
 async function getUsers(req, res, next) {
-  await User.find({})
+  await Customer.findAll()
     .then((users) => {
       res.locals.users = users;
       return next();
@@ -16,7 +15,7 @@ async function getUsers(req, res, next) {
 
 async function getUser(req, res, next) {
   const { userId } = req.params;
-  await User.findOne({ _id: ObjectId(userId) })
+  await Customer.findOne({ where: { customerId: userId } })
     .then((user) => {
       res.locals.user = user;
       return next();
@@ -30,7 +29,7 @@ async function getUser(req, res, next) {
 // eslint-disable-next-line consistent-return
 async function verifyUser(req, res, next) {
   try {
-    const existinguser = await User.findOne({ email: req.body.email }).exec();
+    const existinguser = await Customer.findOne({ where: { email: req.body.email } });
     if (existinguser) {
       bcrypt.compare(req.body.password, existinguser.password, (error, isMatch) => {
         if (error) throw error;
@@ -55,7 +54,7 @@ async function createUser(req, res, next) {
     name, password, email, address, orders, products,
   } = req.body;
 
-  await User.create({
+  await Customer.create({
     name, password, email, address, orders, products,
   })
     .then((data) => {
@@ -70,8 +69,8 @@ async function createUser(req, res, next) {
     });
 }
 
-// TODO: need to pair on this one to let user update whatever field they want without affecting
-// other fields
+// // TODO: need to pair on this one to let user update whatever field they want without affecting
+// // other fields
 async function updateUser(req, res, next) {
   const { name, email } = req.body; // TODO: Add password here when needed.
   const bodyToUpdate = {
@@ -80,7 +79,11 @@ async function updateUser(req, res, next) {
   };
   const { userId } = req.params;
 
-  await User.findOneAndUpdate({ _id: ObjectId(userId) }, bodyToUpdate)
+  await Customer.findOneAndUpdate(bodyToUpdate, {
+    where: {
+      customerId: userId,
+    },
+  })
     .then((user) => {
       res.locals.userupdated = user;
       return next();
@@ -91,11 +94,15 @@ async function updateUser(req, res, next) {
     });
 }
 
-// TODO: throw error when a specific user_id no longer exists
+// // TODO: throw error when a specific user_id no longer exists
 async function deleteUser(req, res, next) {
   const { userId } = req.params;
 
-  await User.findOneAndDelete({ _id: ObjectId(userId) })
+  await Customer.destroy({
+    where: {
+      customerId: userId,
+    },
+  })
     .then((user) => {
       res.locals.deleteduser = user;
       return next();
@@ -107,8 +114,8 @@ async function deleteUser(req, res, next) {
 }
 
 module.exports = {
-  getUser,
   getUsers,
+  getUser,
   verifyUser,
   createUser,
   updateUser,
