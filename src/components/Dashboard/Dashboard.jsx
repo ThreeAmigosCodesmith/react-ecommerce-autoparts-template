@@ -1,3 +1,4 @@
+// import React from 'react';
 import React, { useEffect } from 'react';
 import {
   Switch,
@@ -17,13 +18,14 @@ const Dashboard = () => {
   const [{ user }, dispatch] = useStateValue();
   const history = useHistory();
   // eslint-disable-next-line no-console
-  console.log('dashboard');
+  // console.log('dashboard');
 
   useEffect(() => {
     if (!user) {
       history.push('/');
     }
   }, []);
+
   return (
     <div className="dashboard">
       <Sidebar />

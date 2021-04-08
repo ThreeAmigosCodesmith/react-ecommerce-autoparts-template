@@ -1,20 +1,22 @@
 const express = require('express');
 
 const app = express();
-// const path = require('path');
+const path = require('path');
+
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
-/* eslint import/no-unresolved: 2 */
-const { MONGO_URI } = require('../db/config.json');
+// /* eslint import/no-unresolved: 2 */
+const { MONGO_URI } = require('./db/config.json');
 
 const PORT = 8080;
 
 const apiRouter = require('./routes/api');
 
+mongoose.set('useCreateIndex', true);
 // Connect to our database
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open', () => {
-  // eslint-disable-next-line no-console
+// eslint-disable-next-line no-console
   console.log('Connected to Database');
 });
 
@@ -24,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // statically render index.html file when user hits / - (mandatory)
-// app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 // define route handlers
 app.use('/api', apiRouter);
@@ -46,7 +48,6 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
-
 // listens on port 8080 -> http://localhost:8080/
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
