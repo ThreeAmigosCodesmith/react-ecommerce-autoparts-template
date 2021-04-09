@@ -1,22 +1,26 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
+const { DataTypes } = require('sequelize');
 
-const Category = db.define('category', {
-  categoryId: {
-    type: Sequelize.NUMBER,
-  },
-  catgoryName: {
-    type: Sequelize.STRING,
-  },
-  description: {
-    type: Sequelize.STRING,
-  },
-  picture: {
-    type: Sequelize.STRING,
-  },
-  active: {
-    type: Sequelize.BOOLEAN,
-  },
-});
-
-module.exports = Category;
+module.exports = (sequelize) => {
+  sequelize.define('category', {
+    categoryID: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false,
+    },
+    catgoryName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      defaultValue: ' ',
+    },
+    picture: {
+      type: DataTypes.STRING,
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+    },
+  });
+};

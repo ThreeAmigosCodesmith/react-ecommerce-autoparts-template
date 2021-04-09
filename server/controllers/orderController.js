@@ -14,7 +14,7 @@ async function getOrders(req, res, next) {
 
 async function getAllOrdersByUser(req, res, next) {
   await Order.findAll({
-    customerId: req.params.id,
+    customerID: req.params.id,
   })
     .then((orders) => {
       res.locals.orders = orders;

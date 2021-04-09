@@ -1,49 +1,41 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
+const { DataTypes } = require('sequelize');
 
-const OrderDetail = db.define('orderDetail', {
-  orderId: {
-    type: Sequelize.STRING,
-  },
-  productId: {
-    type: Sequelize.STRING,
-  },
-  orderNumber: {
-    type: Sequelize.NUMBER,
-  },
-  price: {
-    type: Sequelize.NUMBER,
-  },
-  quantity: {
-    type: Sequelize.NUMBER,
-  },
-  discount: {
-    type: Sequelize.NUMBER,
-  },
-  total: {
-    type: Sequelize.NUMBER,
-  },
-  idsku: {
-    type: Sequelize.STRING,
-  },
-  size: {
-    type: Sequelize.STRING,
-  },
-  color: {
-    type: Sequelize.STRING,
-  },
-  fulfilled: {
-    type: Sequelize.BOOLEAN,
-  },
-  shipDate: {
-    type: Sequelize.DATE,
-  },
-  orderDetailId: {
-    type: Sequelize.STRING,
-  },
-  billDate: {
-    type: Sequelize.DATE,
-  },
-});
-
-module.exports = OrderDetail;
+module.exports = (sequelize) => {
+  sequelize.define('orderDetail', {
+    price: {
+      type: DataTypes.DOUBLE,
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+    },
+    discount: {
+      type: DataTypes.DOUBLE,
+    },
+    total: {
+      type: DataTypes.DOUBLE,
+    },
+    idsku: {
+      type: DataTypes.STRING,
+    },
+    size: {
+      type: DataTypes.STRING,
+    },
+    color: {
+      type: DataTypes.STRING,
+    },
+    fulfilled: {
+      type: DataTypes.BOOLEAN,
+    },
+    shipDate: {
+      type: DataTypes.DATE,
+    },
+    orderDetailID: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
+    billDate: {
+      type: DataTypes.DATE,
+    },
+  });
+};

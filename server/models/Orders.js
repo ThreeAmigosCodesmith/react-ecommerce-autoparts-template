@@ -1,58 +1,51 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
+const { DataTypes } = require('sequelize');
 
-const Order = db.define('order', {
-  orderId: {
-    type: Sequelize.NUMBER,
-  },
-  customerId: {
-    type: Sequelize.NUMBER,
-  },
-  orderNumber: {
-    type: Sequelize.NUMBER,
-  },
-  paymentId: {
-    type: Sequelize.STRING,
-  },
-  orderDate: {
-    type: Sequelize.DATE,
-  },
-  shipDate: {
-    type: Sequelize.DATE,
-  },
-  requiredDate: {
-    type: Sequelize.DATE,
-  },
-  shipperId: {
-    type: Sequelize.STRING,
-  },
-  freight: {
-    type: Sequelize.STRING,
-  },
-  salesTax: {
-    type: Sequelize.NUMBER,
-  },
-  timestamp: {
-    type: Sequelize.DATE,
-  },
-  transctStatus: {
-    type: Sequelize.STRING,
-  },
-  errLoc: {
-    type: Sequelize.STRING,
-  },
-  fulfilled: {
-    type: Sequelize.BOOLEAN,
-  },
-  deleted: {
-    type: Sequelize.BOOLEAN,
-  },
-  paid: {
-    type: Sequelize.BOOLEAN,
-  },
-  paymentDate: {
-    type: Sequelize.DATE,
-  },
-});
-
-module.exports = Order;
+module.exports = (sequelize) => {
+  sequelize.define('order', {
+    orderID: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
+    orderNumber: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
+    orderDate: {
+      type: DataTypes.DATE,
+    },
+    shipDate: {
+      type: DataTypes.DATE,
+    },
+    requiredDate: {
+      type: DataTypes.DATE,
+    },
+    freight: {
+      type: DataTypes.STRING,
+    },
+    salesTax: {
+      type: DataTypes.DOUBLE,
+    },
+    timestamp: {
+      type: DataTypes.DATE,
+    },
+    transactStatus: {
+      type: DataTypes.STRING,
+    },
+    errLoc: {
+      type: DataTypes.STRING,
+    },
+    fulfilled: {
+      type: DataTypes.BOOLEAN,
+    },
+    deleted: {
+      type: DataTypes.BOOLEAN,
+    },
+    paid: {
+      type: DataTypes.BOOLEAN,
+    },
+    paymentDate: {
+      type: DataTypes.DATE,
+    },
+  });
+};

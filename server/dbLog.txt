@@ -1,0 +1,74 @@
+Executing (default): SELECT 1+1 AS result
+
+Executing (default): DROP TABLE IF EXISTS "sessions" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "orderDetails" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "products" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "suppliers" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "orders" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "shippers" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "payments" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "customers" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "categories" CASCADE;
+
+Executing (default): DROP TABLE IF EXISTS "categories" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "categories" ("categoryID" UUID NOT NULL , "catgoryName" VARCHAR(255) NOT NULL, "description" VARCHAR(255) DEFAULT ' ', "picture" VARCHAR(255), "active" BOOLEAN, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("categoryID"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'categories' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+
+Executing (default): DROP TABLE IF EXISTS "customers" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "customers" ("customerID" UUID , "firstName" VARCHAR(255), "lastName" VARCHAR(255), "address1" VARCHAR(255), "address2" VARCHAR(255), "city" VARCHAR(255), "state" VARCHAR(255), "postalCode" INTEGER, "country" VARCHAR(255), "phone" INTEGER, "email" VARCHAR(255), "password" VARCHAR(255), "billingAddress" VARCHAR(255), "billingCity" VARCHAR(255), "billingRegion" VARCHAR(255), "billingPostalCode" INTEGER, "billingCountry" VARCHAR(255), "shipAddress" VARCHAR(255), "shipCity" VARCHAR(255), "shipRegion" VARCHAR(255), "shipPostalCode" INTEGER, "shipCountry" VARCHAR(255), "createdAt" TIMESTAMP WITH TIME ZONE, "updatedAt" TIMESTAMP WITH TIME ZONE, PRIMARY KEY ("customerID"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'customers' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+
+Executing (default): DROP TABLE IF EXISTS "payments" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "payments" ("paymentId" UUID , "paymentType" VARCHAR(255), "allowed" BOOLEAN, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("paymentId"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'payments' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+
+Executing (default): DROP TABLE IF EXISTS "shippers" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "shippers" ("shipperId" UUID NOT NULL , "companyName" VARCHAR(255), "phone" INTEGER, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("shipperId"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'shippers' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+
+Executing (default): DROP TABLE IF EXISTS "orders" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "orders" ("orderID" UUID , "orderNumber" UUID, "orderDate" TIMESTAMP WITH TIME ZONE, "shipDate" TIMESTAMP WITH TIME ZONE, "requiredDate" TIMESTAMP WITH TIME ZONE, "freight" VARCHAR(255), "salesTax" DOUBLE PRECISION, "timestamp" TIMESTAMP WITH TIME ZONE, "transactStatus" VARCHAR(255), "errLoc" VARCHAR(255), "fulfilled" BOOLEAN, "deleted" BOOLEAN, "paid" BOOLEAN, "paymentDate" TIMESTAMP WITH TIME ZONE, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "customerID" UUID REFERENCES "customers" ("customerID") ON DELETE SET NULL ON UPDATE CASCADE, "paymentID" UUID REFERENCES "payments" ("paymentId") ON DELETE SET NULL ON UPDATE CASCADE, "shipperID" UUID REFERENCES "shippers" ("shipperId") ON DELETE SET NULL ON UPDATE CASCADE, PRIMARY KEY ("orderID"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'orders' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+
+Executing (default): DROP TABLE IF EXISTS "suppliers" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "suppliers" ("supplierID" UUID NOT NULL , "companyName" VARCHAR(255), "contactFirstName" VARCHAR(255), "contactLastName" VARCHAR(255), "contactTitle" VARCHAR(255), "address1" VARCHAR(255), "address2" VARCHAR(255), "city" VARCHAR(255), "state" VARCHAR(255), "postalCode" INTEGER, "country" VARCHAR(255), "phone" INTEGER, "email" VARCHAR(255), "url" VARCHAR(255), "paymentMethods" VARCHAR(255), "discountAvailable" BOOLEAN, "discountType" VARCHAR(255), "typeGoods" VARCHAR(255), "notes" TEXT, "currentOrder" VARCHAR(255), "logo" VARCHAR(255), "customerID" VARCHAR(255), "sizeUrl" VARCHAR(255), "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("supplierID"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'suppliers' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+
+Executing (default): DROP TABLE IF EXISTS "products" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "products" ("productId" UUID NOT NULL , "sku" VARCHAR(255), "idsku" VARCHAR(255), "productName" VARCHAR(255), "productDescription" VARCHAR(255), "quantityPerUnit" INTEGER, "color" VARCHAR(255), "discount" DOUBLE PRECISION, "unitWeight" DOUBLE PRECISION, "unitsInStock" INTEGER, "unitsOnOrder" INTEGER, "productAvailable" BOOLEAN, "discountAvailable" BOOLEAN, "currentOrder" VARCHAR(255), "picture" VARCHAR(255), "ranking" INTEGER, "note" TEXT, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "categoryID" UUID REFERENCES "categories" ("categoryID") ON DELETE SET NULL ON UPDATE CASCADE, "supplierID" UUID REFERENCES "suppliers" ("supplierID") ON DELETE SET NULL ON UPDATE CASCADE, PRIMARY KEY ("productId"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'products' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+
+Executing (default): DROP TABLE IF EXISTS "orderDetails" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "orderDetails" ("price" DOUBLE PRECISION, "quantity" INTEGER, "discount" DOUBLE PRECISION, "total" DOUBLE PRECISION, "idsku" VARCHAR(255), "size" VARCHAR(255), "color" VARCHAR(255), "fulfilled" BOOLEAN, "shipDate" TIMESTAMP WITH TIME ZONE, "orderDetailID" UUID , "billDate" TIMESTAMP WITH TIME ZONE, "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "orderID" UUID REFERENCES "orders" ("orderID") ON DELETE SET NULL ON UPDATE CASCADE, "orderNumber" UUID REFERENCES "orders" ("orderID") ON DELETE SET NULL ON UPDATE CASCADE, "productID" UUID REFERENCES "products" ("productId") ON DELETE SET NULL ON UPDATE CASCADE, PRIMARY KEY ("orderDetailID"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'orderDetails' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+
+Executing (default): DROP TABLE IF EXISTS "sessions" CASCADE;
+
+Executing (default): CREATE TABLE IF NOT EXISTS "sessions" ("cookieId" VARCHAR(255) , "createdAt" TIMESTAMP WITH TIME ZONE, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, PRIMARY KEY ("cookieId"));
+
+Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.indisunique AS unique, ix.indkey AS indkey, array_agg(a.attnum) as column_indexes, array_agg(a.attname) AS column_names, pg_get_indexdef(ix.indexrelid) AS definition FROM pg_class t, pg_class i, pg_index ix, pg_attribute a WHERE t.oid = ix.indrelid AND i.oid = ix.indexrelid AND a.attrelid = t.oid AND t.relkind = 'r' and t.relname = 'sessions' GROUP BY i.relname, ix.indexrelid, ix.indisprimary, ix.indisunique, ix.indkey ORDER BY i.relname;
+

@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const { v4: uuidv4 } = require('uuid');
 const Customer = require('../models/Customer');
 
 async function getUsers(req, res, next) {
@@ -15,7 +16,7 @@ async function getUsers(req, res, next) {
 
 async function getUser(req, res, next) {
   const { userId } = req.params;
-  await Customer.findOne({ where: { customerId: userId } })
+  await Customer.findOne({ where: { customerID: userId } })
     .then((user) => {
       res.locals.user = user;
       return next();
@@ -51,16 +52,18 @@ async function verifyUser(req, res, next) {
 
 async function createUser(req, res, next) {
   const {
-    name, password, email, address, orders, products,
+    name, password, email, address,
   } = req.body;
 
+  const [firstName, lastName] = name.split(' ');
+  const customerID = uuidv4();
+
   await Customer.create({
-    name, password, email, address, orders, products,
+    customerID, firstName, lastName, password, email, address,
   })
-    .then((data) => {
-      const { _id, name: username } = data;
-      res.locals.name = username;
-      res.locals.userId = _id;
+    .then(() => {
+      res.locals.name = `${firstName} ${lastName}`;
+      res.locals.userId = customerID;
       return next();
     })
     .catch((error) => {
@@ -69,20 +72,14 @@ async function createUser(req, res, next) {
     });
 }
 
-// // TODO: need to pair on this one to let user update whatever field they want without affecting
-// // other fields
 async function updateUser(req, res, next) {
-  const { name, email } = req.body; // TODO: Add password here when needed.
-  const bodyToUpdate = {
-    ...(name && { name }),
-    ...(email && { email }),
-  };
   const { userId } = req.params;
 
-  await Customer.findOneAndUpdate(bodyToUpdate, {
+  await Customer.update(req.body, {
     where: {
-      customerId: userId,
+      customerID: parseInt(userId, 10),
     },
+    returning: true,
   })
     .then((user) => {
       res.locals.userupdated = user;
@@ -94,13 +91,12 @@ async function updateUser(req, res, next) {
     });
 }
 
-// // TODO: throw error when a specific user_id no longer exists
 async function deleteUser(req, res, next) {
   const { userId } = req.params;
 
   await Customer.destroy({
     where: {
-      customerId: userId,
+      customerID: userId,
     },
   })
     .then((user) => {

@@ -7,24 +7,16 @@ const cookieParser = require('cookie-parser');
 /* eslint import/no-unresolved: 2 */
 const PORT = 8080;
 
-// const pool = new Pool({
-//   connectionString: process.env.CONNECTION_STRING,
-// });
-
-// pool.connect((err) => {
-//   // eslint-disable-next-line no-console
-//   if (err) console.log(err);
-//   // eslint-disable-next-line no-console
-//   else console.log('connected to DB');
-// });
-
-const db = require('./config/database');
+const db = require('./models/index');
 
 const connectDB = async () => {
   try {
     await db.authenticate();
     // eslint-disable-next-line no-console
     console.log('Connected to db.');
+    await db.sync({ force: true });
+    // eslint-disable-next-line no-console
+    console.log('Models synchronized successfully');
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Unable to connect to the database:', error);

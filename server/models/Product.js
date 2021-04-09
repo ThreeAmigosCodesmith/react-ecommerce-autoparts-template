@@ -1,85 +1,60 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
+const { DataTypes } = require('sequelize');
 
-const Product = db.define('product', {
-  productId: {
-    type: Sequelize.STRING,
-  },
-  sku: {
-    type: Sequelize.STRING,
-  },
-  idsku: {
-    type: Sequelize.STRING,
-  },
-  vendorProductId: {
-    type: Sequelize.STRING,
-  },
-  productName: {
-    type: Sequelize.STRING,
-  },
-  productDescription: {
-    type: Sequelize.STRING,
-  },
-  supplierId: {
-    type: Sequelize.STRING,
-  },
-  categoryId: {
-    type: Sequelize.STRING,
-  },
-  quantityPerUnit: {
-    type: Sequelize.NUMBER,
-  },
-  unitPerPrice: {
-    type: Sequelize.NUMBER,
-  },
-  MSRP: {
-    type: Sequelize.NUMBER,
-  },
-  availableSize: {
-    type: Sequelize.STRING,
-  },
-  availableColors: {
-    type: Sequelize.STRING,
-  },
-  size: {
-    type: Sequelize.STRING,
-  },
-  color: {
-    type: Sequelize.STRING,
-  },
-  discount: {
-    type: Sequelize.NUMBER,
-  },
-  unitWeight: {
-    type: Sequelize.NUMBER,
-  },
-  unitsInStock: {
-    type: Sequelize.NUMBER,
-  },
-  unitsOnOrder: {
-    type: Sequelize.NUMBER,
-  },
-  reorderLevel: {
-    type: Sequelize.NUMBER,
-  },
-  productAvailable: {
-    type: Sequelize.BOOLEAN,
-  },
-  discountAvailable: {
-    type: Sequelize.BOOLEAN,
-  },
-  currentOrder: {
-    type: Sequelize.STRING,
-  },
-  picture: {
-    type: Sequelize.STRING,
-  },
-  ranking: {
-    type: Sequelize.NUMBER,
-  },
-  note: {
-    type: Sequelize.TEXT,
-  },
-});
-
-module.exports = Product;
+module.exports = (sequelize) => {
+  sequelize.define('product', {
+    productId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false,
+    },
+    sku: {
+      type: DataTypes.STRING,
+    },
+    idsku: {
+      type: DataTypes.STRING,
+    },
+    productName: {
+      type: DataTypes.STRING,
+    },
+    productDescription: {
+      type: DataTypes.STRING,
+    },
+    quantityPerUnit: {
+      type: DataTypes.INTEGER,
+    },
+    color: {
+      type: DataTypes.STRING,
+    },
+    discount: {
+      type: DataTypes.DOUBLE,
+    },
+    unitWeight: {
+      type: DataTypes.DOUBLE,
+    },
+    unitsInStock: {
+      type: DataTypes.INTEGER,
+    },
+    unitsOnOrder: {
+      type: DataTypes.INTEGER,
+    },
+    productAvailable: {
+      type: DataTypes.BOOLEAN,
+    },
+    discountAvailable: {
+      type: DataTypes.BOOLEAN,
+    },
+    currentOrder: {
+      type: DataTypes.STRING,
+    },
+    picture: {
+      type: DataTypes.STRING,
+    },
+    ranking: {
+      type: DataTypes.INTEGER,
+    },
+    note: {
+      type: DataTypes.TEXT,
+    },
+  });
+};

@@ -1,13 +1,13 @@
-const Sequelize = require('sequelize');
-const db = require('../config/database');
+const { DataTypes } = require('sequelize');
 
-const Session = db.define('customer', {
-  cookieId: {
-    type: Sequelize.STRING,
-  },
-  createdAt: {
-    type: Sequelize.DATE,
-  },
-});
-
-module.exports = Session;
+module.exports = (sequelize) => {
+  sequelize.define('session', {
+    cookieId: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+    },
+  });
+};
