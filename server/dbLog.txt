@@ -17710,3 +17710,9 @@ Executing (default): SELECT i.relname AS name, ix.indisprimary AS primary, ix.in
 
 
 
+Sat Apr 10 2021 15:38:23 GMT-0400 (Eastern Daylight Time)
+
+Executing (default): INSERT INTO "customers" ("customerID","firstName","lastName","email","password","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "customerID","firstName","lastName","address1","address2","city","state","postalCode","country","phone","email","password","billingAddress","billingCity","billingRegion","billingPostalCode","billingCountry","shipAddress","shipCity","shipRegion","shipPostalCode","shipCountry","createdAt","updatedAt";
+
+
+
