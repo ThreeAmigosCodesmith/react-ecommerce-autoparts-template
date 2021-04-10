@@ -5,15 +5,18 @@ const fs = require('fs');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const { applyAssociations } = require('./associations');
 
-const logStream = fs.createWriteStream(path.resolve('server/dbLog.txt'));
-
-const logToFile = (data) => {
-  logStream.write(`${data}\n\n`);
-};
-
+/* Initialize database */
 const sequelize = new Sequelize(process.env.DB_URI, {
   dialect: 'postgres',
-  logging: (data) => logToFile(data),
+  /* Log DB interactions to dbLog.txt file */
+  logging: (data) => {
+    const timestamp = new Date().toString();
+    fs.appendFileSync(
+      path.resolve('./dbLog.txt'),
+      `${timestamp}\n\n${data}\n\n\n\n`, 'UTF-8',
+      { flags: 'w+' },
+    );
+  },
 });
 
 const models = [
@@ -26,10 +29,13 @@ const models = [
   require('./Session'),
   require('./Shippers'),
   require('./Supplier'),
+  require('./Vehicles'),
 ];
 
+/* Initialize each model on the database  */
 models.forEach((model) => model(sequelize));
 
+/* Apply associations - adds foreign keys that can be used to joing tables */
 applyAssociations(sequelize);
 
 module.exports = sequelize;

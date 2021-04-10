@@ -7,10 +7,6 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    orderNumber: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-    },
     orderDate: {
       type: DataTypes.DATE,
     },

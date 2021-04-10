@@ -8,10 +8,16 @@ module.exports = (sequelize) => {
       primaryKey: true,
       allowNull: false,
     },
-    sku: {
+    year: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+    },
+    make: {
       type: DataTypes.STRING,
     },
-    idsku: {
+    model: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    sku: {
       type: DataTypes.STRING,
     },
     productName: {
@@ -20,16 +26,10 @@ module.exports = (sequelize) => {
     productDescription: {
       type: DataTypes.STRING,
     },
-    quantityPerUnit: {
-      type: DataTypes.INTEGER,
-    },
     color: {
       type: DataTypes.STRING,
     },
     discount: {
-      type: DataTypes.DOUBLE,
-    },
-    unitWeight: {
       type: DataTypes.DOUBLE,
     },
     unitsInStock: {
@@ -44,14 +44,8 @@ module.exports = (sequelize) => {
     discountAvailable: {
       type: DataTypes.BOOLEAN,
     },
-    currentOrder: {
-      type: DataTypes.STRING,
-    },
     picture: {
       type: DataTypes.STRING,
-    },
-    ranking: {
-      type: DataTypes.INTEGER,
     },
     note: {
       type: DataTypes.TEXT,

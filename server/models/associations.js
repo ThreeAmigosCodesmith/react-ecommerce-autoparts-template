@@ -8,6 +8,7 @@ const applyAssociations = (sequelize) => {
     product,
     shipper,
     supplier,
+    session,
   } = sequelize.models;
 
   /* Category */
@@ -19,13 +20,6 @@ const applyAssociations = (sequelize) => {
     foreignKey: {
       name: 'orderID',
       targetKey: 'orderID',
-    },
-  });
-
-  orderDetail.belongsTo(order, {
-    foreignKey: {
-      name: 'orderNumber',
-      targetKey: 'orderNumber',
     },
   });
 
@@ -71,12 +65,15 @@ const applyAssociations = (sequelize) => {
     },
   });
   /* Session */
+  session.belongsTo(customer, {
+    foreignKey: {
+      name: 'customerID',
+    },
+  });
 
   /* Shipper */
 
   /* Supplier */
-
-  // supplier.hasMany(product);
 };
 
 module.exports = { applyAssociations };
