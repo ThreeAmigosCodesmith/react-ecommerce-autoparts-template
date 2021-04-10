@@ -5,6 +5,10 @@
   min-height: 100vh;
 }
 
+.header-content {
+  margin-bottom: 30px;
+}
+
 .footer-content {
   position: relative;
   width: 100%;

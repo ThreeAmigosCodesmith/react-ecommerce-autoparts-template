@@ -16,7 +16,7 @@ const Catalog = () => {
     }).then((data) => data.json())
       .then((data) => setCatalog(data.products))
       // eslint-disable-next-line no-console
-      .catch((error) => console.log(error));
+      .catch(() => setCatalog([]));
   }, []);
 
   return (

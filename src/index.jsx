@@ -4,6 +4,8 @@ import App from './App';
 import reducer, { initialState } from './reducer';
 import { StateProvider } from './StateProvider';
 
+/* eslint linebreak-style: ["error", "windows"] */
+
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
