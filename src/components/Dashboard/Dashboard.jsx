@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {
   Switch,
   Route,
-  useHistory,
+  // useHistory,
 } from 'react-router-dom';
 import './Dashboard.css';
 import Main from './Main';
@@ -15,14 +15,14 @@ import Inventory from './Inventory/Inventory';
 const Dashboard = () => {
   // eslint-disable-next-line no-unused-vars
   const [{ user }, dispatch] = useStateValue();
-  const history = useHistory();
+  // const history = useHistory();
   // eslint-disable-next-line no-console
   console.log('dashboard');
 
   useEffect(() => {
-    if (!user) {
-      history.push('/');
-    }
+    // if (!user) {
+    //   history.push('/');
+    // }
   }, []);
   return (
     <div className="dashboard">
