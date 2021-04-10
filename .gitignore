@@ -109,3 +109,5 @@ build
 *.DS_Store
 
 *.txt
+
+server/dbLog.txt
