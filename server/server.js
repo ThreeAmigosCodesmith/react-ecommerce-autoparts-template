@@ -9,24 +9,25 @@ const PORT = 8080;
 
 const db = require('./models/index');
 
-// // Connect to database
-// const connectDB = async () => {
-//   try {
-//     await db.authenticate();
-//     // eslint-disable-next-line no-console
-//     console.log('Connected to db.');
-//     // Sync schema in models folder to datbase schema
-//     await db.sync({ alter: true });
-//     // eslint-disable-next-line no-console
-//     console.log('Models synchronized successfully');
-//   } catch (error) {
-//     // eslint-disable-next-line no-console
-//     console.error('Unable to connect to the database:', error);
-//   }
-// };
+// Connect to database
+const connectDB = async () => {
+  try {
+    await db.authenticate();
+    // eslint-disable-next-line no-console
+    console.log('Connected to db.');
+    // Sync schema in models folder to datbase schema
+    await db.sync({ alter: true });
+    // eslint-disable-next-line no-console
+    console.log('Models synchronized successfully');
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Unable to connect to the database:', error);
+  }
+};
 
-// connectDB();
+connectDB();
 
+const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
 
 // handle parsing request body
@@ -34,10 +35,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// statically render index.html file when user hits / - (mandatory)
-// app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use('/pay', stripeRouter);
 
-// define route handlers
 app.use('/api', apiRouter);
 
 // catch-all route handler for any requests to an unknown route

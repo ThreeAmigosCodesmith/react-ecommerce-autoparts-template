@@ -22,7 +22,7 @@ sessionController.isLoggedIn = async (req, res, next) => {
 // /* startSession - create and save a new Session into the database. */
 sessionController.startSession = async (req, res, next) => {
   try {
-    if (res.locals?.userId) {
+    if (res.locals.userId) {
       await session.create({ cookieID: res.locals.userId, createdAt: Date.now() });
       next();
     } else {
