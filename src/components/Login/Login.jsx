@@ -16,7 +16,7 @@ const Login = () => {
   const signInButton = (event) => {
     event.preventDefault();
 
-    fetch('/api/verify', {
+    fetch('/api/users/verify', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
