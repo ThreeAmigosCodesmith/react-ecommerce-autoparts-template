@@ -1,26 +1,33 @@
-#inventory{
-    width: 100%;
-    padding: 30px;
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+#inventory {
+  width: 100%;
+  padding: 30px;
 }
 
 .inventoryItems {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    text-align: left;
-    color: #223335
-  }
-  
-  .inventoryItems  > p {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-  
-  .inventoryItems__title {
-      margin-bottom: 5px;
-  }
-  
-  .inventoryItems __description {
-    text-align: justify;
-  }
-  
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #223335;
+}
+
+.inventoryItems > p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.inventoryItems__title {
+  margin-bottom: 5px;
+}
+
+.inventoryItems __description {
+  text-align: justify;
+}

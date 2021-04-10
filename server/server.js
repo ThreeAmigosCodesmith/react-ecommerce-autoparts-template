@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
 // const path = require('path');
@@ -15,12 +15,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/pay', stripeRouter);
 
+// statically render index.html file when user hits / - (mandatory)
+app.use(express.static(path.resolve(__dirname, '../dist')));
+
+// define route handlers
+app.use('/pay', stripeRouter);
 app.use('/api', apiRouter);
 
 // catch-all route handler for any requests to an unknown route
-app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
+app.use((req, res) =>
+  res.status(404).send("This is not the page you're looking for...")
+);
 
 // global error handler
 // eslint-disable-next-line no-unused-vars
@@ -28,7 +34,7 @@ app.use((err, req, res, next) => {
   const defaultErr = {
     log: err.message,
     status: 500,
-    message: { err: 'An error occurred' },
+    message: { err: "An error occurred" },
   };
 
   const errorObj = { ...defaultErr, ...err };
