@@ -1,9 +1,9 @@
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
-const Customer = require('../models/Customer');
+const { models: { customer } } = require('../models/index');
 
 async function getUsers(req, res, next) {
-  await Customer.findAll()
+  await customer.findAll()
     .then((users) => {
       res.locals.users = users;
       return next();
@@ -16,7 +16,7 @@ async function getUsers(req, res, next) {
 
 async function getUser(req, res, next) {
   const { userId } = req.params;
-  await Customer.findOne({ where: { customerID: userId } })
+  await customer.findOne({ where: { customerID: userId } })
     .then((user) => {
       res.locals.user = user;
       return next();
@@ -30,16 +30,17 @@ async function getUser(req, res, next) {
 // eslint-disable-next-line consistent-return
 async function verifyUser(req, res, next) {
   try {
-    const existinguser = await Customer.findOne({ where: { email: req.body.email } });
-    if (existinguser) {
-      bcrypt.compare(req.body.password, existinguser.password, (error, isMatch) => {
+    const existingUser = await customer.findOne({ where: { email: req.body.email } });
+    if (existingUser) {
+      bcrypt.compare(req.body.password, existingUser.password, (error, isMatch) => {
         if (error) throw error;
         else if (!isMatch) {
           res.locals.error = 'Incorrect Password!';
           return next();
         } else {
-          res.locals.userId = existinguser.id;
-          res.locals.name = existinguser.name;
+          const { firstName, lastName, customerID } = existingUser;
+          res.locals.userId = customerID;
+          res.locals.name = `${firstName} ${lastName}`;
           return next();
         }
       });
@@ -54,30 +55,41 @@ async function createUser(req, res, next) {
   const {
     name, password, email, address,
   } = req.body;
-
   const [firstName, lastName] = name.split(' ');
   const customerID = uuidv4();
+  const address1 = address;
 
-  await Customer.create({
-    customerID, firstName, lastName, password, email, address,
-  })
-    .then(() => {
-      res.locals.name = `${firstName} ${lastName}`;
-      res.locals.userId = customerID;
-      return next();
-    })
-    .catch((error) => {
-      res.locals.error = error;
-      return next();
-    });
+  try {
+    // Hash password
+    const SALT = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, SALT);
+
+    // Store user in DB
+    await customer.create({
+      customerID,
+      firstName,
+      lastName,
+      email,
+      address1,
+      password: hashedPassword,
+    }, { returning: true });
+
+    // Send back username and customerID
+    res.locals.name = `${firstName} ${lastName}`;
+    res.locals.userId = customerID;
+    return next();
+  } catch (err) {
+    res.locals.error = err;
+    return next();
+  }
 }
 
 async function updateUser(req, res, next) {
   const { userId } = req.params;
 
-  await Customer.update(req.body, {
+  await customer.update(req.body, {
     where: {
-      customerID: parseInt(userId, 10),
+      customerID: userId,
     },
     returning: true,
   })
@@ -94,7 +106,7 @@ async function updateUser(req, res, next) {
 async function deleteUser(req, res, next) {
   const { userId } = req.params;
 
-  await Customer.destroy({
+  await customer.destroy({
     where: {
       customerID: userId,
     },
