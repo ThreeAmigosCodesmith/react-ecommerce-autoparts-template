@@ -9,23 +9,23 @@ const PORT = 8080;
 
 const db = require('./models/index');
 
-// Connect to database
-const connectDB = async () => {
-  try {
-    await db.authenticate();
-    // eslint-disable-next-line no-console
-    console.log('Connected to db.');
-    // Sync schema in models folder to datbase schema
-    await db.sync({ alter: true });
-    // eslint-disable-next-line no-console
-    console.log('Models synchronized successfully');
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Unable to connect to the database:', error);
-  }
-};
+// // Connect to database
+// const connectDB = async () => {
+//   try {
+//     await db.authenticate();
+//     // eslint-disable-next-line no-console
+//     console.log('Connected to db.');
+//     // Sync schema in models folder to datbase schema
+//     await db.sync({ alter: true });
+//     // eslint-disable-next-line no-console
+//     console.log('Models synchronized successfully');
+//   } catch (error) {
+//     // eslint-disable-next-line no-console
+//     console.error('Unable to connect to the database:', error);
+//   }
+// };
 
-connectDB();
+// connectDB();
 
 const apiRouter = require('./routes/api');
 
