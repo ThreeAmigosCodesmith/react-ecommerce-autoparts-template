@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
 
 const app = express();
@@ -7,51 +8,12 @@ const cors = require('cors');
 require('dotenv').config();
 
 const cookieParser = require('cookie-parser');
-<<<<<<< HEAD
-const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
-// /* eslint import/no-unresolved: 2 */
-const { MONGO_URI } = require('./db/config.json');
-=======
->>>>>>> 9a0c8d37b8ebed1ee704ff8042aa77a426d5c4b4
-
 /* eslint import/no-unresolved: 2 */
 const PORT = 8080;
 
-<<<<<<< HEAD
 const apiRouter = require('./routes/api');
 const imageUploadRouter = require('./routes/upload');
-
-mongoose.set('useCreateIndex', true);
-// Connect to our database
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connection.once('open', () => {
-// eslint-disable-next-line no-console
-  console.log('Connected to Database');
-});
-=======
-const db = require('./models/index');
-
-// Connect to database
-const connectDB = async () => {
-  try {
-    await db.authenticate();
-    // eslint-disable-next-line no-console
-    console.log('Connected to db.');
-    // Sync schema in models folder to datbase schema
-    await db.sync({ alter: true });
-    // eslint-disable-next-line no-console
-    console.log('Models synchronized successfully');
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Unable to connect to the database:', error);
-  }
-};
-
-connectDB();
-
-const apiRouter = require('./routes/api');
->>>>>>> 9a0c8d37b8ebed1ee704ff8042aa77a426d5c4b4
 
 // handle parsing request body
 app.use(express.json());

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 const aws = require('aws-sdk');
 const md5 = require('md5');

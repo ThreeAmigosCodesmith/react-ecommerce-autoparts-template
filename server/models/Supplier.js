@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     email: {
       type: DataTypes.STRING,
