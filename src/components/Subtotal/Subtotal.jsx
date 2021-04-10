@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 const moment = require('moment');
 
 const Subtotal = () => {
-  const user = useSelector((state) => state.user);
-  const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.auth.user);
+  const cart = useSelector((state) => state.cart.cart);
 
   const history = useHistory();
 

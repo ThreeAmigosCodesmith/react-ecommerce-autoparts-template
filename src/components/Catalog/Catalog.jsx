@@ -6,7 +6,7 @@ import CatalogProduct from './CatalogProduct';
 const Catalog = () => {
   const [catalog, setCatalog] = useState([]);
   // eslint-disable-next-line no-unused-vars
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     fetch('/api/products', {

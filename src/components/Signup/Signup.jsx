@@ -13,7 +13,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const history = useHistory();
   // eslint-disable-next-line no-unused-vars
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   // const validateForm = () => {
@@ -35,7 +35,7 @@ const Signup = () => {
       .then((res) => {
         dispatch({
           type: 'AUTH_USER',
-          item: {
+          payload: {
             name: res.name,
             id: res.id,
           },

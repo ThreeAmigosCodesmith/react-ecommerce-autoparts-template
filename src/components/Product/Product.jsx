@@ -5,7 +5,7 @@ import './Product.css';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Product = (props) => {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const {
     id,

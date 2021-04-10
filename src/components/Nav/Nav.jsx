@@ -5,8 +5,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Nav = () => {
-  const user = useSelector((state) => state.user);
-  const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.auth.user);
+  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const history = useHistory();
 

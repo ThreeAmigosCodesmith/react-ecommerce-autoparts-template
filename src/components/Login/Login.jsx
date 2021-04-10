@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './Login.css';
@@ -5,13 +6,14 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockIcon from '@material-ui/icons/Lock';
 import { useSelector, useDispatch } from 'react-redux';
 import Logo from '../../yardhop-logo.png';
+import * as types from '../../redux/actions/actionTypes';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
   // eslint-disable-next-line no-unused-vars
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const signInButton = (event) => {
     event.preventDefault();
@@ -27,9 +29,11 @@ const Login = () => {
       }),
     }).then((res) => res.json())
       .then((res) => {
+        // eslint-disable-next-line no-console
+        console.log('res: ', res);
         dispatch({
-          type: 'AUTH_USER',
-          item: {
+          type: types.AUTH_USER,
+          payload: {
             name: res.name,
             id: res.id,
           },

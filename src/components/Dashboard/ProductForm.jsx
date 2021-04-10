@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 // import { axios } from 'axios';
 import './ProductForm.css';
 import { useSelector } from 'react-redux';
+import UploadImages from './UploadImages';
+import Preview from './Preview';
 import apiHeaders from '../../apiKeys';
 import makes from '../../vehicles';
 
@@ -16,7 +18,7 @@ const ProductForm = () => {
   const [condition, setCondition] = useState('none');
   const [year, setYear] = useState('none');
   // eslint-disable-next-line no-unused-vars
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth.user);
 
   const submitProduct = (event) => {
     event.preventDefault();
@@ -156,6 +158,8 @@ const ProductForm = () => {
               </select>
             </label>
 
+            <UploadImages />
+            <Preview />
           </div>
           <div className="form__buttons">
             <button type="button" onClick={submitProduct} className="button__createListing">Create Listing</button>

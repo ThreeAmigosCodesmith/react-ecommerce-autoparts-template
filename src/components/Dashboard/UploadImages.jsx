@@ -9,9 +9,9 @@ const UploadImage = () => {
   const [image, getImageUrl] = useState('');
   const [loading, loadingImage] = useState(false);
   const dispatch = useDispatch();
-  const awsS3imageUrl = useSelector((state) => state.aws_s3_image_url);
-  const message = useSelector((state) => state.msg);
-  const type = useSelector((state) => state.type);
+  const awsS3imageUrl = useSelector((state) => state.image.aws_s3_image_url);
+  const message = useSelector((state) => state.image.msg);
+  const type = useSelector((state) => state.image.type);
 
   useEffect(() => {
     response('', '');
@@ -39,8 +39,7 @@ const UploadImage = () => {
       <div className="col-md-12">
         <div className="page-header">
           <h3>
-            Custom Photo Upload&nbsp;
-            <small>with ReactJS, NodeJS and AWS S3.</small>
+            Upload Photos
           </h3>
         </div>
       </div>
@@ -59,7 +58,7 @@ const UploadImage = () => {
       {image
         ? (
           <div className="col-md-12">
-            <button type="submit" className="btn bg-warning text-dark mt-3" onClick={uploadToS3}>{ loading ? 'Uploading...' : 'Upload To AWS S3' }</button>
+            <button type="submit" className="upload-button" onClick={uploadToS3}>{ loading ? 'Uploading...' : 'Upload To AWS S3' }</button>
           </div>
         )
         : null}
@@ -77,6 +76,4 @@ const UploadImage = () => {
   );
 };
 
-// const mapStateToProps = ({ aws_s3_image_url, msg, type }) => ({ aws_s3_image_url, msg, type });
-// const mapDispatchToProps = (dispatch) => bindActionCreators({ uploadImage, response }, dispatch);
 export default UploadImage;

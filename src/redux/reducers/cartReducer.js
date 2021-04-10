@@ -3,7 +3,6 @@ import * as types from '../actions/actionTypes';
 
 export const initialState = {
   cart: [],
-  user: null,
 };
 
 const cartReducer = (state = initialState, action) => {
