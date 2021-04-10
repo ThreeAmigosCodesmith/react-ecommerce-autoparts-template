@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DB_URI, {
   logging: (data) => {
     const timestamp = new Date().toString();
     fs.appendFileSync(
-      path.resolve('./dbLog.txt'),
+      path.resolve('./server/dbLog.txt'),
       `${timestamp}\n\n${data}\n\n\n\n`, 'UTF-8',
       { flags: 'w+' },
     );

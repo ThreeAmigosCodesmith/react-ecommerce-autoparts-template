@@ -26,13 +26,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     postalCode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     country: {
       type: DataTypes.STRING,
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     email: {
       type: DataTypes.STRING,
@@ -50,7 +50,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     billingPostalCode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     billingCountry: {
       type: DataTypes.STRING,
@@ -65,7 +65,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     shipPostalCode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     shipCountry: {
       type: DataTypes.STRING,

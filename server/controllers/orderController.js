@@ -1,7 +1,7 @@
-const Order = require('../models/Orders');
+const { models: { order, orderDetail } } = require('../models/index.js');
 
 async function getOrders(req, res, next) {
-  await Order.findAll()
+  await order.findAll()
     .then((orders) => {
       res.locals.orders = orders;
       return next();
@@ -13,7 +13,7 @@ async function getOrders(req, res, next) {
 }
 
 async function getAllOrdersByUser(req, res, next) {
-  await Order.findAll({
+  await order.findAll({
     customerID: req.params.id,
   })
     .then((orders) => {
@@ -28,13 +28,13 @@ async function getAllOrdersByUser(req, res, next) {
 
 async function getOrder(req, res, next) {
   const { orderId } = req.params;
-  await Order.findOne({
+  await order.findOne({
     where: {
       orderId,
     },
   })
-    .then((order) => {
-      res.locals.order = order;
+    .then((orderEntry) => {
+      res.locals.order = orderEntry;
       return next();
     })
     .catch((error) => {
@@ -44,21 +44,41 @@ async function getOrder(req, res, next) {
 }
 
 async function createOrder(req, res, next) {
+  console.log('creating order');
   const {
-    date, productId, sellerId, buyerId,
+    date, productId: productIDs, sellerId: sellerID, buyerId: buyerID,
   } = req.body;
 
-  await Order.create({
-    date, productId, sellerId, buyerId,
-  })
-    .then((order) => {
-      res.locals.ordercreated = order;
-      return next();
-    })
-    .catch((error) => {
-      res.locals.error = error;
-      return next();
+  try {
+    // const transaction = uuidv4();
+    const orderEntry = await order.create({
+      date,
+      sellerID,
+      buyerID,
+      timestamp: new Date(),
     });
+
+    console.log(orderEntry);
+
+    const { orderID } = orderEntry;
+    const orderDetailsInput = productIDs.map((productID) => ({
+      orderID,
+      productID,
+      fulfilled: false,
+    }));
+
+    const bulk = await orderDetail.bulkCreate(
+      orderDetailsInput,
+    );
+
+    console.log(bulk);
+
+    res.locals.ordercreated = { ...orderEntry.dataValues, orderDetailsInput };
+    return next();
+  } catch (error) {
+    res.locals.error = error;
+    return next(error);
+  }
 }
 
 // // TODO: Needs fixing
@@ -74,13 +94,13 @@ async function updateOrder(req, res, next) {
     ...(buyerId && { buyerId }),
   };
 
-  await Order.findOneAndUpdate(bodyToUpdate, {
+  await order.findOneAndUpdate(bodyToUpdate, {
     where: {
       orderId,
     },
   })
-    .then((order) => {
-      res.locals.order = order;
+    .then((orderEntry) => {
+      res.locals.order = orderEntry;
       return next();
     })
     .catch((error) => {
@@ -92,13 +112,13 @@ async function updateOrder(req, res, next) {
 async function deleteOrder(req, res, next) {
   const { orderId } = req.params;
 
-  await Order.destroy({
+  await order.destroy({
     where: {
       orderId,
     },
   })
-    .then((order) => {
-      res.locals.deletedorder = order;
+    .then((orderEntry) => {
+      res.locals.deletedorder = orderEntry;
       return next();
     })
     .catch((error) => {

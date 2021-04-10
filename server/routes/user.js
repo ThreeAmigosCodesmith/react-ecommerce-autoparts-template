@@ -7,14 +7,11 @@ const cookieController = require('../controllers/cookieController.js');
 const sessionController = require('../controllers/sessionController.js');
 
 /* USER ROUTES */
-
-// WORKS
 router.get('/:userId', userController.getUser, (req, res) => {
   if (res.locals.error) res.status(400).json(res.locals.error);
   else res.status(200).json(res.locals.user);
 });
 
-// WORKS
 router.get('/', userController.getUsers, (req, res) => {
   if (res.locals.error) res.status(400).json(res.locals.error);
   else res.status(200).json(res.locals.users);
@@ -23,7 +20,6 @@ router.get('/', userController.getUsers, (req, res) => {
 router.post('/verify', userController.verifyUser, cookieController.setSSIDCookie, sessionController.startSession, (req, res) => {
   if (res.locals.error) res.status(400).json(res.locals.error);
   else {
-    console.log({ name: res.locals.name, _id: res.locals.userId });
     res.status(200).json({ name: res.locals.name, id: res.locals.userId });
   }
 });

@@ -1,4 +1,4 @@
-const Session = require('../models/Session');
+const { models: { session } } = require('../models/index');
 
 const sessionController = {};
 
@@ -7,7 +7,7 @@ const sessionController = {};
 sessionController.isLoggedIn = async (req, res, next) => {
   try {
     if (req.cookies.ssid) {
-      const currSession = await Session.findOne({ where: { cookieId: req.cookies.ssid } });
+      const currSession = await session.findOne({ where: { cookieID: req.cookies.ssid } });
       if (!currSession) res.locals.success = false;
       else res.locals.success = true;
     } else res.locals.success = false;
@@ -22,9 +22,11 @@ sessionController.isLoggedIn = async (req, res, next) => {
 // /* startSession - create and save a new Session into the database. */
 sessionController.startSession = async (req, res, next) => {
   try {
-    if (res.locals.userId) {
-      await Session.create({ cookieId: res.locals.userId, createdAt: Date.now() });
-      return next();
+    if (res.locals?.userId) {
+      await session.create({ cookieID: res.locals.userId, createdAt: Date.now() });
+      next();
+    } else {
+      return next(Error('userId not present'));
     }
   } catch (error) {
     return next(error);
@@ -34,7 +36,7 @@ sessionController.startSession = async (req, res, next) => {
 
 // /* stopSession - removes session from db */
 sessionController.stopSession = async (req, res, next) => {
-  await Session.destroy({ where: { cookieId: res.locals.cookie } });
+  await session.destroy({ where: { cookieID: res.locals.cookie } });
   return next();
 };
 
