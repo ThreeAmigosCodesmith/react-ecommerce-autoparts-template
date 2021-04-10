@@ -10,6 +10,9 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
+import Stripe from './components/Stripe/Stripe';
+
+/* eslint linebreak-style: ["error", "windows"] */
 
 const App = () => (
   <BrowserRouter>
@@ -21,6 +24,15 @@ const App = () => (
           </div>
           <div className="main-content">
             <Home />
+          </div>
+        </Route>
+
+        <Route exact path="/stripe">
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Stripe />
           </div>
         </Route>
 
