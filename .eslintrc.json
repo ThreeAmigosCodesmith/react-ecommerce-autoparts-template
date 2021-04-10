@@ -20,5 +20,10 @@
         "react"
     ],
     "rules": {
-    }
+        "space-before-blocks": "off",
+        "quotes": "off",
+        "no-extra-semi": "off",
+        "linebreak-style": 0
+
+      }
 }

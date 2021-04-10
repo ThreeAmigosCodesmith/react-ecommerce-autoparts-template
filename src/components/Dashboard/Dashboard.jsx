@@ -1,8 +1,13 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
+import React from 'react';
+// import {
+//   Switch,
+//   Route,
+//   useHistory,
+// } from 'react-router-dom';
 import {
   Switch,
   Route,
-  useHistory,
 } from 'react-router-dom';
 import './Dashboard.css';
 import Main from './Main';
@@ -15,15 +20,15 @@ import Inventory from './Inventory/Inventory';
 const Dashboard = () => {
   // eslint-disable-next-line no-unused-vars
   const [{ user }, dispatch] = useStateValue();
-  const history = useHistory();
+  // const history = useHistory();
   // eslint-disable-next-line no-console
   console.log('dashboard');
 
-  useEffect(() => {
-    if (!user) {
-      history.push('/');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!user) {
+  //     history.push('/');
+  //   }
+  // }, []);
   return (
     <div className="dashboard">
       <Sidebar />
