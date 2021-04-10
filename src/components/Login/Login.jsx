@@ -12,13 +12,14 @@ const Login = () => {
   const history = useHistory();
   // eslint-disable-next-line no-unused-vars
   const [{ user }, dispatch] = useStateValue();
-  const signInButton = () => {
-    // event.preventDefault();
-    dispatch({
-      type: 'AUTH_USER',
-      item: {
-        name: 'mo',
-        id: '1111',
+
+  const signInButton = (event) => {
+    event.preventDefault();
+
+    fetch('/api/users/verify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
     });
     history.push('/dashboard');
