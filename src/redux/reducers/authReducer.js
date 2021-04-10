@@ -5,7 +5,7 @@ export const initialState = {
   user: null,
 };
 
-const authReducer = (state, action) => {
+const authReducer = (state = initialState, action) => {
   switch (types) {
     case types.AUTH_USER:
       return {

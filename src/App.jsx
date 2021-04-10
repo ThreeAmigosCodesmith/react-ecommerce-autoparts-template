@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+// import { connect } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';

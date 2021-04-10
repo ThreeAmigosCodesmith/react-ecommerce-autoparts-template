@@ -1,10 +1,21 @@
-// import actionTypes from './actionTypes';
-export const ADD_TO_CART = (payload) => ({
-  type: 'ADD_TO_CART',
-  payload,
+import * as types from './actionTypes';
+
+export const addToCart = (item) => ({
+  type: types.ADD_TO_CART,
+  payload: item,
 });
 
-export const REMOVE_FROM_CART = (payload) => ({
-  type: 'REMOVE_FROM_CART',
-  payload,
+export const removeFromCart = (item) => ({
+  type: types.REMOVE_FROM_CART,
+  payload: item,
+});
+
+export const emptyCart = (item) => ({
+  type: types.EMPTY_CART,
+  payload: item,
+});
+
+export const addOrder = (order) => ({
+  type: types.ADD_ORDER,
+  payload: order,
 });

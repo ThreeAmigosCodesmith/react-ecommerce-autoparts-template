@@ -2,11 +2,12 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './Nav.css';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { useStateValue } from '../../StateProvider';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Nav = () => {
-  const [{ cart }] = useStateValue();
-  const [{ user }, dispatch] = useStateValue();
+  const user = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const navStyle = {

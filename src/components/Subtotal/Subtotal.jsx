@@ -2,12 +2,14 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './Subtotal.css';
 import CurrencyFormat from 'react-currency-format';
-import { useStateValue } from '../../StateProvider';
+import { useSelector } from 'react-redux';
 
 const moment = require('moment');
 
 const Subtotal = () => {
-  const [{ cart, user }] = useStateValue();
+  const user = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart);
+
   const history = useHistory();
 
   const validateCheckOut = () => {

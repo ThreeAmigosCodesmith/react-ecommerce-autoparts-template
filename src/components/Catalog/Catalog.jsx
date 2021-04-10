@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useStateValue } from '../../StateProvider';
+import { useSelector } from 'react-redux';
 import './Catalog.css';
 import CatalogProduct from './CatalogProduct';
 
 const Catalog = () => {
   const [catalog, setCatalog] = useState([]);
   // eslint-disable-next-line no-unused-vars
-  const [{ user }, dispatch] = useStateValue();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     fetch('/api/products', {

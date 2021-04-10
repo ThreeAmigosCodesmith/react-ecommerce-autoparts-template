@@ -1,9 +1,9 @@
 import './Inventory.css';
 import React, { useState, useEffect } from 'react';
-import { useStateValue } from '../../../StateProvider';
+import { useSelector } from 'react-redux';
 
 const Inventory = () => {
-  const [{ user }] = useStateValue();
+  const user = useSelector((state) => state.user);
   const [inventory, setInventory] = useState([]);
 
   const getInventory = () => {

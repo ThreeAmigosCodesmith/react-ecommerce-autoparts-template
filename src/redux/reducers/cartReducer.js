@@ -6,7 +6,7 @@ export const initialState = {
   user: null,
 };
 
-const reducer = (state, action) => {
+const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_TO_CART:
       return {
@@ -25,12 +25,12 @@ const reducer = (state, action) => {
       };
     case types.EMPTY_CART:
       return {
+        cart: [],
         ...state,
-        user: action.item,
       };
     default:
       return state;
   }
 };
 
-export default reducer;
+export default cartReducer;

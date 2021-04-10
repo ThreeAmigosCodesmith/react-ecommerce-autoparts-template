@@ -1,9 +1,9 @@
 import './Purchases.css';
 import React, { useState, useEffect } from 'react';
-import { useStateValue } from '../../../StateProvider';
+import { useSelector } from 'react-redux';
 
 const Purchases = () => {
-  const [{ user }] = useStateValue();
+  const user = useSelector((state) => state.user);
   const [purchases, setPurchases] = useState([]);
 
   const getPurchases = () => {

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 // import { axios } from 'axios';
 import './ProductForm.css';
-// import { HeadsetSharp } from '@material-ui/icons';
+import { useSelector } from 'react-redux';
 import apiHeaders from '../../apiKeys';
 import makes from '../../vehicles';
-import { useStateValue } from '../../StateProvider';
 
 const ProductForm = () => {
   const [title, setTitle] = useState('');
@@ -17,7 +16,7 @@ const ProductForm = () => {
   const [condition, setCondition] = useState('none');
   const [year, setYear] = useState('none');
   // eslint-disable-next-line no-unused-vars
-  const [{ user }, dispatch] = useStateValue();
+  const user = useSelector((state) => state.user);
 
   const submitProduct = (event) => {
     event.preventDefault();

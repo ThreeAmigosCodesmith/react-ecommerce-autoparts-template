@@ -1,9 +1,16 @@
-export const AUTH_USER = (payload) => ({
-  type: 'AUTH_USER',
-  payload,
+import * as types from './actionTypes';
+
+export const authUser = (user) => ({
+  type: types.AUTH_USER,
+  payload: user,
 });
 
-export const UNAUTH_USER = (payload) => ({
-  type: 'UNAUTH_USER',
-  payload,
+export const unauthUser = (user) => ({
+  type: types.UNAUTH_USER,
+  payload: user,
+});
+
+export const deleteUser = (user) => ({
+  type: types.DELETE_USER,
+  payload: user,
 });
