@@ -26,7 +26,7 @@ const Subtotal = () => {
       },
       body: JSON.stringify({
         date: moment.now(),
-        productId: '0000000000',
+        productId: ['0000000000'],
         sellerId: '0934977284',
         buyerId: user.id,
       }),

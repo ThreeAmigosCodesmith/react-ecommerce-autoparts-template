@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import {
   Switch,
   Route,
-  useHistory,
+  // useHistory,
 } from 'react-router-dom';
 import './Dashboard.css';
 import { useSelector } from 'react-redux';
@@ -21,9 +21,9 @@ const Dashboard = () => {
   // console.log('dashboard');
 
   useEffect(() => {
-    if (!user) {
-      history.push('/');
-    }
+    // if (!user) {
+    //   history.push('/');
+    // }
   }, []);
 
   return (

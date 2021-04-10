@@ -1,10 +1,13 @@
-const { ObjectId } = require('bson');
-const Product = require('../models/productModel');
+const Product = require('../models/Product');
 
 async function getProduct(req, res, next) {
   const { productId } = req.params;
 
-  await Product.find({ _id: ObjectId(productId) })
+  await Product.findOne({
+    where: {
+      productId,
+    },
+  })
     .then((product) => {
       res.locals.product = product;
       return next();
@@ -16,7 +19,7 @@ async function getProduct(req, res, next) {
 }
 
 async function getAllProducts(req, res, next) {
-  await Product.find()
+  await Product.findAll()
     .then((products) => {
       res.locals.products = products;
       return next();
@@ -30,7 +33,11 @@ async function getAllProducts(req, res, next) {
 async function getProductsByUserId(req, res, next) {
   const { userId } = req.params;
 
-  await Product.find({ sellerId: userId })
+  await Product.findOne({
+    where: {
+      supplierId: userId,
+    },
+  })
     .then((user) => {
       res.locals.user = user;
       return next();
@@ -42,8 +49,10 @@ async function getProductsByUserId(req, res, next) {
 }
 
 async function getAllProductsByUser(req, res, next) {
-  await Product.find({
-    sellerID: req.params.id,
+  await Product.findAll({
+    where: {
+      supplierId: req.params.id,
+    },
   })
     .then((products) => {
       res.locals.products = products;
@@ -75,7 +84,7 @@ async function createProduct(req, res, next) {
     });
 }
 
-// TODO: Needs fixing
+// // TODO: Needs fixing
 async function updateProduct(req, res, next) {
   const { productId } = req.params;
   const {
@@ -93,7 +102,11 @@ async function updateProduct(req, res, next) {
     ...(sellerId && { sellerId }),
   };
 
-  await Product.findOneAndUpdate({ _id: ObjectId(productId) }, bodyToUpdate)
+  await Product.findOneAndUpdate(bodyToUpdate, {
+    where: {
+      productId,
+    },
+  })
     .then((product) => {
       res.locals.productupdated = product;
       return next();
@@ -107,7 +120,11 @@ async function updateProduct(req, res, next) {
 async function deleteProduct(req, res, next) {
   const { productId } = req.params;
 
-  await Product.findOneAndDelete({ _id: ObjectId(productId) })
+  await Product.findOneAndDelete({
+    where: {
+      productId,
+    },
+  })
     .then((product) => {
       res.locals.deletedproduct = product;
       return next();
@@ -120,10 +137,10 @@ async function deleteProduct(req, res, next) {
 
 module.exports = {
   getProduct,
+  getAllProducts,
   getProductsByUserId,
   getAllProductsByUser,
   createProduct,
   updateProduct,
   deleteProduct,
-  getAllProducts,
 };

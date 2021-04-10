@@ -17,7 +17,7 @@ const Nav = () => {
 
   const logOutButton = (event) => {
     event.preventDefault();
-    fetch('/api/verify', {
+    fetch('/api/users/verify', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
