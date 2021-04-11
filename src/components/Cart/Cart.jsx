@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Subtotal from '../Subtotal/Subtotal';
 import CartProduct from '../CartProduct/CartProduct';
 import './Cart.css';
-import { useStateValue } from '../../StateProvider';
 
 const Cart = () => {
-  const [{ cart }] = useStateValue();
+  const cart = useSelector((state) => state.cart.cart);
 
   return (
     <div className="cart">

@@ -1,9 +1,9 @@
 const bcrypt = require('bcryptjs');
-const { ObjectId } = require('bson');
-const User = require('../models/userModel');
+const { v4: uuidv4 } = require('uuid');
+const { models: { customer } } = require('../models/index');
 
 async function getUsers(req, res, next) {
-  await User.find({})
+  await customer.findAll()
     .then((users) => {
       res.locals.users = users;
       return next();
@@ -16,7 +16,7 @@ async function getUsers(req, res, next) {
 
 async function getUser(req, res, next) {
   const { userId } = req.params;
-  await User.findOne({ _id: ObjectId(userId) })
+  await customer.findOne({ where: { customerID: userId } })
     .then((user) => {
       res.locals.user = user;
       return next();
@@ -29,17 +29,20 @@ async function getUser(req, res, next) {
 
 // eslint-disable-next-line consistent-return
 async function verifyUser(req, res, next) {
+  // eslint-disable-next-line no-console
+  console.log(req.body);
   try {
-    const existinguser = await User.findOne({ email: req.body.email }).exec();
-    if (existinguser) {
-      bcrypt.compare(req.body.password, existinguser.password, (error, isMatch) => {
+    const existingUser = await customer.findOne({ where: { email: req.body.email } });
+    if (existingUser) {
+      bcrypt.compare(req.body.password, existingUser.password, (error, isMatch) => {
         if (error) throw error;
         else if (!isMatch) {
           res.locals.error = 'Incorrect Password!';
           return next();
         } else {
-          res.locals.userId = existinguser.id;
-          res.locals.name = existinguser.name;
+          const { firstName, lastName, customerID } = existingUser;
+          res.locals.userId = customerID;
+          res.locals.name = `${firstName} ${lastName}`;
           return next();
         }
       });
@@ -52,35 +55,46 @@ async function verifyUser(req, res, next) {
 
 async function createUser(req, res, next) {
   const {
-    name, password, email, address, orders, products,
+    name, password, email, address,
   } = req.body;
+  const [firstName, lastName] = name.split(' ');
+  const customerID = uuidv4();
+  const address1 = address;
 
-  await User.create({
-    name, password, email, address, orders, products,
-  })
-    .then((data) => {
-      const { _id, name: username } = data;
-      res.locals.name = username;
-      res.locals.userId = _id;
-      return next();
-    })
-    .catch((error) => {
-      res.locals.error = error;
-      return next();
-    });
+  try {
+    // Hash password
+    const SALT = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, SALT);
+
+    // Store user in DB
+    await customer.create({
+      customerID,
+      firstName,
+      lastName,
+      email,
+      address1,
+      password: hashedPassword,
+    }, { returning: true });
+
+    // Send back username and customerID
+    res.locals.name = `${firstName} ${lastName}`;
+    res.locals.userId = customerID;
+    return next();
+  } catch (err) {
+    res.locals.error = err;
+    return next();
+  }
 }
 
-// TODO: need to pair on this one to let user update whatever field they want without affecting
-// other fields
 async function updateUser(req, res, next) {
-  const { name, email } = req.body; // TODO: Add password here when needed.
-  const bodyToUpdate = {
-    ...(name && { name }),
-    ...(email && { email }),
-  };
   const { userId } = req.params;
 
-  await User.findOneAndUpdate({ _id: ObjectId(userId) }, bodyToUpdate)
+  await customer.update(req.body, {
+    where: {
+      customerID: userId,
+    },
+    returning: true,
+  })
     .then((user) => {
       res.locals.userupdated = user;
       return next();
@@ -91,11 +105,14 @@ async function updateUser(req, res, next) {
     });
 }
 
-// TODO: throw error when a specific user_id no longer exists
 async function deleteUser(req, res, next) {
   const { userId } = req.params;
 
-  await User.findOneAndDelete({ _id: ObjectId(userId) })
+  await customer.destroy({
+    where: {
+      customerID: userId,
+    },
+  })
     .then((user) => {
       res.locals.deleteduser = user;
       return next();
@@ -107,8 +124,8 @@ async function deleteUser(req, res, next) {
 }
 
 module.exports = {
-  getUser,
   getUsers,
+  getUser,
   verifyUser,
   createUser,
   updateUser,
