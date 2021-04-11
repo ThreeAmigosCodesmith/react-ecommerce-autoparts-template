@@ -19,8 +19,6 @@ sessionController.isLoggedIn = async (req, res, next) => {
   next();
 };
 
-// add question 
-
 // /* startSession - create and save a new Session into the database. */
 sessionController.startSession = async (req, res, next) => {
   try {
@@ -31,14 +29,12 @@ sessionController.startSession = async (req, res, next) => {
         createdAt: Date.now(),
         customerID: res.locals.userId,
       });
-      console.log('session created');
       return next();
     // eslint-disable-next-line no-else-return
     } else {
       return next(Error('userId not present'));
     }
   } catch (error) {
-    console.log('start sessin error', error);
     return next(error);
   }
 };

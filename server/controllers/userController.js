@@ -1,5 +1,4 @@
 const bcrypt = require('bcryptjs');
-const { v4: uuidv4 } = require('uuid');
 const { models: { customer } } = require('../models/index');
 
 async function getUsers(req, res, next) {
@@ -33,14 +32,12 @@ async function verifyUser(req, res, next) {
   try {
     const existingUser = await customer.findOne({ where: { email: req.body.email } });
     if (existingUser) {
-      console.log('user exists')
       bcrypt.compare(req.body.password, existingUser.password, (error, isMatch) => {
         if (!isMatch) {
           res.locals.error = 'Incorrect Password!';
           return next();
         // eslint-disable-next-line no-else-return
         } else {
-          console.log('match found')
           const { firstName, lastName, customerID } = existingUser;
           res.locals.userId = customerID;
           res.locals.name = `${firstName} ${lastName}`;
@@ -49,7 +46,6 @@ async function verifyUser(req, res, next) {
       });
     }
   } catch (error) {
-    console.log('caugth an error', error)
     res.locals.error = error;
     return next();
   }
