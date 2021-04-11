@@ -43,7 +43,6 @@ const Login = () => {
       // eslint-disable-next-line no-console
       .catch((error) => console.log(error));
   };
-
   return (
     <div className="login__background">
       <div className="login">
@@ -59,26 +58,21 @@ const Login = () => {
               <span className="login__icon"><MailOutlineIcon /></span>
               <input type="email" placeholder="Enter email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
-
             <div className="login__input">
               <span className="login__icon"><LockIcon /></span>
               <input type="password" placeholder="Enter password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
-
             <button type="submit" className="login__signInButton" onClick={(e) => signInButton(e)}>Log in</button>
           </form>
-
           <div className="login__createAccount">
             <p>Don&apos;t have an account?</p>
             <a href="/signup">
               Sign Up
             </a>
           </div>
-
         </div>
       </div>
     </div>
   );
 };
-
 export default Login;

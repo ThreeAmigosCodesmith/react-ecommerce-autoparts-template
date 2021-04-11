@@ -12,6 +12,7 @@ const fileUpload = require('express-fileupload');
 /* eslint import/no-unresolved: 2 */
 const PORT = 8080;
 
+const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
 const imageUploadRouter = require('./routes/upload');
 
@@ -22,16 +23,20 @@ app.use(cookieParser());
 app.use(fileUpload());
 app.use(cors());
 
+
 // statically render index.html file when user hits / - (mandatory)
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 // define route handlers
+app.use('/pay', stripeRouter);
 app.use('/api', apiRouter);
 
 app.use('/v1/upload', imageUploadRouter);
 
 // catch-all route handler for any requests to an unknown route
-app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
+app.use((req, res) =>
+  res.status(404).send("This is not the page you're looking for...")
+);
 
 // global error handler
 // eslint-disable-next-line no-unused-vars
@@ -39,7 +44,7 @@ app.use((err, req, res, next) => {
   const defaultErr = {
     log: err.message,
     status: 500,
-    message: { err: 'An error occurred' },
+    message: { err: "An error occurred" },
   };
 
   const errorObj = { ...defaultErr, ...err };
