@@ -1,17 +1,18 @@
 /* eslint-disable no-case-declarations */
+import * as types from '../actions/actionTypes';
+
 export const initialState = {
   cart: [],
-  user: null,
 };
 
-const reducer = (state, action) => {
+const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case types.ADD_TO_CART:
       return {
         ...state,
         cart: [...state.cart, action.item],
       };
-    case 'REMOVE_FROM_CART':
+    case types.REMOVE_FROM_CART:
       const index = state.cart.findIndex((cartItem) => cartItem.id === action.id);
       const newCart = [...state.cart];
       if (index >= 0) {
@@ -21,19 +22,14 @@ const reducer = (state, action) => {
         ...state,
         cart: newCart,
       };
-    case 'AUTH_USER':
+    case types.EMPTY_CART:
       return {
+        cart: [],
         ...state,
-        user: action.item,
-      };
-    case 'UNAUTH_USER':
-      return {
-        ...state,
-        user: null,
       };
     default:
       return state;
   }
 };
 
-export default reducer;
+export default cartReducer;

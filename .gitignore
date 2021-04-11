@@ -72,7 +72,8 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
-
+.aws
+s3Config
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
@@ -110,4 +111,6 @@ build
 
 *.txt
 
+server/dbLog.txt
+apiKeys.js
 server/dbLog.txt

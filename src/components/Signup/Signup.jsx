@@ -4,8 +4,8 @@ import { useHistory, Link } from 'react-router-dom';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockIcon from '@material-ui/icons/Lock';
+import { useSelector, useDispatch } from 'react-redux';
 import Logo from '../../yardhop-logo.png';
-import { useStateValue } from '../../StateProvider';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -13,7 +13,8 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const history = useHistory();
   // eslint-disable-next-line no-unused-vars
-  const [{ user }, dispatch] = useStateValue();
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 
   // const validateForm = () => {
   // (name.length !== 0) && (email.length > 0) && (password.length > 0) };
@@ -34,7 +35,7 @@ const Signup = () => {
       .then((res) => {
         dispatch({
           type: 'AUTH_USER',
-          item: {
+          payload: {
             name: res.name,
             id: res.id,
           },
