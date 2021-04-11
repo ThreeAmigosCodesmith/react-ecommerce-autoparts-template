@@ -20,6 +20,6 @@
         "react"
     ],
     "rules": {
-        "linebreak-style": ["error", "unix, windows"]
+        "linebreak-style": 0
     }
 }

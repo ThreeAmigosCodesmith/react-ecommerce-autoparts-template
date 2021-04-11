@@ -1,7 +1,7 @@
 import './Purchases.css';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import PurchaseTable from "./PurchaseTable";
+import PurchaseTable from './PurchaseTable';
 
 const Purchases = () => {
   const user = useSelector((state) => state.auth.user);
