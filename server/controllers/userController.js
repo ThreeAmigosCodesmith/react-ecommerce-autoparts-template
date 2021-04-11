@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const { v4: uuidv4 } = require('uuid');
 const { models: { customer } } = require('../models/index');
 
 async function getUsers(req, res, next) {

@@ -15,11 +15,14 @@ aws.config.update({
 });
 
 const s3 = new aws.S3();
+// eslint-disable-next-line no-unused-vars
 s3.listBuckets((err, data) => {
   if (err) {
     console.log('Error', err);
   } else {
-    console.log('Success', data.Buckets);
+    // console.log(data);
+    // console.log('Success', data.Buckets);
+    console.log('connected to S3 buckets');
   }
 });
 // rename a file

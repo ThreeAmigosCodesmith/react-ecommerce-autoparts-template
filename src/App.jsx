@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
+import Chat from './components/Chat/Chat';
 
 const App = () => (
   <BrowserRouter>
@@ -65,6 +66,14 @@ const App = () => (
           </div>
           <div className="main-content">
             <Cart />
+          </div>
+        </Route>
+        <Route exact path="/chat">
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Chat />
           </div>
         </Route>
       </Switch>

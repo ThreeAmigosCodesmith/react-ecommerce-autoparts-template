@@ -1,36 +1,27 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
-
-const app = express();
+const http = require('http');
+const socketio = require('socket.io');
 const path = require('path');
-
 const cors = require('cors');
-require('dotenv').config();
-
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
-/* eslint import/no-unresolved: 2 */
+require('dotenv').config();
+
+const app = express();
 const PORT = 8080;
 
-const db = require('./models/index');
+// Initialize datbase
+require('./models/index');
 
-// Connect to database
-const connectDB = async () => {
-  try {
-    await db.authenticate();
-    // eslint-disable-next-line no-console
-    console.log('Connected to db.');
-    // Sync schema in models folder to datbase schema
-    await db.sync({ alter: true });
-    // eslint-disable-next-line no-console
-    console.log('Models synchronized successfully');
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Unable to connect to the database:', error);
-  }
-};
-
-connectDB();
+// Connect the websocket connection to the express server
+const server = http.createServer(app);
+// Initialize the websocket
+const io = socketio(server);
+io.on('connection', (socket) => {
+  console.log('new connection');
+  console.log(socket);
+});
 
 const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
@@ -49,7 +40,6 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 // define route handlers
 app.use('/pay', stripeRouter);
 app.use('/api', apiRouter);
-
 app.use('/v1/upload', imageUploadRouter);
 
 // catch-all route handler for any requests to an unknown route
@@ -69,6 +59,8 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
+
+
 // listens on port 8080 -> http://localhost:8080/
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
