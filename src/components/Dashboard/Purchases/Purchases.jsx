@@ -1,19 +1,19 @@
-import "./Purchases.css";
-import React, { useState, useEffect } from "react";
-import { useStateValue } from "../../../StateProvider";
-import PurchaseTable from "./PurchaseTable";
+import './Purchases.css';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import PurchaseTable from './PurchaseTable';
 
 const Purchases = () => {
-  const [{ user }] = useStateValue();
+  const user = useSelector((state) => state.auth.user);
   const [purchases, setPurchases] = useState([]);
   const testingBool = false;
 
   if (testingBool === true) {
     const getPurchases = () => {
       fetch(`/api/ordersByUser/${user.id}`, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       })
         .then((data) => data.json())

@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Subtotal.css';
 import CurrencyFormat from 'react-currency-format';
-import { useStateValue } from '../../StateProvider';
+import { useSelector } from 'react-redux';
 
 const Subtotal = () => {
-  const [{ cart }] = useStateValue();
-  // const history = useHistory();
+  const user = useSelector((state) => state.auth.user);
+  const cart = useSelector((state) => state.cart.cart);
+
+  const history = useHistory();
 
   // const validateCheckOut = () => {
   //   if (cart.length < 1) return false;

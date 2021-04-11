@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './CartProduct.css';
-import { useStateValue } from '../../StateProvider';
+import { useSelector, useDispatch } from 'react-redux';
 
 const CartProduct = (props) => {
-  const [{ cart }, dispatch] = useStateValue();
+  const cart = useSelector((state) => state.cart.cart);
+  const dispatch = useDispatch();
 
   const {
     id,

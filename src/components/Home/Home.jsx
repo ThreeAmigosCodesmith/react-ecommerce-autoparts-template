@@ -9,6 +9,7 @@ const Home = () => (
       <img className="home__image" src={Banner} alt="" />
       <div className="home__productsNearby">
         <h2>Items near you:</h2>
+        {/* {render products based on location} */}
         <div className="home__row">
           <Product
             id="0000000000"
