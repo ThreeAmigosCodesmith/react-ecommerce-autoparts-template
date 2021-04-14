@@ -4,7 +4,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { io } from 'socket.io-client';
 import ChatIcon from '@material-ui/icons/Chat';
 import ChatBubble from './ChatBubble/ChatBubble';
 import ChatInput from './ChatInput/ChatInput';
