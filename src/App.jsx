@@ -10,7 +10,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
-import Chat from './components/Chat/Chat';
+import Stripe from './components/Stripe/Stripe';
 
 const App = () => (
   <BrowserRouter>
@@ -68,12 +68,12 @@ const App = () => (
             <Cart />
           </div>
         </Route>
-        <Route exact path="/chat">
+        <Route exact path="/stripe">
           <div className="header-content">
             <Header />
           </div>
           <div className="main-content">
-            <Chat />
+            <Stripe />
           </div>
         </Route>
       </Switch>
