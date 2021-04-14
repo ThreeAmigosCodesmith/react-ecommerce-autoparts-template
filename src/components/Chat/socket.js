@@ -1,22 +1,17 @@
 /* eslint-disable no-unused-vars */
 import io from 'socket.io-client';
+import * as types from '../../redux/actions/actionTypes';
 
 const { localStorage } = window;
 
-// eslint-disable-next-line import/prefer-default-export
-// export const socket = io.connect('/', {
-//   query: {
-//     chatSessionID: uuidv4(),
-//   },
-// });
-const initializeChat = async (queryObj) => {
+const initializeChat = async (dispatch, queryObj) => {
   const {
     chatSessionID,
     supplierID,
     customerID,
     createdAt,
   } = queryObj;
-  const socketIO = await io.connect('/', {
+  const socket = await io('/', {
     query: {
       chatSessionID,
       supplierID,
@@ -25,14 +20,32 @@ const initializeChat = async (queryObj) => {
     },
   });
 
-  return socketIO;
+  socket.on('new-message', (newMessage) => {
+    console.log('in the socket handler', newMessage);
+    dispatch({
+      type: types.ADD_MESSAGE,
+      payload: newMessage,
+    });
+    console.log(newMessage);
+    const oldMessages = localStorage.getItem('latestChat');
+    localStorage.setItem('latestChat', JSON.stringify([...oldMessages, newMessage]));
+  });
+
+  return socket;
 };
 
-const sendMessage = (socket, message) => {
-  socket.emit('new-message', message);
+const sendMessage = (socket, newMessage, oldMessages) => {
+  localStorage.setItem('latestChat', JSON.stringify([...oldMessages, newMessage]));
+
+  socket.emit('new-message', newMessage);
+};
+
+const endChat = (socket) => {
+  socket.emit('end');
 };
 
 export {
   initializeChat,
+  endChat,
   sendMessage,
 };

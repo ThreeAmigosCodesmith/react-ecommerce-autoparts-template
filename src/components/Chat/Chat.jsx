@@ -1,97 +1,16 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-boolean-value */
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { io } from 'socket.io-client';
 import ChatIcon from '@material-ui/icons/Chat';
-import { socket } from './socket';
 import ChatBubble from './ChatBubble/ChatBubble';
 import ChatInput from './ChatInput/ChatInput';
 import * as types from '../../redux/actions/actionTypes';
 import './Chat.css';
-
-const dummyMessages = [
-  {
-    userId: 1,
-    message: 'Hi. How are you?',
-    sender: 'Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 1,
-    message: 'Hi. How are you?',
-    sender: 'Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 1,
-    message: 'Hi. How are you?',
-    sender: 'Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 1,
-    message: 'Hi. How are you?',
-    sender: 'Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 1,
-    message: 'Hi. How are you?',
-    sender: 'Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-  {
-    userId: 1,
-    message: 'Hi. How are you?',
-    sender: 'Ashley Pean',
-  },
-  {
-    userId: 2,
-    message: 'I\'m good. how are you?',
-    sender: 'Not Ashley Pean',
-  },
-];
+import { initializeChat, sendMessage, endChat } from './socket';
 
 const iconStyles = {
   alignSelf: 'flex-end',
@@ -105,52 +24,82 @@ const iconStyles = {
 };
 
 function Chat() {
-  const [messages, changeMessages] = useState(dummyMessages);
-  const chatUserID = useSelector((state) => state?.auth?.user?.id);
-  const isOpen = useSelector((state) => state?.chat?.isOpen);
+  const customerID = useSelector((state) => state?.auth?.user?.id);
+  const {
+    isOpen,
+    chatSessionID,
+    supplierID,
+    messages,
+  } = useSelector((state) => state?.chat);
+  const [socketConnection, setSocketConnetion] = useState();
   const dispatch = useDispatch();
   const containerRef = useRef();
   const { localStorage } = window;
-
   // Scroll to end of chat on page load and new message
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
+    console.log('opn1');
     if (isOpen) {
       const msgContainer = containerRef.current;
       msgContainer.scrollTop = msgContainer.scrollHeight - msgContainer.clientHeight;
     }
-  }, [messages]);
+    // eslint-disable-next-line consistent-return
+    // return dispatch({ type: types.END_CHAT });
+  }, [messages, isOpen]);
 
   // Enable socket connection and create client event listeners
   // eslint-disable-next-line consistent-return
   useEffect(() => {
+    console.log('opn2');
+    console.log(chatSessionID, supplierID, customerID);
     if (isOpen) {
-      // Update messages in state when a new message is received
-      socket.on('newMessage', (newMessage) => {
-        changeMessages((prev) => [...prev, newMessage]);
-      });
+      const createConnection = async () => {
+        // console.log('initializing socket');
+        const newSocket = await initializeChat(dispatch, {
+          chatSessionID,
+          supplierID,
+          customerID,
+          createdAt: new Date().toDateString(),
+        });
+        setSocketConnetion(newSocket);
 
-      return socket.emit('end');
-    }
-  }, []);
+        console.log(socketConnection);
+      };
+      createConnection();
+    } else return socketConnection ? socketConnection.emit('end') : null;
+  }, [isOpen]);
 
   // Send message to server
-  const sendMessage = (messageText) => {
+  const handleMessage = (messageText) => {
+    console.log('new message', messageText);
     if (!messageText.trim()) return;
 
     const newMessage = {
-      id: chatUserID,
+      chatSessionID,
+      customerID,
+      supplierID,
+      sender: customerID,
       message: messageText,
-      timestamp: new Date().toLocaleTimeString(),
+      active: true,
+      timestamp: new Date().toDateString(),
     };
 
+    // sendMessage(socketConnection, newMessage, messages);
     localStorage.setItem('latestChat', JSON.stringify([...messages, newMessage]));
 
-    socket.emit('send-message', newMessage);
+    socketConnection.emit('new-message', newMessage);
+    dispatch({ type: types.ADD_MESSAGE, payload: newMessage });
+  };
+
+  const closeChat = () => {
+    dispatch({ type: types.TOGGLE_CHAT });
+    socketConnection.emit('end');
+    localStorage.setItem('latestChat', JSON.stringify([]));
   };
 
   const handleTypingDialog = (isTyping) => {
-    if (isTyping) socket.emit('user-typing');
-    else socket.emit('user-not-typing');
+    if (isTyping) socketConnection.emit('user-typing');
+    else socketConnection.emit('user-not-typing');
   };
 
   const toggleChatModal = () => {
@@ -163,7 +112,7 @@ function Chat() {
         <div id="chatContainer">
           <div id="chatHeader">
             <p>Junkyard Company</p>
-            <button id="exit-button" type="button" onClick={toggleChatModal}>X</button>
+            <button id="exit-button" type="button" onClick={closeChat}>X</button>
           </div>
           <div id="messagesContainer" ref={containerRef}>
             {messages ? messages.map((chat) => (
@@ -171,7 +120,7 @@ function Chat() {
             ))
               : null}
           </div>
-          <ChatInput sendMessage={sendMessage} handleTyping={handleTypingDialog} />
+          <ChatInput sendMessage={handleMessage} handleTyping={handleTypingDialog} />
         </div>
         <ChatIcon color="primary" fontSize="large" style={iconStyles} onClick={toggleChatModal} />
       </div>

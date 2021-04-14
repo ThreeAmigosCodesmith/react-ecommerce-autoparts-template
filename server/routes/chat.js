@@ -1,8 +1,9 @@
-const chatController = require('../controllers/chatController.js');
+// const chatController = require('../controllers/chatController.js');
 const { models: { chat } } = require('../models/index');
 
 module.exports = (io, socket) => {
   socket.on('new-message', async (message) => {
+    console.log(message);
     chat.create(message);
   });
 

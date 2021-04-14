@@ -29,7 +29,7 @@ const authReducer = (state = chatState, action) => {
     case types.CREATE_SOCKET:
       return {
         ...state,
-        socket: action.payload.socket,
+        socket: action.payload,
       };
     case types.ADD_MESSAGE:
       return {

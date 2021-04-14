@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux';
 const makeStyles = (chat, userID) => (
   {
     messageStyle: {
-      background: chat.id === userID ? '#57ba98' : '#D3D3D3',
+      background: chat.sender === userID ? '#57ba98' : '#D3D3D3',
       borderRadius: '8px',
       color: 'black',
       padding: '.6rem',
-      alignSelf: chat.id === userID ? 'flex-end' : 'flex-start',
+      alignSelf: chat.sender === userID ? 'flex-end' : 'flex-start',
       display: 'flex',
       flexDirection: 'column',
       width: '60%',
