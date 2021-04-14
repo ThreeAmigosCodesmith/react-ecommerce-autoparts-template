@@ -6,7 +6,7 @@ import SplitForm from './SplitForm';
 
 import './styles.css';
 
-const stripePromise = loadStripe('pk_test_51IdmGUI3WvfYEKcmWkYIb8Eec40VM32eNd3fsTJft1DNt7PzwWg3IiG8Lh6IVVGXnSF3x8l1ASTfWDP4gcsXblsv00eZLNQjXH');
+const stripePromise = loadStripe('pk_test_51IdmGUI3WvfYEKcmFVV3WzyWnaLfZzmt04srr4M5E3gcv0zmlYkEtNZuHM8IyrhXUR2lADyxJLF6vso3LAdb9lKP00VlWpEVRd');
 
 /* eslint-disable react/prop-types */
 

@@ -17716,3 +17716,45 @@ Executing (default): INSERT INTO "customers" ("customerID","firstName","lastName
 
 
 
+Sat Apr 10 2021 17:44:58 GMT-0400 (Eastern Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'arronnestor@gmail.com' LIMIT 1;
+
+
+
+Sat Apr 10 2021 17:44:58 GMT-0400 (Eastern Daylight Time)
+
+Executing (default): INSERT INTO "sessions" ("cookieID","createdAt","updatedAt") VALUES ($1,$2,$3) RETURNING "cookieID","createdAt","updatedAt","customerID";
+
+
+
+Sat Apr 10 2021 17:45:02 GMT-0400 (Eastern Daylight Time)
+
+Executing (default): DELETE FROM "sessions" WHERE "cookieID" = '703fd11a-c55f-4a2d-8c76-595824fc8459'
+
+
+
+Sat Apr 10 2021 17:45:11 GMT-0400 (Eastern Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'arronnestor@gmail.com' LIMIT 1;
+
+
+
+Sat Apr 10 2021 17:45:12 GMT-0400 (Eastern Daylight Time)
+
+Executing (default): INSERT INTO "sessions" ("cookieID","createdAt","updatedAt") VALUES ($1,$2,$3) RETURNING "cookieID","createdAt","updatedAt","customerID";
+
+
+
+Tue Apr 13 2021 20:22:30 GMT-0400 (Eastern Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'arronnestor@gmail.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 20:22:30 GMT-0400 (Eastern Daylight Time)
+
+Executing (default): INSERT INTO "sessions" ("cookieID","createdAt","updatedAt") VALUES ($1,$2,$3) RETURNING "cookieID","createdAt","updatedAt","customerID";
+
+
+
