@@ -11,6 +11,7 @@ const styles = {
     background: 'white',
     outline: 'none',
     fontSize: '1.5rem',
+    boxShadow: 'none',
   },
   containerStyles: {
     width: '100%',
@@ -32,7 +33,7 @@ const styles = {
   },
 };
 
-const ChatInput = ({ sendMessage, handleTyping }) => {
+const ChatInput = ({ sendMessage }) => {
   const inputRef = useRef();
 
   const handleSubmit = (e) => {
@@ -51,8 +52,6 @@ const ChatInput = ({ sendMessage, handleTyping }) => {
       <input
         ref={inputRef}
         style={styles.inputStyles}
-        onKeyDown={() => handleTyping(true)}
-        onKeyUp={() => handleTyping(false)}
       />
       <button type="submit" style={styles.buttonStyles}>
         <SendIcon color="primary" style={{ fill: '#57ba98' }} />
