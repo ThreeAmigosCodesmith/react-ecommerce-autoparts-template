@@ -1,15 +1,15 @@
-const Product = require('../models/Product');
+const { models: { product } } = require('../models/index');
 
 async function getProduct(req, res, next) {
   const { productId } = req.params;
 
-  await Product.findOne({
+  await product.findOne({
     where: {
       productId,
     },
   })
-    .then((product) => {
-      res.locals.product = product;
+    .then((data) => {
+      res.locals.product = data;
       return next();
     })
     .catch((error) => {
@@ -19,7 +19,7 @@ async function getProduct(req, res, next) {
 }
 
 async function getAllProducts(req, res, next) {
-  await Product.findAll()
+  await product.findAll()
     .then((products) => {
       res.locals.products = products;
       return next();
@@ -33,7 +33,7 @@ async function getAllProducts(req, res, next) {
 async function getProductsByUserId(req, res, next) {
   const { userId } = req.params;
 
-  await Product.findOne({
+  await product.findOne({
     where: {
       supplierId: userId,
     },
@@ -49,7 +49,7 @@ async function getProductsByUserId(req, res, next) {
 }
 
 async function getAllProductsByUser(req, res, next) {
-  await Product.findAll({
+  await product.findAll({
     where: {
       supplierId: req.params.id,
     },
@@ -71,11 +71,11 @@ async function createProduct(req, res, next) {
 
   const sellerID = req.cookies.ssid;
 
-  await Product.create({
+  await product.create({
     title, make, model, year, borough, description, price, sellerID,
   })
-    .then((product) => {
-      res.locals.product = product;
+    .then((data) => {
+      res.locals.product = data;
       return next();
     })
     .catch((error) => {
@@ -102,13 +102,13 @@ async function updateProduct(req, res, next) {
     ...(sellerId && { sellerId }),
   };
 
-  await Product.findOneAndUpdate(bodyToUpdate, {
+  await product.findOneAndUpdate(bodyToUpdate, {
     where: {
       productId,
     },
   })
-    .then((product) => {
-      res.locals.productupdated = product;
+    .then((data) => {
+      res.locals.productupdated = data;
       return next();
     })
     .catch((error) => {
@@ -120,19 +120,32 @@ async function updateProduct(req, res, next) {
 async function deleteProduct(req, res, next) {
   const { productId } = req.params;
 
-  await Product.findOneAndDelete({
+  await product.findOneAndDelete({
     where: {
       productId,
     },
   })
-    .then((product) => {
-      res.locals.deletedproduct = product;
+    .then((data) => {
+      res.locals.deletedproduct = data;
       return next();
     })
     .catch((error) => {
       res.locals.error = error;
       return next();
     });
+}
+
+async function getHomepageProducts(req, res, next) {
+  console.log('getting homepage products');
+  try {
+    const products = await product.findAll();
+    res.locals.products = products;
+
+    return next();
+  } catch (err) {
+    res.locals.err = err;
+    return next();
+  }
 }
 
 module.exports = {
@@ -143,4 +156,5 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  getHomepageProducts,
 };

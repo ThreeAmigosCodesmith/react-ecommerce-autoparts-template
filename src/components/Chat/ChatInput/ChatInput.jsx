@@ -21,7 +21,7 @@ const styles = {
     display: 'flex',
     borderBottomRightRadius: '10px',
     borderBottomLeftRadius: '10px',
-    borderTop: '1px solid #4e8cff',
+    borderTop: '1px solid #57ba98',
   },
   buttonStyles: {
     border: 'none',
@@ -55,7 +55,7 @@ const ChatInput = ({ sendMessage, handleTyping }) => {
         onKeyUp={() => handleTyping(false)}
       />
       <button type="submit" style={styles.buttonStyles}>
-        <SendIcon color="primary" />
+        <SendIcon color="primary" style={{ fill: '#57ba98' }} />
       </button>
     </form>
   );

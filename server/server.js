@@ -12,16 +12,25 @@ const app = express();
 const PORT = 8080;
 
 // Initialize datbase
-require('./models/index');
+const db = require('./models/index');
 
-// Connect the websocket connection to the express server
-const server = http.createServer(app);
-// Initialize the websocket
-const io = socketio(server);
-io.on('connection', (socket) => {
-  console.log('new connection');
-  console.log(socket);
-});
+// Connect to database
+const connectDB = async () => {
+  try {
+    await db.authenticate();
+    // eslint-disable-next-line no-console
+    console.log('Connected to db.');
+    // Sync schema in models folder to datbase schema
+    await db.sync({ alter: true });
+    // eslint-disable-next-line no-console
+    console.log('Models synchronized successfully');
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Unable to connect to the database:', error);
+  }
+};
+
+connectDB();
 
 const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
@@ -60,9 +69,29 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
+// Connect the websocket connection to the express server
+const server = http.createServer(app);
+const io = socketio(server, {
+  cors: {
+    origin: '*',
+  },
+  forceNewConnection: false,
+});
 
-// listens on port 8080 -> http://localhost:8080/
-app.listen(PORT, () => {
+io.on('connection', (socket) => {
+  const { query: { chatSessionID } } = socket.handshake;
+  socket.join(chatSessionID);
+  const { chat } = db.models;
+  chat.create({
+    chatID: chatSessionID,
+    
+  });
+  // eslint-disable-next-line global-require
+  require('./routes/chat')(io, socket);
+});
+
+// initialize server on port 8080 -> http://localhost:8080/
+server.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server listening on port: ${PORT}...`);
 });

@@ -4,7 +4,7 @@ export const chatState = {
   user: null,
   supplier: null,
   chats: [],
-  isOpen: true,
+  isOpen: false,
 };
 
 const authReducer = (state = chatState, action) => {

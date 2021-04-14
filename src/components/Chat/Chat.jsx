@@ -99,9 +99,9 @@ const iconStyles = {
   background: 'white',
   padding: '.8rem',
   borderRadius: '99999px',
-  fill: '#4e8cff',
-  border: '1px id #4e8cff',
-  boxShadow: '1 1 1 1px #4e8cff',
+  fill: '#57ba98',
+  border: '1px id ##57ba98',
+  boxShadow: '1 1 1 1px #57ba98',
 };
 
 function Chat() {

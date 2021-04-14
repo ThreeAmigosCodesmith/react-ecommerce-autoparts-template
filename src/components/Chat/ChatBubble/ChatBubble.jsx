@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 const makeStyles = (chat, userID) => (
   {
     messageStyle: {
-      background: chat.id === userID ? 'lightgreen' : 'lightblue',
+      background: chat.id === userID ? '#57ba98' : '#D3D3D3',
       borderRadius: '8px',
       color: 'black',
       padding: '.6rem',
