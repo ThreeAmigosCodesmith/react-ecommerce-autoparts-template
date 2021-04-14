@@ -17,13 +17,15 @@ const Home = () => {
     async function getHomePageProducts() {
       const res = await axios.get('/api/products/homepage');
       if(res.status === 200) {
+        console.log(res.data)
         const allProducts = res.data.map(el => ({
           id: el.productId, 
           title: el.productName, 
           price: el.price,
           image: el.picture, 
-          location: { borough: el.location ?? 'Queens' },  
+          location: 'Queens',  
           condition: el.condition, 
+          supplierID: el.supplierID,
         }))
 
         dispatch({ type: actions.LOAD_HOME_PAGE, payload: allProducts });
@@ -42,7 +44,14 @@ const Home = () => {
           <div className="home__products">
             {products.length > 0 ? products.map((product) => (
               <div style={{ width: '450px'}}>
-                <Product id={product.id} title={product.title} price={product.price} image={product.image} location={product.location} condition={product.condition} /> 
+                <Product 
+                  id={product.id} 
+                  title={product.title} 
+                  price={product.price} 
+                  image={product.image} 
+                  location={product.location}
+                  condition={product.condition} 
+                  supplierID={product.supplierID} /> 
               </div>)): fallback}
           </div>
         </div>
@@ -64,9 +73,7 @@ const fallback = (
       price={96.98}
       image="https://i.pinimg.com/originals/3b/21/ae/3b21aeed0898505c1b02cf56aee15ab5.jpg"
       condition="Good"
-      location={
-        { borough: 'Queens' }
-      }
+      location= 'Queens'
     />
     <Product
       id="0000000001"
@@ -74,9 +81,7 @@ const fallback = (
       price={445.98}
       image="https://i.ebayimg.com/images/g/iIUAAOSwo0RfDJJq/s-l300.jpg"
       condition="Good"
-      location={
-        { borough: 'Brooklyn' }
-      }
+      location= 'Brooklyn'
     />
     <Product
       id="0000000002"
@@ -84,9 +89,7 @@ const fallback = (
       price={246.98}
       image="https://i.ebayimg.com/thumbs/images/g/Wg8AAOSwp8Jcp5~o/s-l300.jpg"
       condition="Excellent"
-      location={
-        { borough: 'Bronx' }
-      }
+      location= 'Bronx'
     />
   </div>
   <div className="home__row">
@@ -96,9 +99,7 @@ const fallback = (
       price={650.93}
       image="https://i.ebayimg.com/images/g/s8oAAOSw5ClXxKIF/s-l300.jpg"
       condition="Good"
-      location={
-        { borough: 'Bronx' }
-      }
+      location= 'Bronx'
     />
     <Product
       id="0000000004"
@@ -106,9 +107,7 @@ const fallback = (
       price={378.99}
       image="https://i.ebayimg.com/images/g/7tYAAOSwIGlekGdz/s-l640.jpg"
       condition="Good"
-      location={
-        { borough: 'Queens' }
-      }
+      location= 'Queens'
     />
     <Product
       id="0000000005"
@@ -116,9 +115,7 @@ const fallback = (
       price={180.75}
       image="https://store.nurburgringautoparts.com/media/catalog/product/153/720/153720_014.jpg"
       condition="Good"
-      location={
-        { borough: 'Brooklyn' }
-      }
+      location= 'Brooklyn'
     />
   </div>
   <div className="home__row">
@@ -128,9 +125,7 @@ const fallback = (
       price={699.98}
       image="https://d27z5xsz0y1qnm.cloudfront.net/benzeen/large/436429_01.jpg"
       condition="Good"
-      location={
-        { borough: 'Queens' }
-      }
+      location= 'Queens'
     />
     <Product
       id="0000000007"
@@ -138,9 +133,7 @@ const fallback = (
       price={389.99}
       image="https://i.ebayimg.com/thumbs/images/g/EOAAAOSw3RlgKZSR/s-l300.jpg"
       condition="Good"
-      location={
-        { borough: 'Brooklyn' }
-      }
+      location= 'Brooklyn'
     />
     <Product
       id="0000000008"
@@ -148,9 +141,7 @@ const fallback = (
       price={273.95}
       image="https://i.ebayimg.com/images/g/dtoAAOSwsBtaN8UQ/s-l640.jpg"
       condition="Good"
-      location={
-        { borough: 'Staten Island' }
-      }
+      location= 'Staten Island'
     /> 
     </div>
             </>

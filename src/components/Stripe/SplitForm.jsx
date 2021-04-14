@@ -6,8 +6,8 @@ import {
   CardCvcElement,
   CardExpiryElement,
 } from '@stripe/react-stripe-js';
+import { useSelector } from 'react-redux';
 import CurrencyFormat from 'react-currency-format';
-import { useStateValue } from '../../StateProvider';
 import useResponsiveFontSize from './useResponsiveFontSize';
 
 const useOptions = () => {
@@ -36,7 +36,7 @@ const useOptions = () => {
 };
 
 const SplitForm = () => {
-  const [{ cart }] = useStateValue();
+  const cart = useSelector((state) => state.cart.cart);
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
