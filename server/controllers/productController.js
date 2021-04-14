@@ -136,7 +136,6 @@ async function deleteProduct(req, res, next) {
 }
 
 async function getHomepageProducts(req, res, next) {
-  console.log('getting homepage products');
   try {
     const products = await product.findAll();
     res.locals.products = products;

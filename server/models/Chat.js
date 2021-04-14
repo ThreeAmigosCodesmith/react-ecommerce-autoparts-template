@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
     sender: {
       type: DataTypes.UUID,
     },
-    sessionID: {
+    chatSessionID: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,

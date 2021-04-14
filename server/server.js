@@ -78,14 +78,37 @@ const io = socketio(server, {
   forceNewConnection: false,
 });
 
-io.on('connection', (socket) => {
-  const { query: { chatSessionID } } = socket.handshake;
+io.on('connection', async (socket) => {
+  const {
+    query: {
+      chatSessionID,
+      supplierID,
+      customerID,
+      createdAt,
+    },
+  } = socket.handshake;
+
+  console.log(chatSessionID, supplierID, customerID, createdAt);
+
   socket.join(chatSessionID);
   const { chat } = db.models;
-  chat.create({
-    chatID: chatSessionID,
-    
-  });
+
+  // Generate an inital chat from the supplier
+  const firstChat = {
+    chatSessionID,
+    message: 'Thank you for chatting with us! Please standby and we\'ll be with you in a moment.',
+    createdAt,
+    customerID,
+    supplierID,
+    active: true,
+    sender: supplierID,
+  };
+
+  // Send the message back to the user
+  socket.emit('new-message', firstChat);
+  chat.create(firstChat);
+
+  // Require in chat router to handle the rest of our functionality
   // eslint-disable-next-line global-require
   require('./routes/chat')(io, socket);
 });

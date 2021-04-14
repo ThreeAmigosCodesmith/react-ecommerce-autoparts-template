@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
     color: {
       type: DataTypes.STRING,
     },
-    discount: {
+    price: {
       type: DataTypes.DOUBLE,
     },
     unitsInStock: {
@@ -33,6 +33,12 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
     },
     picture: {
+      type: DataTypes.STRING,
+    },
+    condition: {
+      type: DataTypes.STRING,
+    },
+    location: {
       type: DataTypes.STRING,
     },
     note: {

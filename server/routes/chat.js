@@ -1,28 +1,18 @@
-const { v4: uuidv4 } = require('uuid');
 const chatController = require('../controllers/chatController.js');
 const { models: { chat } } = require('../models/index');
 
-
 module.exports = (io, socket) => {
-  socket.on('create-chat', () => {
-    const chatSessionID = uuidv4();
-    socket.join(chatSessionID);
-
-    
+  socket.on('new-message', async (message) => {
+    chat.create(message);
   });
 
-  socket.on('find-chat-log', async (customerID) => {
-    chat.findOne({
-      where: { customerID, active: true },
+  // End the chat for the user and update active status to FALSE in the datbase
+  socket.on('end', (chatSessionID) => {
+    chat.update({ active: false }, {
+      where: {
+        chatSessionID,
+      },
     });
-  });
-
-  socket.on('send-message', (message) => {
-    console.log('new message: ', message);
-    io.emit('newMessage', message);
-  });
-
-  socket.on('end', () => {
     socket.disconnect(0);
   });
 };
