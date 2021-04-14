@@ -4,7 +4,7 @@ import './ProductForm.css';
 import { useSelector } from 'react-redux';
 import UploadImages from './UploadImages';
 import Preview from './Preview';
-import apiHeaders from '../../apiKeys';
+import apiHeaders from './apiKeys';
 import makes from '../../vehicles';
 
 const ProductForm = () => {
