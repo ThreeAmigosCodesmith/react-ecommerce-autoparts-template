@@ -11,7 +11,6 @@ import Chat from '../Chat/Chat';
 
 const Home = () => {
   const products = useSelector((state) => state.products.homePage);
-  const chatOpen = useSelector((state) => state?.chat?.isOpen);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,15 +39,15 @@ const Home = () => {
         <div className="home__productsNearby">
           <h2>Items near you:</h2>
           {/* {render products based on location} */}
-          <div className="home__row">
+          <div className="home__products">
             {products.length > 0 ? products.map((product) => (
-              <div style={{ width: '25%', margin: '0rem 1rem'}}>
+              <div style={{ width: '450px'}}>
                 <Product id={product.id} title={product.title} price={product.price} image={product.image} location={product.location} condition={product.condition} /> 
               </div>)): fallback}
           </div>
         </div>
       </div>
-      <Chat isOpen={chatOpen} setIsOpen={() => console.log('click')} />
+      <Chat />
     </div>
   );
 };

@@ -1,11 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 const Product = (props) => {
-  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const {
     id,
@@ -18,9 +19,6 @@ const Product = (props) => {
 
   const addToCart = () => {
     // dispatch item to the data layer
-    // eslint-disable-next-line no-console
-    console.log(cart);
-
     dispatch({
       type: 'ADD_TO_CART',
       item: {
@@ -32,6 +30,11 @@ const Product = (props) => {
         condition,
       },
     });
+  };
+
+  const messageSeller = () => {
+    const chatSessionID = uuidv4();
+    console.log(chatSessionID);
   };
 
   return (
@@ -52,6 +55,7 @@ const Product = (props) => {
         <img src={image} alt="" />
       </div>
       <button type="button" onClick={addToCart}>Add to Cart</button>
+      <button type="button" onClick={messageSeller}>Message Seller</button>
     </div>
   );
 };
