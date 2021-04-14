@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { models: { order, orderDetail } } = require('../models/index.js');
 
 async function getOrders(req, res, next) {

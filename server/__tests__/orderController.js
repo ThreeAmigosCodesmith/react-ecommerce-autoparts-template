@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const request = require('supertest');
 const faker = require('faker');
 const { v4: uuidv4 } = require('uuid');
