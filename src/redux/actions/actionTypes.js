@@ -8,7 +8,7 @@ export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
 export const DELETE_USER = 'DELETE_USER';
 // IMAGES
-export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
+export const DELETE_IMAGE_URL = 'DELETE_IMAGE_URL';
 export const ADD_IMAGE_URL = 'ADD_IMAGE_URL';
 export const RESPONSE = 'RESPONSE';
 export const SET_PRODUCT_INFO = 'SET_PRODUCT_INFO';

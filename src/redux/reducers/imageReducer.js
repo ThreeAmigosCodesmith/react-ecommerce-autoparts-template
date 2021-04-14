@@ -1,32 +1,25 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable no-underscore-dangle */
 import * as types from '../actions/actionTypes';
 
 export const InitialState = {
-  msg: '',
-  type: '',
   imageUrls: [],
 };
 
 const imageReducer = (state = InitialState, action) => {
   switch (action.type) {
     case types.ADD_IMAGE_URL:
-      // eslint-disable-next-line no-console
-      console.log(action.url);
       return {
-        ...state,
         ...{ imageUrls: [...state.imageUrls, action.url] },
       };
-
-    case types.RESPONSE:
+    case types.DELETE_IMAGE_URL:
+      const copy = state.imageUrls.slice();
+      copy.splice(action.index, 1);
+      // eslint-disable-next-line no-console
+      console.log(state.imageUrls);
       return {
-        ...state,
-        ...{ msg: action.data._res, type: action.data._type },
+        ...{ imageUrls: [...copy] },
       };
-    // case types.UPLOAD_IMAGE:
-    //   return {
-    //     ...state,
-    //     ...{ }
-    //   }
     default:
       return state;
   }

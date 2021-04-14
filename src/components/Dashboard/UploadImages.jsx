@@ -44,9 +44,7 @@ const UploadImage = () => {
       <h3 id="form__container">Pictures:</h3>
       <Input type="file" inputProps={{ multiple: true }} onChange={upload} />
       {/* <Button type="button" onClick={() => upload()}>Add image</Button> */}
-      <div className="img_container">
-        <Preview />
-      </div>
+      <Preview />
     </div>
   );
 };
