@@ -7,19 +7,25 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
+    sender: {
+      type: DataTypes.UUID,
+    },
     sessionID: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+      allowNull: false,
     },
     message: {
       type: DataTypes.STRING,
     },
-    fileUpload: {
+    fileUploadLink: {
       type: DataTypes.STRING,
     },
     createdAt: {
       type: DataTypes.DATE,
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
     },
   });
 };

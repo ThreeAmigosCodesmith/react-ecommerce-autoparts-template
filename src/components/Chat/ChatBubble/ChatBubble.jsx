@@ -1,44 +1,31 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const makeStyles = (chat) => (
+const makeStyles = (chat, userID) => (
   {
     messageStyle: {
-      background: chat.sender === 'Ashley Pean' ? 'lightgreen' : 'lightblue',
+      background: chat.id === userID ? 'lightgreen' : 'lightblue',
       borderRadius: '8px',
       color: 'black',
       padding: '.6rem',
-    },
-    containerStyle: {
+      alignSelf: chat.id === userID ? 'flex-end' : 'flex-start',
       display: 'flex',
       flexDirection: 'column',
-      alignSelf: chat.sender === 'Ashley Pean' ? 'flex-end' : 'flex-start',
       width: '60%',
-    },
-    senderStyles: {
-      fontWeight: 'bold',
-    },
-    timeStyles: {
-      color: 'gray',
     },
   }
 );
 
 const ChatBubble = ({ chat }) => {
-  const styles = makeStyles(chat);
+  const userID = useSelector((state) => state?.auth?.user?.id);
+  const styles = makeStyles(chat, userID);
 
   return (
-    <div style={styles.containerStyle}>
-      <span style={styles.senderStyles}>{chat.sender}</span>
-      <div style={styles.messageStyle}>
-        {chat.message}
-      </div>
-      <span style={styles.timeStyles}>
-        {chat.timestamp.toLocaleTimeString('en-US')}
-      </span>
+    <div style={styles.messageStyle}>
+      {chat.message}
     </div>
-
   );
 };
 

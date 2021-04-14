@@ -8,33 +8,52 @@ const styles = {
     width: '93%',
     border: 'none',
     height: '100%',
-    background: 'lightblue',
+    background: 'white',
     outline: 'none',
     fontSize: '1.5rem',
   },
   containerStyles: {
     width: '100%',
     margin: 0,
-    padding: 0,
+    padding: '10px',
+    boxSizing: 'border-box',
+    background: 'white',
     display: 'flex',
-    border: '3px solid darkgray',
+    borderBottomRightRadius: '10px',
+    borderBottomLeftRadius: '10px',
+    borderTop: '1px solid #4e8cff',
   },
   buttonStyles: {
     border: 'none',
     verticalAlign: 'center',
     width: '7%',
+    outline: 'none',
+    background: 'white',
   },
 };
 
-const ChatInput = ({ sendMessage }) => {
+const ChatInput = ({ sendMessage, handleTyping }) => {
   const inputRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputRef.current.value) {
+      sendMessage(inputRef.current.value);
+      inputRef.current.value = '';
+    }
+  };
 
   return (
     <form
       style={styles.containerStyles}
-      onSubmit={(e) => sendMessage(e, inputRef.current.value)}
+      onSubmit={handleSubmit}
     >
-      <input ref={inputRef} style={styles.inputStyles} />
+      <input
+        ref={inputRef}
+        style={styles.inputStyles}
+        onKeyDown={() => handleTyping(true)}
+        onKeyUp={() => handleTyping(false)}
+      />
       <button type="submit" style={styles.buttonStyles}>
         <SendIcon color="primary" />
       </button>

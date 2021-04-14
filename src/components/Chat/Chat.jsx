@@ -1,172 +1,190 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-boolean-value */
 import React, { useState, useRef, useEffect } from 'react';
-import socketClient from 'socket.io-client';
+import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import {
-  Container,
-} from '@material-ui/core';
+import ChatIcon from '@material-ui/icons/Chat';
+import { socket } from './socket';
 import ChatBubble from './ChatBubble/ChatBubble';
 import ChatInput from './ChatInput/ChatInput';
+import * as types from '../../redux/actions/actionTypes';
+import './Chat.css';
 
 const dummyMessages = [
   {
-    id: 1,
+    userId: 1,
     message: 'Hi. How are you?',
     sender: 'Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 1,
+    userId: 1,
     message: 'Hi. How are you?',
     sender: 'Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 1,
+    userId: 1,
     message: 'Hi. How are you?',
     sender: 'Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 1,
+    userId: 1,
     message: 'Hi. How are you?',
     sender: 'Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 1,
+    userId: 1,
     message: 'Hi. How are you?',
     sender: 'Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 1,
+    userId: 1,
     message: 'Hi. How are you?',
     sender: 'Ashley Pean',
-    timestamp: new Date(),
   },
   {
-    id: 2,
+    userId: 2,
     message: 'I\'m good. how are you?',
     sender: 'Not Ashley Pean',
-    timestamp: new Date(),
   },
 ];
 
-const messagesContainer = {
-  border: '3px solid darkgray',
-  width: '101.5%',
-  borderBottom: 'none',
-  boxSizing: 'border-box',
-  padding: '1rem .5rem',
-  height: '80%',
-  overflowY: 'scroll',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '1rem',
-};
-
-const mainContainer = {
-  position: 'relative',
-  height: '600px',
-  width: '400px',
+const iconStyles = {
+  alignSelf: 'flex-end',
+  margin: '1rem 0',
+  background: 'white',
+  padding: '.8rem',
+  borderRadius: '99999px',
+  fill: '#4e8cff',
+  border: '1px id #4e8cff',
+  boxShadow: '1 1 1 1px #4e8cff',
 };
 
 function Chat() {
-  // eslint-disable-next-line no-unused-vars
   const [messages, changeMessages] = useState(dummyMessages);
+  const chatUserID = useSelector((state) => state?.auth?.user?.id);
+  const isOpen = useSelector((state) => state?.chat?.isOpen);
+  const dispatch = useDispatch();
   const containerRef = useRef();
-  // eslint-disable-next-line no-unused-vars
-  const socket = socketClient('http://localhost:8080');
-  // socket.on('connection', () => {
-  //   console.log('conntect to the backen');
-  // });
+  const { localStorage } = window;
 
-  // Scroll to end of chat on page load
+  // Scroll to end of chat on page load and new message
   useEffect(() => {
-    const msgContainer = containerRef.current;
-    msgContainer.scrollTop = msgContainer.scrollHeight - msgContainer.clientHeight;
+    if (isOpen) {
+      const msgContainer = containerRef.current;
+      msgContainer.scrollTop = msgContainer.scrollHeight - msgContainer.clientHeight;
+    }
   }, [messages]);
 
-  const sendMessage = (e, message) => {
-    e.preventDefault();
-    console.log('sending');
+  // Enable socket connection and create client event listeners
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (isOpen) {
+      // Update messages in state when a new message is received
+      socket.on('newMessage', (newMessage) => {
+        changeMessages((prev) => [...prev, newMessage]);
+      });
+
+      return socket.emit('end');
+    }
+  }, []);
+
+  // Send message to server
+  const sendMessage = (messageText) => {
+    if (!messageText.trim()) return;
+
     const newMessage = {
-      id: 1,
-      message,
-      sender: 'Ashley Pean',
-      timestamp: new Date(),
+      id: chatUserID,
+      message: messageText,
+      timestamp: new Date().toLocaleTimeString(),
     };
-    changeMessages([...messages, newMessage]);
+
+    localStorage.setItem('latestChat', JSON.stringify([...messages, newMessage]));
+
+    socket.emit('send-message', newMessage);
   };
 
-  return (
-    <div style={mainContainer}>
-      <p>Chat app</p>
-      <div style={messagesContainer} ref={containerRef}>
-        {messages.map((chat) => (
-          <ChatBubble chat={chat} key={uuidv4()} />
-        ))}
+  const handleTypingDialog = (isTyping) => {
+    if (isTyping) socket.emit('user-typing');
+    else socket.emit('user-not-typing');
+  };
+
+  const toggleChatModal = () => {
+    dispatch({ type: types.TOGGLE_CHAT });
+  };
+
+  const chatOpen = (
+    <>
+      <div id="mainChatContainerOpen">
+        <div id="chatContainer">
+          <div id="chatHeader">
+            <p>Junkyard Company</p>
+            <button id="exit-button" type="button" onClick={toggleChatModal}>X</button>
+          </div>
+          <div id="messagesContainer" ref={containerRef}>
+            {messages ? messages.map((chat) => (
+              <ChatBubble chat={chat} key={uuidv4()} />
+            ))
+              : null}
+          </div>
+          <ChatInput sendMessage={sendMessage} handleTyping={handleTypingDialog} />
+        </div>
+        <ChatIcon color="primary" fontSize="large" style={iconStyles} onClick={toggleChatModal} />
       </div>
-      <ChatInput sendMessage={sendMessage} />
+    </>
+  );
+
+  const chatClosed = (
+    <div id="mainChatContainerClosed">
+      <ChatIcon color="primary" fontSize="large" style={iconStyles} onClick={toggleChatModal} />
     </div>
   );
+
+  return isOpen ? chatOpen : chatClosed;
 }
 
 export default Chat;
