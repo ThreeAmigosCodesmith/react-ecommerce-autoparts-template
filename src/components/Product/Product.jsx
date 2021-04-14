@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Product = (props) => {
-  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const {
     id,
@@ -18,8 +17,6 @@ const Product = (props) => {
 
   const addToCart = () => {
     // dispatch item to the data layer
-    // eslint-disable-next-line no-console
-    console.log(cart);
 
     dispatch({
       type: 'ADD_TO_CART',

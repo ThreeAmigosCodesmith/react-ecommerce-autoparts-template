@@ -4,15 +4,17 @@ import * as types from '../actions/actionTypes';
 export const InitialState = {
   msg: '',
   type: '',
-  aws_s3_image_url: '',
+  imageUrls: [],
 };
 
 const imageReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case types.SET_AWS_S3_IMAGE_URL:
+    case types.ADD_IMAGE_URL:
+      // eslint-disable-next-line no-console
+      console.log(action.url);
       return {
         ...state,
-        ...{ aws_s3_image_url: action.url },
+        ...{ imageUrls: [...state.imageUrls, action.url] },
       };
 
     case types.RESPONSE:
@@ -20,6 +22,11 @@ const imageReducer = (state = InitialState, action) => {
         ...state,
         ...{ msg: action.data._res, type: action.data._type },
       };
+    // case types.UPLOAD_IMAGE:
+    //   return {
+    //     ...state,
+    //     ...{ }
+    //   }
     default:
       return state;
   }

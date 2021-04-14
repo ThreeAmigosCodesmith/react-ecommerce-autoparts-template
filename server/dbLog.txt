@@ -17716,3 +17716,1683 @@ Executing (default): INSERT INTO "customers" ("customerID","firstName","lastName
 
 
 
+Sun Apr 11 2021 08:29:03 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Sun Apr 11 2021 08:29:03 GMT-0700 (Pacific Daylight Time)
+
+Executing (84914a2c-1051-4dd6-aba2-f8a0eac1246e): START TRANSACTION;
+
+
+
+Sun Apr 11 2021 08:29:03 GMT-0700 (Pacific Daylight Time)
+
+Executing (84914a2c-1051-4dd6-aba2-f8a0eac1246e): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Sun Apr 11 2021 08:29:03 GMT-0700 (Pacific Daylight Time)
+
+Executing (84914a2c-1051-4dd6-aba2-f8a0eac1246e): COMMIT;
+
+
+
+Sun Apr 11 2021 08:29:03 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Sun Apr 11 2021 08:29:04 GMT-0700 (Pacific Daylight Time)
+
+Executing (04576930-81b2-4105-996b-6c7baf11e6a8): START TRANSACTION;
+
+
+
+Sun Apr 11 2021 08:29:04 GMT-0700 (Pacific Daylight Time)
+
+Executing (04576930-81b2-4105-996b-6c7baf11e6a8): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Sun Apr 11 2021 08:29:04 GMT-0700 (Pacific Daylight Time)
+
+Executing (04576930-81b2-4105-996b-6c7baf11e6a8): COMMIT;
+
+
+
+Mon Apr 12 2021 16:38:15 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 16:38:15 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 16:38:15 GMT-0700 (Pacific Daylight Time)
+
+Executing (606a6f4a-4976-42d7-983e-7ac7f29c812e): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 16:38:15 GMT-0700 (Pacific Daylight Time)
+
+Executing (82e9d914-a85a-4326-b547-9069afa09083): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 16:38:15 GMT-0700 (Pacific Daylight Time)
+
+Executing (606a6f4a-4976-42d7-983e-7ac7f29c812e): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 16:38:15 GMT-0700 (Pacific Daylight Time)
+
+Executing (82e9d914-a85a-4326-b547-9069afa09083): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 16:38:16 GMT-0700 (Pacific Daylight Time)
+
+Executing (606a6f4a-4976-42d7-983e-7ac7f29c812e): COMMIT;
+
+
+
+Mon Apr 12 2021 16:38:16 GMT-0700 (Pacific Daylight Time)
+
+Executing (82e9d914-a85a-4326-b547-9069afa09083): COMMIT;
+
+
+
+Mon Apr 12 2021 16:51:28 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 16:51:28 GMT-0700 (Pacific Daylight Time)
+
+Executing (64c5f9e9-895e-4c23-a8a3-a2c19ed54c4f): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 16:51:28 GMT-0700 (Pacific Daylight Time)
+
+Executing (64c5f9e9-895e-4c23-a8a3-a2c19ed54c4f): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 16:51:28 GMT-0700 (Pacific Daylight Time)
+
+Executing (64c5f9e9-895e-4c23-a8a3-a2c19ed54c4f): COMMIT;
+
+
+
+Mon Apr 12 2021 16:52:35 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@user.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 16:52:39 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 16:52:39 GMT-0700 (Pacific Daylight Time)
+
+Executing (60b275c9-3db9-41c2-94cf-7f3d528c3f2d): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 16:52:39 GMT-0700 (Pacific Daylight Time)
+
+Executing (60b275c9-3db9-41c2-94cf-7f3d528c3f2d): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 16:52:39 GMT-0700 (Pacific Daylight Time)
+
+Executing (60b275c9-3db9-41c2-94cf-7f3d528c3f2d): COMMIT;
+
+
+
+Mon Apr 12 2021 16:53:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 16:53:19 GMT-0700 (Pacific Daylight Time)
+
+Executing (9169c115-4f2d-4321-9699-70a3a79fc2a9): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 16:53:19 GMT-0700 (Pacific Daylight Time)
+
+Executing (9169c115-4f2d-4321-9699-70a3a79fc2a9): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 16:53:19 GMT-0700 (Pacific Daylight Time)
+
+Executing (9169c115-4f2d-4321-9699-70a3a79fc2a9): COMMIT;
+
+
+
+Mon Apr 12 2021 17:21:09 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 17:21:10 GMT-0700 (Pacific Daylight Time)
+
+Executing (f69f034f-4a55-4528-996c-d1976ac4cbb6): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 17:21:10 GMT-0700 (Pacific Daylight Time)
+
+Executing (f69f034f-4a55-4528-996c-d1976ac4cbb6): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 17:21:10 GMT-0700 (Pacific Daylight Time)
+
+Executing (f69f034f-4a55-4528-996c-d1976ac4cbb6): COMMIT;
+
+
+
+Mon Apr 12 2021 17:23:11 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 17:23:11 GMT-0700 (Pacific Daylight Time)
+
+Executing (cd1c448d-f650-4bd4-bb82-a3661116c7ef): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 17:23:11 GMT-0700 (Pacific Daylight Time)
+
+Executing (cd1c448d-f650-4bd4-bb82-a3661116c7ef): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 17:23:11 GMT-0700 (Pacific Daylight Time)
+
+Executing (cd1c448d-f650-4bd4-bb82-a3661116c7ef): COMMIT;
+
+
+
+Mon Apr 12 2021 17:27:10 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 17:27:10 GMT-0700 (Pacific Daylight Time)
+
+Executing (5e6a6301-e928-4112-b283-64ca77e04057): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 17:27:10 GMT-0700 (Pacific Daylight Time)
+
+Executing (5e6a6301-e928-4112-b283-64ca77e04057): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 17:27:11 GMT-0700 (Pacific Daylight Time)
+
+Executing (5e6a6301-e928-4112-b283-64ca77e04057): COMMIT;
+
+
+
+Mon Apr 12 2021 17:34:40 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 17:34:40 GMT-0700 (Pacific Daylight Time)
+
+Executing (1c84f2d6-db1a-4039-9753-f63cb84c793e): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 17:34:40 GMT-0700 (Pacific Daylight Time)
+
+Executing (1c84f2d6-db1a-4039-9753-f63cb84c793e): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 17:34:40 GMT-0700 (Pacific Daylight Time)
+
+Executing (1c84f2d6-db1a-4039-9753-f63cb84c793e): COMMIT;
+
+
+
+Mon Apr 12 2021 17:37:20 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 17:37:20 GMT-0700 (Pacific Daylight Time)
+
+Executing (51f99db5-b025-4e18-852e-99aab5dcf290): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 17:37:20 GMT-0700 (Pacific Daylight Time)
+
+Executing (51f99db5-b025-4e18-852e-99aab5dcf290): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 17:37:20 GMT-0700 (Pacific Daylight Time)
+
+Executing (51f99db5-b025-4e18-852e-99aab5dcf290): COMMIT;
+
+
+
+Mon Apr 12 2021 17:50:52 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 17:50:52 GMT-0700 (Pacific Daylight Time)
+
+Executing (9bb66b0d-783b-4c69-8796-dc88df39884d): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 17:50:52 GMT-0700 (Pacific Daylight Time)
+
+Executing (9bb66b0d-783b-4c69-8796-dc88df39884d): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 17:50:53 GMT-0700 (Pacific Daylight Time)
+
+Executing (9bb66b0d-783b-4c69-8796-dc88df39884d): COMMIT;
+
+
+
+Mon Apr 12 2021 18:03:50 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 18:03:51 GMT-0700 (Pacific Daylight Time)
+
+Executing (6ac6642e-84fb-46f9-8062-f40a82405d78): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 18:03:51 GMT-0700 (Pacific Daylight Time)
+
+Executing (6ac6642e-84fb-46f9-8062-f40a82405d78): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 18:03:51 GMT-0700 (Pacific Daylight Time)
+
+Executing (6ac6642e-84fb-46f9-8062-f40a82405d78): COMMIT;
+
+
+
+Mon Apr 12 2021 18:33:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 18:33:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (66637235-d38b-4969-856f-b736bdda56bb): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 18:33:49 GMT-0700 (Pacific Daylight Time)
+
+Executing (66637235-d38b-4969-856f-b736bdda56bb): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 18:33:49 GMT-0700 (Pacific Daylight Time)
+
+Executing (66637235-d38b-4969-856f-b736bdda56bb): COMMIT;
+
+
+
+Mon Apr 12 2021 18:43:53 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 18:43:53 GMT-0700 (Pacific Daylight Time)
+
+Executing (266bc6ca-e028-4040-8c50-fb36cef575fc): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 18:43:53 GMT-0700 (Pacific Daylight Time)
+
+Executing (266bc6ca-e028-4040-8c50-fb36cef575fc): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 18:43:53 GMT-0700 (Pacific Daylight Time)
+
+Executing (266bc6ca-e028-4040-8c50-fb36cef575fc): COMMIT;
+
+
+
+Mon Apr 12 2021 18:47:19 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 18:47:20 GMT-0700 (Pacific Daylight Time)
+
+Executing (14778ef1-0504-4837-8167-dd05ab5f8e26): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 18:47:20 GMT-0700 (Pacific Daylight Time)
+
+Executing (14778ef1-0504-4837-8167-dd05ab5f8e26): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 18:47:20 GMT-0700 (Pacific Daylight Time)
+
+Executing (14778ef1-0504-4837-8167-dd05ab5f8e26): COMMIT;
+
+
+
+Mon Apr 12 2021 19:14:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 19:14:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (f399015b-329b-4834-afe2-06683b724a5a): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 19:14:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (f399015b-329b-4834-afe2-06683b724a5a): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 19:14:13 GMT-0700 (Pacific Daylight Time)
+
+Executing (f399015b-329b-4834-afe2-06683b724a5a): COMMIT;
+
+
+
+Mon Apr 12 2021 19:15:46 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 19:15:46 GMT-0700 (Pacific Daylight Time)
+
+Executing (237dc717-1dfe-403e-9558-28a32da1d407): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 19:15:46 GMT-0700 (Pacific Daylight Time)
+
+Executing (237dc717-1dfe-403e-9558-28a32da1d407): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 19:15:46 GMT-0700 (Pacific Daylight Time)
+
+Executing (237dc717-1dfe-403e-9558-28a32da1d407): COMMIT;
+
+
+
+Mon Apr 12 2021 19:18:27 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 19:18:27 GMT-0700 (Pacific Daylight Time)
+
+Executing (67d273eb-9d29-43b0-b3dc-4275edf3bc07): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 19:18:27 GMT-0700 (Pacific Daylight Time)
+
+Executing (67d273eb-9d29-43b0-b3dc-4275edf3bc07): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 19:18:27 GMT-0700 (Pacific Daylight Time)
+
+Executing (67d273eb-9d29-43b0-b3dc-4275edf3bc07): COMMIT;
+
+
+
+Mon Apr 12 2021 19:20:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 19:20:57 GMT-0700 (Pacific Daylight Time)
+
+Executing (ee43b795-d199-4d49-877d-b0cdb65a4a1f): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 19:20:57 GMT-0700 (Pacific Daylight Time)
+
+Executing (ee43b795-d199-4d49-877d-b0cdb65a4a1f): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 19:20:57 GMT-0700 (Pacific Daylight Time)
+
+Executing (ee43b795-d199-4d49-877d-b0cdb65a4a1f): COMMIT;
+
+
+
+Mon Apr 12 2021 19:33:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 19:33:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (007f778f-ccae-4bce-b5b3-51c9aba6f1e0): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 19:33:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (007f778f-ccae-4bce-b5b3-51c9aba6f1e0): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 19:33:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (007f778f-ccae-4bce-b5b3-51c9aba6f1e0): COMMIT;
+
+
+
+Mon Apr 12 2021 19:35:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 19:35:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (68b181cb-8b48-4894-9bfb-8b723833069f): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 19:35:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (68b181cb-8b48-4894-9bfb-8b723833069f): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 19:35:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (68b181cb-8b48-4894-9bfb-8b723833069f): COMMIT;
+
+
+
+Mon Apr 12 2021 19:43:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 19:43:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (3c509ab8-6435-4f86-bf5e-c64ad5324fe3): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 19:43:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (3c509ab8-6435-4f86-bf5e-c64ad5324fe3): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 19:43:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (3c509ab8-6435-4f86-bf5e-c64ad5324fe3): COMMIT;
+
+
+
+Mon Apr 12 2021 19:47:40 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 19:47:41 GMT-0700 (Pacific Daylight Time)
+
+Executing (b3ae3a38-2848-4fbe-b143-bcd97e16a22d): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 19:47:41 GMT-0700 (Pacific Daylight Time)
+
+Executing (b3ae3a38-2848-4fbe-b143-bcd97e16a22d): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 19:47:41 GMT-0700 (Pacific Daylight Time)
+
+Executing (b3ae3a38-2848-4fbe-b143-bcd97e16a22d): COMMIT;
+
+
+
+Mon Apr 12 2021 21:23:59 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 21:23:59 GMT-0700 (Pacific Daylight Time)
+
+Executing (24fcf9fa-0910-4014-b90b-eaf171214d87): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 21:23:59 GMT-0700 (Pacific Daylight Time)
+
+Executing (24fcf9fa-0910-4014-b90b-eaf171214d87): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 21:24:00 GMT-0700 (Pacific Daylight Time)
+
+Executing (24fcf9fa-0910-4014-b90b-eaf171214d87): COMMIT;
+
+
+
+Mon Apr 12 2021 21:26:39 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 21:26:39 GMT-0700 (Pacific Daylight Time)
+
+Executing (3ec1910f-f846-4dfc-8bd0-228002148167): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 21:26:39 GMT-0700 (Pacific Daylight Time)
+
+Executing (3ec1910f-f846-4dfc-8bd0-228002148167): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 21:26:39 GMT-0700 (Pacific Daylight Time)
+
+Executing (3ec1910f-f846-4dfc-8bd0-228002148167): COMMIT;
+
+
+
+Mon Apr 12 2021 21:29:46 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 21:29:47 GMT-0700 (Pacific Daylight Time)
+
+Executing (f964dc10-0939-4eca-a46c-f54e178d93b6): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 21:29:47 GMT-0700 (Pacific Daylight Time)
+
+Executing (f964dc10-0939-4eca-a46c-f54e178d93b6): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 21:29:47 GMT-0700 (Pacific Daylight Time)
+
+Executing (f964dc10-0939-4eca-a46c-f54e178d93b6): COMMIT;
+
+
+
+Mon Apr 12 2021 21:30:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 21:30:49 GMT-0700 (Pacific Daylight Time)
+
+Executing (460b3556-85e3-4b4b-b010-e401460965ef): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 21:30:49 GMT-0700 (Pacific Daylight Time)
+
+Executing (460b3556-85e3-4b4b-b010-e401460965ef): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 21:30:49 GMT-0700 (Pacific Daylight Time)
+
+Executing (460b3556-85e3-4b4b-b010-e401460965ef): COMMIT;
+
+
+
+Mon Apr 12 2021 21:31:38 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 21:31:38 GMT-0700 (Pacific Daylight Time)
+
+Executing (10478b50-6279-4876-b0cb-68d21735729d): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 21:31:38 GMT-0700 (Pacific Daylight Time)
+
+Executing (10478b50-6279-4876-b0cb-68d21735729d): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 21:31:38 GMT-0700 (Pacific Daylight Time)
+
+Executing (10478b50-6279-4876-b0cb-68d21735729d): COMMIT;
+
+
+
+Mon Apr 12 2021 21:44:36 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 21:44:36 GMT-0700 (Pacific Daylight Time)
+
+Executing (2c093d75-02ad-43af-b66b-ae8a3bd0f08d): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 21:44:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (2c093d75-02ad-43af-b66b-ae8a3bd0f08d): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 21:44:37 GMT-0700 (Pacific Daylight Time)
+
+Executing (2c093d75-02ad-43af-b66b-ae8a3bd0f08d): COMMIT;
+
+
+
+Mon Apr 12 2021 21:50:34 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 21:50:34 GMT-0700 (Pacific Daylight Time)
+
+Executing (cd26cc4f-6ecd-44bc-bc36-3e4e1850928f): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 21:50:34 GMT-0700 (Pacific Daylight Time)
+
+Executing (cd26cc4f-6ecd-44bc-bc36-3e4e1850928f): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 21:50:34 GMT-0700 (Pacific Daylight Time)
+
+Executing (cd26cc4f-6ecd-44bc-bc36-3e4e1850928f): COMMIT;
+
+
+
+Mon Apr 12 2021 22:44:05 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 22:44:05 GMT-0700 (Pacific Daylight Time)
+
+Executing (0d4135e8-8b22-4eb0-9edc-17fe38d75c95): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 22:44:05 GMT-0700 (Pacific Daylight Time)
+
+Executing (0d4135e8-8b22-4eb0-9edc-17fe38d75c95): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 22:44:06 GMT-0700 (Pacific Daylight Time)
+
+Executing (0d4135e8-8b22-4eb0-9edc-17fe38d75c95): COMMIT;
+
+
+
+Mon Apr 12 2021 23:55:15 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Mon Apr 12 2021 23:55:15 GMT-0700 (Pacific Daylight Time)
+
+Executing (8f35fb51-63ad-4279-99c1-8630dca9b1d5): START TRANSACTION;
+
+
+
+Mon Apr 12 2021 23:55:16 GMT-0700 (Pacific Daylight Time)
+
+Executing (8f35fb51-63ad-4279-99c1-8630dca9b1d5): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Mon Apr 12 2021 23:55:16 GMT-0700 (Pacific Daylight Time)
+
+Executing (8f35fb51-63ad-4279-99c1-8630dca9b1d5): COMMIT;
+
+
+
+Tue Apr 13 2021 13:55:28 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 13:55:28 GMT-0700 (Pacific Daylight Time)
+
+Executing (ddcb99f5-f01d-44a6-9bd9-ecdf8b8651fc): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 13:55:29 GMT-0700 (Pacific Daylight Time)
+
+Executing (ddcb99f5-f01d-44a6-9bd9-ecdf8b8651fc): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 13:55:29 GMT-0700 (Pacific Daylight Time)
+
+Executing (ddcb99f5-f01d-44a6-9bd9-ecdf8b8651fc): COMMIT;
+
+
+
+Tue Apr 13 2021 14:29:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:29:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (6a36cb15-9bab-485c-a5b5-99dd01949747): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 14:29:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (6a36cb15-9bab-485c-a5b5-99dd01949747): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 14:29:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (6a36cb15-9bab-485c-a5b5-99dd01949747): COMMIT;
+
+
+
+Tue Apr 13 2021 14:34:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:34:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (9ad1df44-0e9f-4629-88ce-2607fbaebc72): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 14:34:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (9ad1df44-0e9f-4629-88ce-2607fbaebc72): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 14:34:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (9ad1df44-0e9f-4629-88ce-2607fbaebc72): COMMIT;
+
+
+
+Tue Apr 13 2021 14:46:01 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:46:02 GMT-0700 (Pacific Daylight Time)
+
+Executing (e351ba10-d37e-4a35-b97c-de5cdfb13bad): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 14:46:02 GMT-0700 (Pacific Daylight Time)
+
+Executing (e351ba10-d37e-4a35-b97c-de5cdfb13bad): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 14:46:02 GMT-0700 (Pacific Daylight Time)
+
+Executing (e351ba10-d37e-4a35-b97c-de5cdfb13bad): COMMIT;
+
+
+
+Tue Apr 13 2021 14:49:36 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:49:36 GMT-0700 (Pacific Daylight Time)
+
+Executing (e8cdabc1-1940-495c-a80e-46ed192e3b35): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 14:49:36 GMT-0700 (Pacific Daylight Time)
+
+Executing (e8cdabc1-1940-495c-a80e-46ed192e3b35): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 14:49:36 GMT-0700 (Pacific Daylight Time)
+
+Executing (e8cdabc1-1940-495c-a80e-46ed192e3b35): COMMIT;
+
+
+
+Tue Apr 13 2021 14:51:51 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@user.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:52:01 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@user.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:52:13 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@user.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:52:17 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:52:17 GMT-0700 (Pacific Daylight Time)
+
+Executing (3ecb9350-5d62-41be-9e1a-eed20f95ab1c): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 14:52:17 GMT-0700 (Pacific Daylight Time)
+
+Executing (3ecb9350-5d62-41be-9e1a-eed20f95ab1c): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 14:52:17 GMT-0700 (Pacific Daylight Time)
+
+Executing (3ecb9350-5d62-41be-9e1a-eed20f95ab1c): COMMIT;
+
+
+
+Tue Apr 13 2021 14:57:49 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 14:57:50 GMT-0700 (Pacific Daylight Time)
+
+Executing (f4f881aa-9ea4-44b0-b387-446b25921b13): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 14:57:50 GMT-0700 (Pacific Daylight Time)
+
+Executing (f4f881aa-9ea4-44b0-b387-446b25921b13): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 14:57:50 GMT-0700 (Pacific Daylight Time)
+
+Executing (f4f881aa-9ea4-44b0-b387-446b25921b13): COMMIT;
+
+
+
+Tue Apr 13 2021 15:15:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 15:15:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (8bb66433-91fd-4e06-97a1-57d3c73a7a4d): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 15:15:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (8bb66433-91fd-4e06-97a1-57d3c73a7a4d): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 15:15:56 GMT-0700 (Pacific Daylight Time)
+
+Executing (8bb66433-91fd-4e06-97a1-57d3c73a7a4d): COMMIT;
+
+
+
+Tue Apr 13 2021 15:25:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 15:25:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (f755afc1-87cd-4cd7-8550-92a0d3e65390): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 15:25:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (f755afc1-87cd-4cd7-8550-92a0d3e65390): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 15:25:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (f755afc1-87cd-4cd7-8550-92a0d3e65390): COMMIT;
+
+
+
+Tue Apr 13 2021 16:31:22 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 16:31:22 GMT-0700 (Pacific Daylight Time)
+
+Executing (884fbca3-1ca5-4a12-8c87-552de263fa36): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 16:31:22 GMT-0700 (Pacific Daylight Time)
+
+Executing (884fbca3-1ca5-4a12-8c87-552de263fa36): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 16:31:22 GMT-0700 (Pacific Daylight Time)
+
+Executing (884fbca3-1ca5-4a12-8c87-552de263fa36): COMMIT;
+
+
+
+Tue Apr 13 2021 17:02:43 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:02:43 GMT-0700 (Pacific Daylight Time)
+
+Executing (16162490-b5b4-42ff-b3f9-ea99232df879): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:02:43 GMT-0700 (Pacific Daylight Time)
+
+Executing (16162490-b5b4-42ff-b3f9-ea99232df879): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:02:43 GMT-0700 (Pacific Daylight Time)
+
+Executing (16162490-b5b4-42ff-b3f9-ea99232df879): COMMIT;
+
+
+
+Tue Apr 13 2021 17:05:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:05:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (50567104-0335-4954-aa21-f602a8177848): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:05:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (50567104-0335-4954-aa21-f602a8177848): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:05:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (50567104-0335-4954-aa21-f602a8177848): COMMIT;
+
+
+
+Tue Apr 13 2021 17:09:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:09:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (ec8707c2-db41-4e35-b196-3510bb0e90b8): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:09:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (ec8707c2-db41-4e35-b196-3510bb0e90b8): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:09:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (ec8707c2-db41-4e35-b196-3510bb0e90b8): COMMIT;
+
+
+
+Tue Apr 13 2021 17:24:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:24:12 GMT-0700 (Pacific Daylight Time)
+
+Executing (46d5f6da-5d29-440d-b32c-320c4225070c): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:24:13 GMT-0700 (Pacific Daylight Time)
+
+Executing (46d5f6da-5d29-440d-b32c-320c4225070c): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:24:13 GMT-0700 (Pacific Daylight Time)
+
+Executing (46d5f6da-5d29-440d-b32c-320c4225070c): COMMIT;
+
+
+
+Tue Apr 13 2021 17:41:07 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:41:08 GMT-0700 (Pacific Daylight Time)
+
+Executing (8e388a36-aebe-4542-9b4a-c152716ddc13): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:41:08 GMT-0700 (Pacific Daylight Time)
+
+Executing (8e388a36-aebe-4542-9b4a-c152716ddc13): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:41:08 GMT-0700 (Pacific Daylight Time)
+
+Executing (8e388a36-aebe-4542-9b4a-c152716ddc13): COMMIT;
+
+
+
+Tue Apr 13 2021 17:42:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:42:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (76cb3132-d865-4d8b-b5c1-0f9a1687db3b): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:42:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (76cb3132-d865-4d8b-b5c1-0f9a1687db3b): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:42:48 GMT-0700 (Pacific Daylight Time)
+
+Executing (76cb3132-d865-4d8b-b5c1-0f9a1687db3b): COMMIT;
+
+
+
+Tue Apr 13 2021 17:45:23 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:45:23 GMT-0700 (Pacific Daylight Time)
+
+Executing (791f7cd5-7430-4d5a-a1ef-6deb08b5cb40): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:45:23 GMT-0700 (Pacific Daylight Time)
+
+Executing (791f7cd5-7430-4d5a-a1ef-6deb08b5cb40): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:45:23 GMT-0700 (Pacific Daylight Time)
+
+Executing (791f7cd5-7430-4d5a-a1ef-6deb08b5cb40): COMMIT;
+
+
+
+Tue Apr 13 2021 17:47:35 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:47:35 GMT-0700 (Pacific Daylight Time)
+
+Executing (2c914bac-01ab-4863-8bd3-b3bdcf86b488): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:47:35 GMT-0700 (Pacific Daylight Time)
+
+Executing (2c914bac-01ab-4863-8bd3-b3bdcf86b488): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:47:35 GMT-0700 (Pacific Daylight Time)
+
+Executing (2c914bac-01ab-4863-8bd3-b3bdcf86b488): COMMIT;
+
+
+
+Tue Apr 13 2021 17:55:26 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:55:26 GMT-0700 (Pacific Daylight Time)
+
+Executing (9bed1fbd-9909-41a6-ae60-6d2ea94383af): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:55:26 GMT-0700 (Pacific Daylight Time)
+
+Executing (9bed1fbd-9909-41a6-ae60-6d2ea94383af): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:55:26 GMT-0700 (Pacific Daylight Time)
+
+Executing (9bed1fbd-9909-41a6-ae60-6d2ea94383af): COMMIT;
+
+
+
+Tue Apr 13 2021 17:56:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 17:56:45 GMT-0700 (Pacific Daylight Time)
+
+Executing (f0c367b1-a946-413a-8490-c5ab44649917): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 17:56:45 GMT-0700 (Pacific Daylight Time)
+
+Executing (f0c367b1-a946-413a-8490-c5ab44649917): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 17:56:45 GMT-0700 (Pacific Daylight Time)
+
+Executing (f0c367b1-a946-413a-8490-c5ab44649917): COMMIT;
+
+
+
+Tue Apr 13 2021 18:01:05 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:01:06 GMT-0700 (Pacific Daylight Time)
+
+Executing (4291fa5b-8b4c-4a14-bbc1-8a3ec2e85e3b): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:01:06 GMT-0700 (Pacific Daylight Time)
+
+Executing (4291fa5b-8b4c-4a14-bbc1-8a3ec2e85e3b): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:01:06 GMT-0700 (Pacific Daylight Time)
+
+Executing (4291fa5b-8b4c-4a14-bbc1-8a3ec2e85e3b): COMMIT;
+
+
+
+Tue Apr 13 2021 18:27:43 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:27:43 GMT-0700 (Pacific Daylight Time)
+
+Executing (789ab12f-fd55-4e10-bea1-92863c0b7a8e): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:27:43 GMT-0700 (Pacific Daylight Time)
+
+Executing (789ab12f-fd55-4e10-bea1-92863c0b7a8e): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:27:43 GMT-0700 (Pacific Daylight Time)
+
+Executing (789ab12f-fd55-4e10-bea1-92863c0b7a8e): COMMIT;
+
+
+
+Tue Apr 13 2021 18:42:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:42:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (d2057d4f-0cdf-4ac7-8d6c-c62c814eeacf): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:42:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (d2057d4f-0cdf-4ac7-8d6c-c62c814eeacf): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:42:19 GMT-0700 (Pacific Daylight Time)
+
+Executing (d2057d4f-0cdf-4ac7-8d6c-c62c814eeacf): COMMIT;
+
+
+
+Tue Apr 13 2021 18:45:21 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:45:21 GMT-0700 (Pacific Daylight Time)
+
+Executing (88a0a758-9ec5-47f4-bc20-49a45a34b5c8): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:45:21 GMT-0700 (Pacific Daylight Time)
+
+Executing (88a0a758-9ec5-47f4-bc20-49a45a34b5c8): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:45:21 GMT-0700 (Pacific Daylight Time)
+
+Executing (88a0a758-9ec5-47f4-bc20-49a45a34b5c8): COMMIT;
+
+
+
+Tue Apr 13 2021 18:46:07 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:46:08 GMT-0700 (Pacific Daylight Time)
+
+Executing (ca1390af-a130-436f-a763-55530e72f433): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:46:08 GMT-0700 (Pacific Daylight Time)
+
+Executing (ca1390af-a130-436f-a763-55530e72f433): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:46:08 GMT-0700 (Pacific Daylight Time)
+
+Executing (ca1390af-a130-436f-a763-55530e72f433): COMMIT;
+
+
+
+Tue Apr 13 2021 18:48:08 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:48:08 GMT-0700 (Pacific Daylight Time)
+
+Executing (11f27d25-49e2-4a74-b86a-eb1881135b06): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:48:09 GMT-0700 (Pacific Daylight Time)
+
+Executing (11f27d25-49e2-4a74-b86a-eb1881135b06): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:48:09 GMT-0700 (Pacific Daylight Time)
+
+Executing (11f27d25-49e2-4a74-b86a-eb1881135b06): COMMIT;
+
+
+
+Tue Apr 13 2021 18:49:00 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:49:00 GMT-0700 (Pacific Daylight Time)
+
+Executing (84c9619e-5334-493c-a03e-95b7419ae54d): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:49:00 GMT-0700 (Pacific Daylight Time)
+
+Executing (84c9619e-5334-493c-a03e-95b7419ae54d): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:49:00 GMT-0700 (Pacific Daylight Time)
+
+Executing (84c9619e-5334-493c-a03e-95b7419ae54d): COMMIT;
+
+
+
+Tue Apr 13 2021 18:50:55 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:50:55 GMT-0700 (Pacific Daylight Time)
+
+Executing (3a5ec676-5bc8-4ff6-88c6-9a46042a3645): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:50:55 GMT-0700 (Pacific Daylight Time)
+
+Executing (3a5ec676-5bc8-4ff6-88c6-9a46042a3645): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:50:55 GMT-0700 (Pacific Daylight Time)
+
+Executing (3a5ec676-5bc8-4ff6-88c6-9a46042a3645): COMMIT;
+
+
+
+Tue Apr 13 2021 18:51:33 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:51:33 GMT-0700 (Pacific Daylight Time)
+
+Executing (17685750-56c1-4053-a140-8ebdfe11e81b): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:51:33 GMT-0700 (Pacific Daylight Time)
+
+Executing (17685750-56c1-4053-a140-8ebdfe11e81b): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:51:33 GMT-0700 (Pacific Daylight Time)
+
+Executing (17685750-56c1-4053-a140-8ebdfe11e81b): COMMIT;
+
+
+
+Tue Apr 13 2021 18:55:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 18:55:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (ef554b54-bee6-4e8e-8d31-f16c251bccf6): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 18:55:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (ef554b54-bee6-4e8e-8d31-f16c251bccf6): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 18:55:44 GMT-0700 (Pacific Daylight Time)
+
+Executing (ef554b54-bee6-4e8e-8d31-f16c251bccf6): COMMIT;
+
+
+
+Tue Apr 13 2021 19:00:18 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 19:00:19 GMT-0700 (Pacific Daylight Time)
+
+Executing (ac0d5c83-2379-4893-b9ca-d6bdf1c6a54d): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 19:00:19 GMT-0700 (Pacific Daylight Time)
+
+Executing (ac0d5c83-2379-4893-b9ca-d6bdf1c6a54d): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 19:00:19 GMT-0700 (Pacific Daylight Time)
+
+Executing (ac0d5c83-2379-4893-b9ca-d6bdf1c6a54d): COMMIT;
+
+
+
+Tue Apr 13 2021 19:13:23 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 19:13:23 GMT-0700 (Pacific Daylight Time)
+
+Executing (ad976b6b-74da-4fc2-a0e7-79fab35d9ff3): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 19:13:23 GMT-0700 (Pacific Daylight Time)
+
+Executing (ad976b6b-74da-4fc2-a0e7-79fab35d9ff3): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 19:13:23 GMT-0700 (Pacific Daylight Time)
+
+Executing (ad976b6b-74da-4fc2-a0e7-79fab35d9ff3): COMMIT;
+
+
+
+Tue Apr 13 2021 19:15:32 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 19:15:32 GMT-0700 (Pacific Daylight Time)
+
+Executing (f9ad3e76-ad7b-4aad-aea8-e900c93cb350): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 19:15:32 GMT-0700 (Pacific Daylight Time)
+
+Executing (f9ad3e76-ad7b-4aad-aea8-e900c93cb350): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 19:15:32 GMT-0700 (Pacific Daylight Time)
+
+Executing (f9ad3e76-ad7b-4aad-aea8-e900c93cb350): COMMIT;
+
+
+
+Tue Apr 13 2021 19:20:51 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 19:20:51 GMT-0700 (Pacific Daylight Time)
+
+Executing (a753aa2c-b7df-43af-b85f-5ac62d23ee99): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 19:20:51 GMT-0700 (Pacific Daylight Time)
+
+Executing (a753aa2c-b7df-43af-b85f-5ac62d23ee99): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 19:20:52 GMT-0700 (Pacific Daylight Time)
+
+Executing (a753aa2c-b7df-43af-b85f-5ac62d23ee99): COMMIT;
+
+
+
+Tue Apr 13 2021 19:28:14 GMT-0700 (Pacific Daylight Time)
+
+Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "address2", "city", "state", "postalCode", "country", "phone", "email", "password", "billingAddress", "billingCity", "billingRegion", "billingPostalCode", "billingCountry", "shipAddress", "shipCity", "shipRegion", "shipPostalCode", "shipCountry", "createdAt", "updatedAt" FROM "customers" AS "customer" WHERE "customer"."email" = 'test@test.com' LIMIT 1;
+
+
+
+Tue Apr 13 2021 19:28:14 GMT-0700 (Pacific Daylight Time)
+
+Executing (1e7c00d8-e5f3-4d9a-8c6c-3534fbedade2): START TRANSACTION;
+
+
+
+Tue Apr 13 2021 19:28:14 GMT-0700 (Pacific Daylight Time)
+
+Executing (1e7c00d8-e5f3-4d9a-8c6c-3534fbedade2): SELECT "cookieID", "createdAt", "updatedAt", "customerID" FROM "sessions" AS "session" WHERE "session"."cookieID" = 'e188db86-1c2f-460e-812a-d921c1459106';
+
+
+
+Tue Apr 13 2021 19:28:14 GMT-0700 (Pacific Daylight Time)
+
+Executing (1e7c00d8-e5f3-4d9a-8c6c-3534fbedade2): COMMIT;
+
+
+

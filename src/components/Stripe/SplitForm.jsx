@@ -7,7 +7,7 @@ import {
   CardExpiryElement,
 } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
-import { useStateValue } from '../../StateProvider';
+import { useSelector } from 'react-redux';
 import useResponsiveFontSize from './useResponsiveFontSize';
 
 const useOptions = () => {
@@ -36,7 +36,7 @@ const useOptions = () => {
 };
 
 const SplitForm = () => {
-  const [{ cart }] = useStateValue();
+  const cart = useSelector((state) => state.cart.cart);
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
@@ -91,6 +91,7 @@ const SplitForm = () => {
 
   return (
     <div style={{ width: '100%' }}>
+      {console.log(cart)}
       <CurrencyFormat
         value={cart.reduce((acc, curr) => (acc + curr.price), 0)}
         renderText={(value) => (

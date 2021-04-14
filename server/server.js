@@ -14,7 +14,7 @@ const PORT = 8080;
 
 const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
-const imageUploadRouter = require('./routes/upload');
+// const imageUploadRouter = require('./routes/upload');
 
 // handle parsing request body
 app.use(express.json());
@@ -30,7 +30,7 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use('/pay', stripeRouter);
 app.use('/api', apiRouter);
 
-app.use('/v1/upload', imageUploadRouter);
+// app.use('/v1/upload', imageUploadRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send("This is not the page you're looking for..."));

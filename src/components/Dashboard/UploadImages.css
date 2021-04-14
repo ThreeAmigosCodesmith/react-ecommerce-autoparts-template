@@ -1,0 +1,24 @@
+.upload_img {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-thumbnail {
+  float: left;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin: 5px 10px 5px 10px;
+}
+
+.img_container {
+  border: 10px grey solid;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.img-thumbnail:hover {
+  width: 500px;
+  height: 500px;
+}
