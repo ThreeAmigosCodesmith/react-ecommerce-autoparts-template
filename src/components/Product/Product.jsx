@@ -5,6 +5,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import * as actions from '../../redux/actions/actionTypes';
 
 const Product = (props) => {
   const dispatch = useDispatch();
@@ -15,12 +16,13 @@ const Product = (props) => {
     image,
     location,
     condition,
+    supplierID,
   } = props;
 
   const addToCart = () => {
     // dispatch item to the data layer
     dispatch({
-      type: 'ADD_TO_CART',
+      type: actions.ADD_TO_CART,
       item: {
         id,
         title,
@@ -34,7 +36,15 @@ const Product = (props) => {
 
   const messageSeller = () => {
     const chatSessionID = uuidv4();
-    console.log(chatSessionID);
+    dispatch({
+      type: actions.START_CHAT,
+      payload: {
+        supplierID,
+        chatSessionID,
+        productID: id,
+        title,
+      },
+    });
   };
 
   return (
@@ -48,7 +58,7 @@ const Product = (props) => {
         <p>{`Condition: ${condition}`}</p>
         <p className="product__location">
           <LocationOnIcon />
-          <span>{location.borough}</span>
+          <span>{location}</span>
         </p>
       </div>
       <div className="product__image">
@@ -66,7 +76,8 @@ Product.propTypes = {
   price: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   condition: PropTypes.string.isRequired,
-  location: PropTypes.shape({ borough: PropTypes.string.isRequired }).isRequired,
+  location: PropTypes.string.isRequired,
+  supplierID: PropTypes.string.isRequired,
 };
 
 export default Product;
