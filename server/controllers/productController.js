@@ -136,8 +136,9 @@ async function deleteProduct(req, res, next) {
 }
 
 async function getHomepageProducts(req, res, next) {
+  console.log('getting homepage');
   try {
-    const products = await product.findAll();
+    const products = await product.findAll({ limit: 9 });
     res.locals.products = products;
 
     return next();

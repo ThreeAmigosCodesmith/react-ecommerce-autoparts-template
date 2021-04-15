@@ -13,7 +13,7 @@ const Product = (props) => {
     id,
     title,
     price,
-    image,
+    images,
     location,
     condition,
     supplierID,
@@ -26,7 +26,7 @@ const Product = (props) => {
       item: {
         id,
         title,
-        image,
+        image: images[0],
         price,
         location,
         condition,
@@ -62,7 +62,7 @@ const Product = (props) => {
         </p>
       </div>
       <div className="product__image">
-        <img src={image} alt="" />
+        {images.map((pic) => <img src={pic} alt="" />)}
       </div>
       <button type="button" onClick={addToCart}>Add to Cart</button>
       <button type="button" onClick={messageSeller}>Message Seller</button>
@@ -74,7 +74,7 @@ Product.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
   condition: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
