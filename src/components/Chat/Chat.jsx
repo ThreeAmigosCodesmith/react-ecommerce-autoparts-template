@@ -52,6 +52,7 @@ function Chat() {
     console.log('opn2');
     console.log(chatSessionID, supplierID, customerID);
     if (isOpen) {
+      if (!localStorage.getItem('latestChat')) localStorage.setItem('latesChat', JSON.stringify([]));
       const createConnection = async () => {
         // console.log('initializing socket');
         const newSocket = await initializeChat(dispatch, {

@@ -27,7 +27,8 @@ const initializeChat = async (dispatch, queryObj) => {
       payload: newMessage,
     });
     console.log(newMessage);
-    const oldMessages = localStorage.getItem('latestChat');
+    const oldMessages = JSON.parse(localStorage.getItem('latestChat')) || [];
+    console.log('old messages', oldMessages);
     localStorage.setItem('latestChat', JSON.stringify([...oldMessages, newMessage]));
   });
 

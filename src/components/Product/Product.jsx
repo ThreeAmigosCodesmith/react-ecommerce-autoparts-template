@@ -77,7 +77,12 @@ Product.propTypes = {
   image: PropTypes.string.isRequired,
   condition: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  supplierID: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  supplierID: PropTypes.string,
 };
+
+// supplierID.defaultProps = {
+//   name: '',
+// };
 
 export default Product;
