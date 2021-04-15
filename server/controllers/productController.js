@@ -1,15 +1,15 @@
-const Product = require('../models/Product');
+const { models: { product } } = require('../models/index');
 
 async function getProduct(req, res, next) {
   const { productId } = req.params;
 
-  await Product.findOne({
+  await product.findOne({
     where: {
       productId,
     },
   })
-    .then((product) => {
-      res.locals.product = product;
+    .then((prod) => {
+      res.locals.product = prod;
       return next();
     })
     .catch((error) => {
@@ -19,7 +19,7 @@ async function getProduct(req, res, next) {
 }
 
 async function getAllProducts(req, res, next) {
-  await Product.findAll()
+  await product.findAll()
     .then((products) => {
       res.locals.products = products;
       return next();
@@ -33,7 +33,7 @@ async function getAllProducts(req, res, next) {
 async function getProductsByUserId(req, res, next) {
   const { userId } = req.params;
 
-  await Product.findOne({
+  await product.findOne({
     where: {
       supplierId: userId,
     },
@@ -49,7 +49,7 @@ async function getProductsByUserId(req, res, next) {
 }
 
 async function getAllProductsByUser(req, res, next) {
-  await Product.findAll({
+  await product.findAll({
     where: {
       supplierId: req.params.id,
     },
@@ -72,11 +72,11 @@ async function createProduct(req, res, next) {
   console.log(req.body);
   const sellerID = req.cookies.ssid;
 
-  await Product.create({
+  await product.create({
     title, make, model, year, description, price, sellerID, images,
   })
-    .then((product) => {
-      res.locals.product = product;
+    .then((prod) => {
+      res.locals.product = prod;
       return next();
     })
     .catch((error) => {
@@ -103,13 +103,13 @@ async function updateProduct(req, res, next) {
     ...(sellerId && { sellerId }),
   };
 
-  await Product.findOneAndUpdate(bodyToUpdate, {
+  await product.findOneAndUpdate(bodyToUpdate, {
     where: {
       productId,
     },
   })
-    .then((product) => {
-      res.locals.productupdated = product;
+    .then((prod) => {
+      res.locals.productupdated = prod;
       return next();
     })
     .catch((error) => {
@@ -121,13 +121,13 @@ async function updateProduct(req, res, next) {
 async function deleteProduct(req, res, next) {
   const { productId } = req.params;
 
-  await Product.findOneAndDelete({
+  await product.findOneAndDelete({
     where: {
       productId,
     },
   })
-    .then((product) => {
-      res.locals.deletedproduct = product;
+    .then((prod) => {
+      res.locals.deletedproduct = prod;
       return next();
     })
     .catch((error) => {
