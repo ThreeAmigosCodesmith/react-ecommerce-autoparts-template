@@ -1,7 +1,6 @@
 .header {
   display: flex;
   height: 110px;
-  min-width: 1000px;
   width: 100%;
   align-items: center;
   position: relative;
@@ -18,11 +17,14 @@
   margin-left: 15px;
   margin-right: 10px;
   cursor: pointer;
+  min-width: 50px;
+  width: 20%;
+  max-width: 150px;
 }
 
 img {
   object-fit: contain;
-  width: 160px;
+  width: 100%;
 }
 
 .header__search {
