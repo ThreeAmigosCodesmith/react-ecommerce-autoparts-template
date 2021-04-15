@@ -19,7 +19,7 @@ const Home = () => {
       const res = await axios.get('/api/products/homepage');
       if(res.status === 200) {
         console.log(res.data)
-        const allProducts = res.data.map(el => ({
+        const allProducts = res.data.map((el, idx) => ({
           id: el.productId, 
           title: el.productName, 
           price: el.price,
@@ -50,6 +50,7 @@ const Home = () => {
                   title={product.title} 
                   price={product.price} 
                   images={product.images} 
+                  sliderLength = {product.images.length}
                   location={product.location}
                   condition={product.condition} 
                   supplierID={product.supplierID} /> 
