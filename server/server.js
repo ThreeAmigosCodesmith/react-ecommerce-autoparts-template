@@ -11,7 +11,8 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 /* eslint import/no-unresolved: 2 */
 const PORT = 8080;
-
+const sessionController = require('./controllers/sessionController');
+const userController = require('./controllers/userController');
 const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
 const imageUploadRouter = require('./routes/upload');
@@ -26,6 +27,9 @@ app.use(cors());
 // statically render index.html file when user hits / - (mandatory)
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
+app.get('/session', sessionController.isLoggedIn, userController.getUser, (req, res) => {
+  res.status(200).send(JSON.stringify({ user: res.locals.user.dataValues }));
+});
 // define route handlers
 app.use('/pay', stripeRouter);
 app.use('/api', apiRouter);
