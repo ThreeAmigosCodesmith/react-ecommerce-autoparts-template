@@ -79,38 +79,53 @@ const io = socketio(server, {
 });
 
 io.on('connection', async (socket) => {
-  const {
-    query: {
-      chatSessionID,
-      supplierID,
-      customerID,
-      createdAt,
-    },
-  } = socket.handshake;
-
-  console.log(chatSessionID, supplierID, customerID, createdAt);
-
-  socket.join(chatSessionID);
   const { chat } = db.models;
 
-  // Generate an inital chat from the supplier
-  const firstChat = {
-    chatSessionID,
-    message: 'Thank you for chatting with us! Please standby and we\'ll be with you in a moment.',
-    createdAt,
-    customerID,
-    supplierID,
-    active: true,
-    sender: supplierID,
+  const createWelcomeChat = () => {
+    const {
+      query: {
+        chatSessionID,
+        supplierID,
+        customerID,
+        createdAt,
+      },
+    } = socket.handshake;
+    // Generate an inital chat from the supplier
+    const firstChat = {
+      chatSessionID,
+      message: 'Thank you for chatting with us! Please standby and we\'ll be with you in a moment.',
+      createdAt,
+      customerID,
+      supplierID,
+      active: true,
+      sender: supplierID,
+    };
+
+    // Send the message back to the user
+    socket.emit('new-message', firstChat);
+    chat.create(firstChat);
+
+    // Join a room with that specific chat ID
+    socket.join(chatSessionID);
   };
 
-  // Send the message back to the user
-  socket.emit('new-message', firstChat);
-  chat.create(firstChat);
+  createWelcomeChat();
 
-  // Require in chat router to handle the rest of our functionality
-  // eslint-disable-next-line global-require
-  require('./routes/chat')(io, socket);
+  // SOCKET.IO EVENT LISTENERS
+  socket.on('new-message', async (message) => {
+    console.log(message);
+    chat.create(message);
+  });
+
+  // End the chat for the user and update active status to FALSE in the datbase
+  socket.on('end', (chatSessionID) => {
+    chat.update({ active: false }, {
+      where: {
+        chatSessionID,
+      },
+    });
+    socket.disconnect(0);
+  });
 });
 
 // initialize server on port 8080 -> http://localhost:8080/

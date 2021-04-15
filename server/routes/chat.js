@@ -1,52 +1,31 @@
-// const chatController = require('../controllers/chatController.js');
-const { models: { chat } } = require('../models/index');
+const express = require('express');
+const chatController = require('../controllers/chatController.js');
 
-module.exports = (io, socket) => {
-  socket.on('new-message', async (message) => {
-    console.log(message);
-    chat.create(message);
-  });
+const router = express.Router();
 
-  // End the chat for the user and update active status to FALSE in the datbase
-  socket.on('end', (chatSessionID) => {
-    chat.update({ active: false }, {
-      where: {
-        chatSessionID,
-      },
-    });
-    socket.disconnect(0);
-  });
-};
+router.post('/:chatSessionID', chatController.addMesasageToChat, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.message);
+});
 
-// module.exports = (socket, io) => {
-//   socket.on('send-message', (message) => {
-//     io.emit('message', message);
-//   });
-// };
+router.post('/', chatController.startChat, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.chat);
+});
 
-// router.post('/:chatSessionID', chatController.addMesasageToChat, (req, res) => {
-//   if (res.locals.error) res.status(400).json(res.locals.error);
-//   else res.status(200).json(res.locals.message);
-// });
+router.get('/:chatSessionID', chatController.getAllUserChats, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.chat);
+});
 
-// router.post('/', chatController.startChat, (req, res) => {
-//   if (res.locals.error) res.status(400).json(res.locals.error);
-//   else res.status(200).json(res.locals.chat);
-// });
+router.get('/user/:userID', chatController.getAllUserChats, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.chats);
+});
 
-// router.get('/:chatSessionID', chatController.getAllUserChats, (req, res) => {
-//   if (res.locals.error) res.status(400).json(res.locals.error);
-//   else res.status(200).json(res.locals.chat);
-// });
+router.get('/', chatController.getAllChats, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.chats);
+});
 
-// router.get('/user/:userID', chatController.getAllUserChats, (req, res) => {
-//   if (res.locals.error) res.status(400).json(res.locals.error);
-//   else res.status(200).json(res.locals.chats);
-// });
-
-// router.get('/', chatController.getAllChats, (req, res) => {
-//   if (res.locals.error) res.status(400).json(res.locals.error);
-//   else res.status(200).json(res.locals.chats);
-// });
-
-// module.exports = router;
+module.exports = router;
