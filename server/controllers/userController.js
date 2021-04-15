@@ -16,7 +16,7 @@ async function getUsers(req, res, next) {
 
 async function getUser(req, res, next) {
   const { userId } = req.params;
-  await customer.findOne({ where: { customerID: userId } })
+  await customer.findOne({ where: { customerID: res.locals.success ? res.locals.ssid : userId } })
     .then((user) => {
       res.locals.user = user;
       return next();

@@ -2,11 +2,12 @@ import React from 'react';
 
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+/* eslint-disable react/prop-types */
 import SplitForm from './SplitForm';
+import STRIPE_API from '../../apiKeys';
+import './StripeStyle.css';
 
-import './styles.css';
-
-const stripePromise = loadStripe('pk_test_51IdmGUI3WvfYEKcmWkYIb8Eec40VM32eNd3fsTJft1DNt7PzwWg3IiG8Lh6IVVGXnSF3x8l1ASTfWDP4gcsXblsv00eZLNQjXH');
+const stripePromise = loadStripe(STRIPE_API.STRIPE_API);
 
 /* eslint-disable react/prop-types */
 
