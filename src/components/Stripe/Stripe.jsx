@@ -4,10 +4,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 /* eslint-disable react/prop-types */
 import SplitForm from './SplitForm';
+import STRIPE_API from '../../apiKeys';
+import './StripeStyle.css';
 
-import './styles.css';
-
-const stripePromise = loadStripe('pk_test_51IdmGUI3WvfYEKcmFVV3WzyWnaLfZzmt04srr4M5E3gcv0zmlYkEtNZuHM8IyrhXUR2lADyxJLF6vso3LAdb9lKP00VlWpEVRd');
+const stripePromise = loadStripe(STRIPE_API.STRIPE_API);
 
 /* eslint-disable react/prop-types */
 
