@@ -14,24 +14,6 @@ const PORT = 8080;
 // Initialize datbase
 const db = require('./models/index');
 
-// Connect to database
-const connectDB = async () => {
-  try {
-    await db.authenticate();
-    // eslint-disable-next-line no-console
-    console.log('Connected to db.');
-    // Sync schema in models folder to datbase schema
-    await db.sync({ alter: true });
-    // eslint-disable-next-line no-console
-    console.log('Models synchronized successfully');
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Unable to connect to the database:', error);
-  }
-};
-
-connectDB();
-
 const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
 const imageUploadRouter = require('./routes/upload');
