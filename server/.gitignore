@@ -110,3 +110,5 @@ build
 
 *.txt
 dbLog.txt
+
+package-lock.json

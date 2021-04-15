@@ -1,16 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
-
-const app = express();
+const http = require('http');
+const socketio = require('socket.io');
 const path = require('path');
-
 const cors = require('cors');
-require('dotenv').config();
-
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
-/* eslint import/no-unresolved: 2 */
+require('dotenv').config();
+
+const app = express();
 const PORT = 8080;
+
+// Initialize datbase
+const db = require('./models/index');
 
 const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
@@ -29,7 +31,6 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 // define route handlers
 app.use('/pay', stripeRouter);
 app.use('/api', apiRouter);
-
 app.use('/v1/upload', imageUploadRouter);
 
 // catch-all route handler for any requests to an unknown route
@@ -49,8 +50,68 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
-// listens on port 8080 -> http://localhost:8080/
-app.listen(PORT, () => {
+
+// Connect the websocket connection to the express server
+const server = http.createServer(app);
+const io = socketio(server, {
+  cors: {
+    origin: '*',
+  },
+  forceNewConnection: false,
+});
+
+io.on('connection', async (socket) => {
+  const { chat } = db.models;
+
+  const createWelcomeChat = () => {
+    const {
+      query: {
+        chatSessionID,
+        supplierID,
+        customerID,
+        createdAt,
+      },
+    } = socket.handshake;
+    // Generate an inital chat from the supplier
+    const firstChat = {
+      chatSessionID,
+      message: 'Thank you for chatting with us! Please standby and we\'ll be with you in a moment.',
+      createdAt,
+      customerID,
+      supplierID,
+      active: true,
+      sender: supplierID,
+    };
+
+    // Send the message back to the user
+    socket.emit('new-message', firstChat);
+    chat.create(firstChat);
+
+    // Join a room with that specific chat ID
+    socket.join(chatSessionID);
+  };
+
+  createWelcomeChat();
+
+  // SOCKET.IO EVENT LISTENERS
+  socket.on('new-message', async (message) => {
+    console.log(message);
+    chat.create(message);
+  });
+
+  // End the chat for the user and update active status to FALSE in the datbase
+  socket.on('end', (chatSessionID) => {
+    chat.update({ active: false }, {
+      where: {
+        chatSessionID,
+      },
+    });
+    socket.disconnect(0);
+  });
+});
+
+// initialize server on port 8080 -> http://localhost:8080/
+server.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server listening on port: ${PORT}...`);
 });
