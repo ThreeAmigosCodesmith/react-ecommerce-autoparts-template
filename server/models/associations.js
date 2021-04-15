@@ -9,6 +9,8 @@ const applyAssociations = (sequelize) => {
     shipper,
     supplier,
     session,
+    chat,
+    vehicle,
   } = sequelize.models;
 
   /* Category */
@@ -64,6 +66,13 @@ const applyAssociations = (sequelize) => {
       name: 'supplierID',
     },
   });
+
+  product.belongsTo(vehicle, {
+    foreignKey: {
+      name: 'vehicleID',
+    },
+  });
+
   /* Session */
   session.belongsTo(customer, {
     foreignKey: {
@@ -74,6 +83,19 @@ const applyAssociations = (sequelize) => {
   /* Shipper */
 
   /* Supplier */
+
+  /* Chat */
+  chat.belongsTo(customer, {
+    foreignKey: {
+      name: 'customerID',
+    },
+  });
+
+  chat.belongsTo(supplier, {
+    foreignKey: {
+      name: 'supplierID',
+    },
+  });
 };
 
 module.exports = { applyAssociations };

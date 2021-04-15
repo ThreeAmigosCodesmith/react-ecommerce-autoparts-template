@@ -25,6 +25,15 @@ const App = () => (
           </div>
         </Route>
 
+        <Route exact path="/stripe">
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Stripe />
+          </div>
+        </Route>
+
         <Route exact path="/catalog">
           <div className="header-content">
             <Header />
@@ -68,7 +77,10 @@ const App = () => (
             <Cart />
           </div>
         </Route>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
         <Route exact path="/stripe">
           <div className="header-content">
             <Header />

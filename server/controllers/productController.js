@@ -8,8 +8,13 @@ async function getProduct(req, res, next) {
       productId,
     },
   })
+<<<<<<< HEAD
     .then((prod) => {
       res.locals.product = prod;
+=======
+    .then((data) => {
+      res.locals.product = data;
+>>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       return next();
     })
     .catch((error) => {
@@ -73,10 +78,17 @@ async function createProduct(req, res, next) {
   const sellerID = req.cookies.ssid;
 
   await product.create({
+<<<<<<< HEAD
     title, make, model, year, description, price, sellerID, images,
   })
     .then((prod) => {
       res.locals.product = prod;
+=======
+    title, make, model, year, borough, description, price, sellerID,
+  })
+    .then((data) => {
+      res.locals.product = data;
+>>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       return next();
     })
     .catch((error) => {
@@ -108,8 +120,13 @@ async function updateProduct(req, res, next) {
       productId,
     },
   })
+<<<<<<< HEAD
     .then((prod) => {
       res.locals.productupdated = prod;
+=======
+    .then((data) => {
+      res.locals.productupdated = data;
+>>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       return next();
     })
     .catch((error) => {
@@ -126,14 +143,31 @@ async function deleteProduct(req, res, next) {
       productId,
     },
   })
+<<<<<<< HEAD
     .then((prod) => {
       res.locals.deletedproduct = prod;
+=======
+    .then((data) => {
+      res.locals.deletedproduct = data;
+>>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       return next();
     })
     .catch((error) => {
       res.locals.error = error;
       return next();
     });
+}
+
+async function getHomepageProducts(req, res, next) {
+  try {
+    const products = await product.findAll();
+    res.locals.products = products;
+
+    return next();
+  } catch (err) {
+    res.locals.err = err;
+    return next();
+  }
 }
 
 module.exports = {
@@ -144,4 +178,5 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  getHomepageProducts,
 };

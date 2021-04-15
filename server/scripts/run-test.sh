@@ -1,4 +1,4 @@
-#!/bin/bash
+v#!/bin/bash
 
 # check to see if they passed in which hack hour they want to test
 if [ -z $1 ]; then

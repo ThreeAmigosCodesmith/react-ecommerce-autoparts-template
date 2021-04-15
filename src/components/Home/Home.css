@@ -8,6 +8,7 @@
 
 .home__productsNearby {
   display: flex;
+  max-width: 100%;
   flex-direction: column;
 }
 
@@ -15,11 +16,16 @@
   color: #304B50;
 }
 
-.home__row {
+.home__products {
+  width: 100%;
   display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem 1rem;
   z-index: 1;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-top: 3rem;
 }
 
 .home__image {

@@ -6,8 +6,12 @@ import {
   CardCvcElement,
   CardExpiryElement,
 } from '@stripe/react-stripe-js';
-import CurrencyFormat from 'react-currency-format';
 import { useSelector } from 'react-redux';
+import CurrencyFormat from 'react-currency-format';
+<<<<<<< HEAD
+import { useSelector } from 'react-redux';
+=======
+>>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
 import useResponsiveFontSize from './useResponsiveFontSize';
 
 const useOptions = () => {
@@ -40,6 +44,8 @@ const SplitForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
+  const [success, setSuccess] = React.useState(false);
+  const [confirm, setConfirm] = React.useState('');
 
   /* eslint-disable jsx-a11y/label-has-associated-control */
 
@@ -61,6 +67,8 @@ const SplitForm = () => {
       }).then(function(result) {
         // Handle server response (see Step 4)
         result.json().then(function(json) {
+          setSuccess(json.success)
+          setConfirm(json.confirmation)
           console.log(json);
         })
       });
@@ -88,10 +96,98 @@ const SplitForm = () => {
   /* eslint-disable react/prop-types */
 
   /* eslint-disable react/destructuring-assignment */
+<<<<<<< HEAD
 
   return (
     <div style={{ width: '100%' }}>
       {console.log(cart)}
+=======
+  let content= (
+    <div style={{ height: '100%', }}>
+    <CurrencyFormat
+      value={cart.reduce((acc, curr) => (acc + curr.price), 0)}
+      renderText={(value) => (
+        <>
+          <p>
+            Subtotal (
+            {`${cart?.length} `}
+            item(s)):
+            <strong>
+              {` ${value}`}
+            </strong>
+          </p>
+        </>
+      )}
+      decimalValue={2}
+      displayType="text"
+      thousandSeparator
+      prefix="$"
+    />
+    <form style={{ width: '100%' }} onSubmit={handleSubmit}>
+      <label>
+        Card number
+        <CardNumberElement
+          options={options}
+          onReady={() => {
+            console.log('CardNumberElement [ready]');
+          }}
+          onChange={(event) => {
+            console.log('CardNumberElement [change]', event);
+          }}
+          onBlur={() => {
+            console.log('CardNumberElement [blur]');
+          }}
+          onFocus={() => {
+            console.log('CardNumberElement [focus]');
+          }}
+        />
+      </label>
+      <label>
+        Expiration date
+        <CardExpiryElement
+          options={options}
+          onReady={() => {
+            console.log('CardNumberElement [ready]');
+          }}
+          onChange={(event) => {
+            console.log('CardNumberElement [change]', event);
+          }}
+          onBlur={() => {
+            console.log('CardNumberElement [blur]');
+          }}
+          onFocus={() => {
+            console.log('CardNumberElement [focus]');
+          }}
+        />
+      </label>
+      <label>
+        CVC
+        <CardCvcElement
+          options={options}
+          onReady={() => {
+            console.log('CardNumberElement [ready]');
+          }}
+          onChange={(event) => {
+            console.log('CardNumberElement [change]', event);
+          }}
+          onBlur={() => {
+            console.log('CardNumberElement [blur]');
+          }}
+          onFocus={() => {
+            console.log('CardNumberElement [focus]');
+          }}
+        />
+      </label>
+      <button type="submit" disabled={!stripe}>
+        Pay
+      </button>
+    </form>
+  </div>
+  )
+  if(success) {
+    content = (
+    <div style={{ height: '100%', display:'flex', justifyContent: 'space-evenly', alignItems:'space-between' , flexDirection: 'column' }}>
+>>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       <CurrencyFormat
         value={cart.reduce((acc, curr) => (acc + curr.price), 0)}
         renderText={(value) => (
@@ -99,7 +195,7 @@ const SplitForm = () => {
             <p>
               Subtotal (
               {`${cart?.length} `}
-              items):
+              item(s)):
               <strong>
                 {` ${value}`}
               </strong>
@@ -111,66 +207,16 @@ const SplitForm = () => {
         thousandSeparator
         prefix="$"
       />
-      <form style={{ width: '100%' }} onSubmit={handleSubmit}>
-        <label>
-          Card number
-          <CardNumberElement
-            options={options}
-            onReady={() => {
-              console.log('CardNumberElement [ready]');
-            }}
-            onChange={(event) => {
-              console.log('CardNumberElement [change]', event);
-            }}
-            onBlur={() => {
-              console.log('CardNumberElement [blur]');
-            }}
-            onFocus={() => {
-              console.log('CardNumberElement [focus]');
-            }}
-          />
-        </label>
-        <label>
-          Expiration date
-          <CardExpiryElement
-            options={options}
-            onReady={() => {
-              console.log('CardNumberElement [ready]');
-            }}
-            onChange={(event) => {
-              console.log('CardNumberElement [change]', event);
-            }}
-            onBlur={() => {
-              console.log('CardNumberElement [blur]');
-            }}
-            onFocus={() => {
-              console.log('CardNumberElement [focus]');
-            }}
-          />
-        </label>
-        <label>
-          CVC
-          <CardCvcElement
-            options={options}
-            onReady={() => {
-              console.log('CardNumberElement [ready]');
-            }}
-            onChange={(event) => {
-              console.log('CardNumberElement [change]', event);
-            }}
-            onBlur={() => {
-              console.log('CardNumberElement [blur]');
-            }}
-            onFocus={() => {
-              console.log('CardNumberElement [focus]');
-            }}
-          />
-        </label>
-        <button type="submit" disabled={!stripe}>
-          Pay
-        </button>
-      </form>
+      <h3 style={{color:'green'}}>Payment Successful!</h3>
+      <h3 style={{color:'blue'}}>Confirmation Number : <h4 style={{color:'black'}}>{confirm}</h4></h3>
     </div>
+    )
+  }
+
+  return (
+  <div style={{ width: '100%' }}>
+        {content}
+  </div>
   );
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+/* eslint-disable react/prop-types */
 import SplitForm from './SplitForm';
 import STRIPE_API from '../../apiKeys';
 import './StripeStyle.css';

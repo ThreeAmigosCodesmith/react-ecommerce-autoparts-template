@@ -24,7 +24,7 @@ stripeController.processPayment = async (request, response, next) => {
     }
     // Send the response to the client
     console.log(intent);
-    response.send(generateResponse(intent));
+    response.send(generateResponse(intent, intent.id));
   } catch (e) {
     // Display error on client
     console.log(e);
@@ -34,7 +34,7 @@ stripeController.processPayment = async (request, response, next) => {
 
 /* eslint-disable  */
 
-const generateResponse = (intent) => {
+const generateResponse = (intent, id) => {
   if (
     intent.status === 'requires_action' &&
     intent.next_action.type === 'use_stripe_sdk'
@@ -47,7 +47,7 @@ const generateResponse = (intent) => {
   } else if (intent.status === 'succeeded') {
     // Handle post-payment fulfillment
     return {
-    success: true
+    success: true, confirmation: id
     };
   } else {
     // Invalid status
