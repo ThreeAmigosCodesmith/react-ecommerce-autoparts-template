@@ -44,8 +44,8 @@ module.exports = (sequelize) => {
     discountAvailable: {
       type: DataTypes.BOOLEAN,
     },
-    picture: {
-      type: DataTypes.STRING,
+    images: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     note: {
       type: DataTypes.TEXT,

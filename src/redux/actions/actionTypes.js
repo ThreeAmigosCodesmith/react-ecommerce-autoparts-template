@@ -12,3 +12,4 @@ export const DELETE_IMAGE_URL = 'DELETE_IMAGE_URL';
 export const ADD_IMAGE_URL = 'ADD_IMAGE_URL';
 export const RESPONSE = 'RESPONSE';
 export const SET_PRODUCT_INFO = 'SET_PRODUCT_INFO';
+export const CLEAR_ALL_IMAGES = 'CLEAR_ALL_IMAGES';

@@ -26,7 +26,9 @@ router.get('/productsByUser/:id', productController.getAllProductsByUser, (req, 
   else res.status(200).json(res.locals.products);
 });
 
-router.post('/products', productController.createProduct, (req, res) => {
+router.post('/create', productController.createProduct, (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log(req.body);
   if (res.locals.error) res.status(400).json(res.locals.error);
   else res.status(200).json(res.locals.product);
 });

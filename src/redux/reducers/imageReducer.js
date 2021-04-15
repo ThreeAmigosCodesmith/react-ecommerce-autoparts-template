@@ -15,10 +15,12 @@ const imageReducer = (state = InitialState, action) => {
     case types.DELETE_IMAGE_URL:
       const copy = state.imageUrls.slice();
       copy.splice(action.index, 1);
-      // eslint-disable-next-line no-console
-      console.log(state.imageUrls);
       return {
         ...{ imageUrls: [...copy] },
+      };
+    case types.CLEAR_ALL_IMAGES:
+      return {
+        ...{ imageUrls: [] },
       };
     default:
       return state;
