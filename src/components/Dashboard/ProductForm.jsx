@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useEffect, useState } from 'react';
 // import { axios } from 'axios';
 import './ProductForm.css';
 import { useSelector } from 'react-redux';
 import UploadImages from './UploadImages';
 import Preview from './Preview';
-import apiHeaders from './apiKeys';
+/* eslint-disable import/no-named-as-default-member */
 import makes from '../../vehicles';
 
 const ProductForm = () => {
@@ -68,22 +70,22 @@ const ProductForm = () => {
   };
 
   // const getModels = () => {
-  useEffect(() => {
-    const carModels = [];
-    fetch(`https://parseapi.back4app.com/classes/Carmodels_Car_Model_List_${make}?order=Model&keys=Model,Year`,
-      {
-        headers: apiHeaders,
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        data.results.forEach((car) => {
-          carModels.push(<option value={car.Model}>{car.Model}</option>);
-        });
-        const filteredModels = new Set(carModels);
-        setModels(filteredModels);
-      })
-      .catch((error) => { throw error; });
-  }, [make]);
+  // useEffect(() => {
+  //   const carModels = [];
+  //   fetch(`https://parseapi.back4app.com/classes/Carmodels_Car_Model_List_${make}?order=Model&keys=Model,Year`,
+  //     {
+  //       headers: apiHeaders,
+  //     })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       data.results.forEach((car) => {
+  //         carModels.push(<option value={car.Model}>{car.Model}</option>);
+  //       });
+  //       const filteredModels = new Set(carModels);
+  //       setModels(filteredModels);
+  //     })
+  //     .catch((error) => { throw error; });
+  // }, [make]);
 
   // carChoices.carYears.push(<option value={car.Year}>{car.Year}</option>);
   return (

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Sat Apr 10 2021 04:45:52 GMT-0400 (Eastern Daylight Time)
 
 Executing (default): SELECT 1+1 AS result
@@ -20962,3 +20963,5 @@ Executing (default): SELECT "customerID", "firstName", "lastName", "address1", "
 
 
 
+=======
+>>>>>>> d5a711c4b3beb3868aed6ad9a816d6873eee524d

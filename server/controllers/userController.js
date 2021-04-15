@@ -29,16 +29,15 @@ async function getUser(req, res, next) {
 
 // eslint-disable-next-line consistent-return
 async function verifyUser(req, res, next) {
-  // eslint-disable-next-line no-console
   console.log(req.body);
   try {
     const existingUser = await customer.findOne({ where: { email: req.body.email } });
     if (existingUser) {
       bcrypt.compare(req.body.password, existingUser.password, (error, isMatch) => {
-        if (error) throw error;
-        else if (!isMatch) {
+        if (!isMatch) {
           res.locals.error = 'Incorrect Password!';
           return next();
+        // eslint-disable-next-line no-else-return
         } else {
           const { firstName, lastName, customerID } = existingUser;
           res.locals.userId = customerID;

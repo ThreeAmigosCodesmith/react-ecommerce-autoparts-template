@@ -6,8 +6,8 @@ import {
   CardCvcElement,
   CardExpiryElement,
 } from '@stripe/react-stripe-js';
-import CurrencyFormat from 'react-currency-format';
 import { useSelector } from 'react-redux';
+import CurrencyFormat from 'react-currency-format';
 import useResponsiveFontSize from './useResponsiveFontSize';
 
 const useOptions = () => {

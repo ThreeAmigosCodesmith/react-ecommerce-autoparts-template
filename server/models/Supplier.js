@@ -44,10 +44,10 @@ module.exports = (sequelize) => {
     email: {
       type: DataTypes.STRING,
     },
-    url: {
+    password: {
       type: DataTypes.STRING,
     },
-    paymentMethods: {
+    url: {
       type: DataTypes.STRING,
     },
     discountAvailable: {
@@ -56,22 +56,10 @@ module.exports = (sequelize) => {
     discountType: {
       type: DataTypes.STRING,
     },
-    typeGoods: {
-      type: DataTypes.STRING,
-    },
     notes: {
       type: DataTypes.TEXT,
     },
-    currentOrder: {
-      type: DataTypes.STRING,
-    },
     logo: {
-      type: DataTypes.STRING,
-    },
-    customerID: {
-      type: DataTypes.STRING,
-    },
-    sizeUrl: {
       type: DataTypes.STRING,
     },
   });

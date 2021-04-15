@@ -111,6 +111,8 @@ build
 
 *.txt
 
+package-lock.json
+
 server/dbLog.txt
 apiKeys.js
 server/dbLog.txt

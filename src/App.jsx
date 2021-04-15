@@ -77,6 +77,14 @@ const App = () => (
             <Cart />
           </div>
         </Route>
+        <Route exact path="/stripe">
+          <div className="header-content">
+            <Header />
+          </div>
+          <div className="main-content">
+            <Stripe />
+          </div>
+        </Route>
       </Switch>
       <div className="footer-content">
         <Footer />
