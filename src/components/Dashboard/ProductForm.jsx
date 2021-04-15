@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
+
 import React, { useEffect, useState } from 'react';
 // import { axios } from 'axios';
 import './ProductForm.css';
 import { useSelector } from 'react-redux';
 import UploadImages from './UploadImages';
 import Preview from './Preview';
-// import apiHeaders from '../../apiKeys';
+/* eslint-disable import/no-named-as-default-member */
 import makes from '../../vehicles';
 
 const ProductForm = () => {

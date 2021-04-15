@@ -14,7 +14,6 @@ const Footer = () => (
           <p className="footer__link">contact@yardhop.com</p>
           <p className="footer__link"> +1 (800) 999-9999</p>
         </div>
-
       </div>
     </div>
 
