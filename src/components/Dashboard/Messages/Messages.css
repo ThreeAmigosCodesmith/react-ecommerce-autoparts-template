@@ -10,3 +10,7 @@
   margin: 1rem;
   margin-bottom: 2rem;
 }
+
+#messages > h4 {
+  margin: 2rem;
+}
