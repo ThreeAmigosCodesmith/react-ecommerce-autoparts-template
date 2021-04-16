@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable no-console */
 const express = require('express');
 

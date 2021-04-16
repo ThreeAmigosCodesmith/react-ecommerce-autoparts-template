@@ -139,7 +139,7 @@ function PurchaseTable() {
       field: 'description',
     },
     {
-      title: 'Price',
+      title: 'Price ($ USD)',
       field: 'price',
     },
     {

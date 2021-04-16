@@ -12,6 +12,7 @@ import Sidebar from './Sidebar';
 import ProductForm from './ProductForm';
 import Purchases from './Purchases/Purchases';
 import Inventory from './Inventory/Inventory';
+import Messages from './Messages/Messages';
 
 const Dashboard = () => {
   const user = useSelector((state) => state.auth.user);
@@ -38,6 +39,9 @@ const Dashboard = () => {
         </Route>
         <Route exact path="/dashboard/purchases">
           <Purchases />
+        </Route>
+        <Route exact path="/dashboard/messages">
+          <Messages />
         </Route>
       </Switch>
     </div>
