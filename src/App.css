@@ -5,15 +5,10 @@
   min-height: 100vh;
 }
 
-.header-content {
-  margin-bottom: 30px;
-}
-
 .footer-content {
   position: relative;
   width: 100%;
   background-color: #182628;
-  margin-top: 50px;
 }
 
 body { 

@@ -1,0 +1,16 @@
+#messages {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#messages > h1 {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+
+#messages > h4 {
+  margin: 2rem;
+}

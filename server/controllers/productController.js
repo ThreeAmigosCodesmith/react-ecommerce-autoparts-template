@@ -18,18 +18,6 @@ async function getProduct(req, res, next) {
     });
 }
 
-async function getAllProducts(req, res, next) {
-  await product.findAll()
-    .then((products) => {
-      res.locals.products = products;
-      return next();
-    })
-    .catch((error) => {
-      res.locals.error = error;
-      return next();
-    });
-}
-
 async function getProductsByUserId(req, res, next) {
   const { userId } = req.params;
 
@@ -144,9 +132,23 @@ async function deleteProduct(req, res, next) {
     });
 }
 
-async function getHomepageProducts(req, res, next) {
+async function getAllProducts(req, res, next) {
+  console.log('getting all products');
   try {
     const products = await product.findAll();
+    res.locals.products = products;
+
+    return next();
+  } catch (err) {
+    res.locals.err = err;
+    return next();
+  }
+}
+
+async function getHomepageProducts(req, res, next) {
+  console.log('getting homepage');
+  try {
+    const products = await product.findAll({ limit: 9 });
     res.locals.products = products;
 
     return next();
