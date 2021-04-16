@@ -21,48 +21,53 @@ import Stripe from './components/Stripe/Stripe';
 
 const App = () => {
   const user = useSelector((state) => state.auth.user);
+  const userRole = useSelector((state) => state.auth.userRole);
 
   const loginRoutes = (
-    <BrowserRouter>
-      <div className="App">
+    <>
+      <Switch>
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route path="*">
           <Redirect to="/login" />
         </Route>
-      </div>
-    </BrowserRouter>
+      </Switch>
+    </>
   );
 
   const appRoutes = (
-    <BrowserRouter>
-      <div className="App">
-        <div className="header-content">
-          <Header />
-        </div>
-        <div className="main-content">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/stripe" component={Stripe} />
-            <Route exact path="/catalog" component={Catalog} />
-            <Route exact path="/order" component={Order} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/stripe" component={Stripe} />
-          </Switch>
-        </div>
-        <div className="footer-content">
-          <Footer />
-        </div>
+    <>
+      <div className="header-content">
+        <Header />
       </div>
-    </BrowserRouter>
+      <div className="main-content">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/stripe" component={Stripe} />
+          <Route exact path="/catalog" component={Catalog} />
+          <Route exact path="/order" component={Order} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/stripe" component={Stripe} />
+        </Switch>
+      </div>
+      <div className="footer-content">
+        <Footer />
+      </div>
+    </>
   );
 
   /*
     If the user is logged in, return the regular application routes.
     Otherwise only return /login and /signup
   */
-  return user ? appRoutes : loginRoutes;
+  return (
+    <BrowserRouter>
+      <div className="App">
+        {user ? appRoutes : loginRoutes}
+      </div>
+    </BrowserRouter>
+  );
 };
 
 export default App;

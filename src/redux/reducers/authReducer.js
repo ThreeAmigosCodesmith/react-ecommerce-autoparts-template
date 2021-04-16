@@ -2,6 +2,7 @@ import * as types from '../actions/actionTypes';
 
 export const userState = {
   user: null,
+  userRole: 'CUSTOMER',
 };
 
 const authReducer = (state = userState, action) => {
@@ -10,7 +11,13 @@ const authReducer = (state = userState, action) => {
       // eslint-disable-next-line no-console
       console.log('reducer: ', action.payload);
       return {
+        ...state,
         user: action.payload,
+      };
+    case types.SET_USER_ROLE:
+      return {
+        ...state,
+        userRole: action.payload,
       };
     case types.UNAUTH_USER:
       return {
