@@ -9,6 +9,7 @@ html, body {
 #inventory {
   width: 100%;
   padding: 30px;
+  margin: 20px 1rem;
 }
 
 .inventoryItems {
