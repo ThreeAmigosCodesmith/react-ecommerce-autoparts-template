@@ -18,7 +18,7 @@
 .link {
   margin-right: 30px;
   color: #f8f8f8;
-  font-size: 14px;
+  font-size: 80%;
 }
 
 .link:hover {
@@ -32,14 +32,14 @@
   padding: 3px 8px;
   outline: none;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 80%;
 }
 
 .nav__left {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 14px;
+  font-size: 80%;
 }
 
 .nav__login {
@@ -55,7 +55,7 @@
   padding: 3px 8px;
   color: white;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: 80%;
   outline: none;
   cursor: pointer;
 }
