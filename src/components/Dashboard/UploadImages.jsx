@@ -1,77 +1,50 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
 /* eslint-disable react/no-danger */
-import React, { useEffect, useState } from 'react';
-// import { bindActionCreators } from 'redux';
-import { useDispatch, useSelector } from 'react-redux';
-import { uploadImage, response } from '../../redux/actions/imageActions';
-// import Preview from './preview';
+import React, { useState } from 'react';
+import { uploadFile } from 'react-s3';
+import { useDispatch } from 'react-redux';
+import { Input } from '@material-ui/core';
+import Preview from './Preview';
+import * as types from '../../redux/actions/actionTypes';
+import aws from '../../apiKeys';
+import './UploadImages.css';
 
 const UploadImage = () => {
-  const [image, getImageUrl] = useState('');
-  const [loading, loadingImage] = useState(false);
   const dispatch = useDispatch();
-  const awsS3imageUrl = useSelector((state) => state.image.aws_s3_image_url);
-  const message = useSelector((state) => state.image.msg);
-  const type = useSelector((state) => state.image.type);
 
-  useEffect(() => {
-    response('', '');
-
-    if (image === awsS3imageUrl) {
-      loadingImage(false);
-    }
-  }, [loading]);
-
-  const uploadToS3 = (e) => {
-    e.preventDefault();
-    loadingImage(true);
-    const formData = new FormData();
-    formData.append('photo', image);
-    uploadImage(formData);
+  const handleUpload = async (image) => {
+    uploadFile(image, aws.aws)
+      .then((data) => {
+        const imgUrl = data.location;
+        dispatch({
+          type: types.ADD_IMAGE_URL,
+          url: imgUrl,
+        });
+      })
+      .catch((err) => console.error(err));
   };
 
-  const closeAlert = (e) => {
-    e.preventDefault();
-    dispatch(response('', ''));
+  const upload = async (e) => {
+    const allFiles = e.target.files;
+    // eslint-disable-next-line no-restricted-syntax
+    for (let i = 0; i < allFiles.length; i += 1) {
+      const file = allFiles[i];
+      // eslint-disable-next-line no-await-in-loop
+      await handleUpload(file, aws.aws);
+    }
   };
 
   return (
-    <div className="row">
-      <div className="col-md-12">
-        <div className="page-header">
-          <h3>
-            Upload Photos
-          </h3>
-        </div>
-      </div>
-      <div className="col-md-12">
-        <div className="upload-btn-wrapper mb-2">
-          <button type="submit" className="upload-btn bg-primary text-white">Choose Photo...</button>
-          <input
-            name="image"
-            onChange={(e) => (getImageUrl(e.currentTarget.files[0]))}
-          />
-        </div>
-      </div>
-      <div className="col-md-12">
-        {/* <Preview file={image} /> */}
-      </div>
-      {image
-        ? (
-          <div className="col-md-12">
-            <button type="submit" className="upload-button" onClick={uploadToS3}>{ loading ? 'Uploading...' : 'Upload To AWS S3' }</button>
-          </div>
-        )
-        : null}
-      {message
-        ? (
-          <div className="col-lg-12 col-md-12 ">
-            <div className={`alert ${type} alert-dismissible mt-3`}>
-              <button type="button" className="close" onClick={closeAlert} data-dismiss="alert" aria-label="close">&times;</button>
-              <span dangerouslySetInnerHTML={{ __html: message }} />
-            </div>
-          </div>
-        )
-        : null }
+    <div className="upload_img">
+      <h3 id="form__container">Pictures:</h3>
+      <Input type="file" inputProps={{ multiple: true }} onChange={upload} />
+      {/* <Button type="button" onClick={() => upload()}>Add image</Button> */}
+      <Preview />
     </div>
   );
 };

@@ -18,6 +18,7 @@ const stripePromise = loadStripe(STRIPE_API.STRIPE_API);
 const Stripe = () => {
   return (
   <Elements stripe={stripePromise}>
+    {console.log(STRIPE_API)}
     <SplitForm />
   </Elements>
   );

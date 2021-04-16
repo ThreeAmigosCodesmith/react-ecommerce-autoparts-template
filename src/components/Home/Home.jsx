@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     async function getHomePageProducts() {
       const res = await axios.get('/api/products/homepage');
-      if(res.status === 200) {
+      if(res.status === 200 && res.data !== "") {
         console.log(res.data)
         const allProducts = res.data.map(el => ({
           id: el.productId, 

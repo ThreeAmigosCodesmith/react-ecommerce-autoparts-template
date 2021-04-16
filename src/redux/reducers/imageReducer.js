@@ -1,24 +1,26 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable no-underscore-dangle */
 import * as types from '../actions/actionTypes';
 
 export const InitialState = {
-  msg: '',
-  type: '',
-  aws_s3_image_url: '',
+  imageUrls: [],
 };
 
 const imageReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case types.SET_AWS_S3_IMAGE_URL:
+    case types.ADD_IMAGE_URL:
       return {
-        ...state,
-        ...{ aws_s3_image_url: action.url },
+        ...{ imageUrls: [...state.imageUrls, action.url] },
       };
-
-    case types.RESPONSE:
+    case types.DELETE_IMAGE_URL:
+      const copy = state.imageUrls.slice();
+      copy.splice(action.index, 1);
       return {
-        ...state,
-        ...{ msg: action.data._res, type: action.data._type },
+        ...{ imageUrls: [...copy] },
+      };
+    case types.CLEAR_ALL_IMAGES:
+      return {
+        ...{ imageUrls: [] },
       };
     default:
       return state;

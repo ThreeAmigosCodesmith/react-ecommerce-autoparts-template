@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import io from 'socket.io-client';
 import * as types from '../../redux/actions/actionTypes';

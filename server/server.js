@@ -98,7 +98,6 @@ io.on('connection', async (socket) => {
 
   // SOCKET.IO EVENT LISTENERS
   socket.on('new-message', async (message) => {
-    console.log(message);
     chat.create(message);
   });
 
