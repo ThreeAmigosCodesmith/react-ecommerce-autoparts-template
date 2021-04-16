@@ -9,35 +9,23 @@ const Footer = () => (
   <div className="footer">
     <div className="footer__top">
       <div className="footer__section">
-        <h4>COMPANY</h4>
-        <a href="/">About us</a>
-        <a href="/">Our Services</a>
-        <a href="/">Careers</a>
-        <a href="/">Blog</a>
-      </div>
-
-      <div className="footer__section">
         <h4>CONTACT</h4>
-        <p className="footer__email">contact@yardhop.com</p>
-        <p>+1 (800) 999-9999</p>
-        <div className="footer__icons">
-          <TwitterIcon />
-          <FacebookIcon />
-          <InstagramIcon />
-          <YouTubeIcon />
+        <div className="footer__section__text">
+          <p className="footer__link">contact@yardhop.com</p>
+          <p className="footer__link"> +1 (800) 999-9999</p>
         </div>
-      </div>
-
-      <div className="footer__section">
-        <h4>HELP</h4>
-        <a href="/">Seller Center</a>
-        <a href="/">Resolution Center</a>
-        <a href="/">Buying Help</a>
-        <a href="/">Registration</a>
       </div>
     </div>
 
+    <div className="footer__icons">
+      <TwitterIcon />
+      <FacebookIcon />
+      <InstagramIcon />
+      <YouTubeIcon />
+    </div>
+
     <p className="footer__copyright">Copyright &copy; 2021 YardHop Inc. All Rights Reserved.</p>
+
   </div>
 );
 

@@ -66,7 +66,7 @@ const Nav = () => {
             </Link>
             <p>or</p>
             <Link to="/signup">
-              <button className="nav__signUpButton" type="button">Create an Account</button>
+              <button className="nav__signUpButton" type="button">Register</button>
             </Link>
           </div>
         )}
