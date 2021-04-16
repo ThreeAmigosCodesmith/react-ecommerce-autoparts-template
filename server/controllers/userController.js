@@ -38,19 +38,7 @@ async function verifyUser(req, res, next) {
           return next();
         // eslint-disable-next-line no-else-return
         } else {
-          // const {
-          //   firstName,
-          //   lastName,
-          //   customerID,
-          //   address,
-          // } = existingUser;
-          // res.locals.userId = customerID;
-          // res.locals.name = `${firstName} ${lastName}`;
-          // eslint-disable-next-line no-console
-          console.log('existingUser dataValues: ', existingUser.dataValues);
           res.locals.user = existingUser.dataValues;
-          // eslint-disable-next-line no-console
-          console.log('res.locals.user', res.locals.user);
           return next();
         }
       });
