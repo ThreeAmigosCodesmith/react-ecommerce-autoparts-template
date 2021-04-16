@@ -86,6 +86,7 @@ const Product = (props) => {
           &gt;
         </button>
       </div>
+      <button type="button" onClick={messageSeller}>Message Seller</button>
       <button type="button" onClick={addToCart}>Add to Cart</button>
     </div>
   );

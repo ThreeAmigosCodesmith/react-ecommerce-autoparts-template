@@ -55,10 +55,6 @@ const columns = [
     field: 'customerEmail',
   },
   {
-    title: 'Active?',
-    field: 'active',
-  },
-  {
     title: 'Chat Link',
     field: 'chatLink',
   },
