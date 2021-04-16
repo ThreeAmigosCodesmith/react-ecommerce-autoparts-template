@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable arrow-body-style */
 const sessionController = require('../controllers/sessionController');
 const { models: { session } } = require('../models/index.js');
@@ -10,7 +11,7 @@ describe('sessionController tests', () => {
   describe('startSession function ', () => {
     const resolvedValueGood = { cookieId: '12345', createAt: Date.now() };
     const resolvedValueError = new Error('value should be a string');
-    const mockDBAction = jest.spyOn(session, 'create').mockResolvedValueOnce(resolvedValue);
+    const mockDBAction = jest.spyOn(session, 'create').mockResolvedValueOnce(resolvedValueGood);
     const mockNext = jest.fn();
     const mockReq = {};
     const mockResLocal = {

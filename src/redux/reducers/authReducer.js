@@ -10,7 +10,6 @@ const authReducer = (state = userState, action) => {
       // eslint-disable-next-line no-console
       console.log('reducer: ', action.payload);
       return {
-        ...state,
         user: action.payload,
       };
     case types.UNAUTH_USER:

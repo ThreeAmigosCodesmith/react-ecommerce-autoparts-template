@@ -10,20 +10,21 @@ import * as types from '../../redux/actions/actionTypes';
 
 const Header = () => {
   const user = useSelector((state) => state.auth.user);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   React.useEffect(() => {
     fetch('/session')
       .then((res) => res.json())
       .then((res) => {
-        // console.log('res: ', res.user);
-        dispatch({
-          type: types.AUTH_USER,
-          payload: {
-            name: `${res.user.firstName} ${res.user.lastName}`,
-            id: res.user.customerID,
-          },
-        });
+        // eslint-disable-next-line no-console
+        console.log('res: ', res.user);
+        // dispatch({
+        //   type: types.AUTH_USER,
+        //   payload: {
+        //     name: `${res.user.firstName} ${res.user.lastName}`,
+        //     id: res.user.customerID,
+        //   },
+        // });
       })
       // eslint-disable-next-line no-console
       .catch((error) => console.log(error));

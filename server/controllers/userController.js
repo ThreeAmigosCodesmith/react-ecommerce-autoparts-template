@@ -29,7 +29,6 @@ async function getUser(req, res, next) {
 
 // eslint-disable-next-line consistent-return
 async function verifyUser(req, res, next) {
-  console.log(req.body);
   try {
     const existingUser = await customer.findOne({ where: { email: req.body.email } });
     if (existingUser) {
@@ -39,9 +38,7 @@ async function verifyUser(req, res, next) {
           return next();
         // eslint-disable-next-line no-else-return
         } else {
-          const { firstName, lastName, customerID } = existingUser;
-          res.locals.userId = customerID;
-          res.locals.name = `${firstName} ${lastName}`;
+          res.locals.user = existingUser.dataValues;
           return next();
         }
       });
