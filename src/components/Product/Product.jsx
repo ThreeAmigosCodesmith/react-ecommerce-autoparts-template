@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
 import { useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-import * as actions from '../../redux/actions/actionTypes';
 
 const Product = (props) => {
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
@@ -23,8 +21,9 @@ const Product = (props) => {
   console.log(images);
   const addToCart = () => {
     // dispatch item to the data layer
+    // eslint-disable-next-line no-console
     dispatch({
-      type: actions.ADD_TO_CART,
+      type: 'ADD_TO_CART',
       item: {
         id,
         title,
@@ -71,7 +70,7 @@ const Product = (props) => {
         <p>{`Condition: ${condition}`}</p>
         <p className="product__location">
           <LocationOnIcon />
-          <span>{location}</span>
+          <span>{location.borough}</span>
         </p>
       </div>
       <div className="product__image">
@@ -86,7 +85,6 @@ const Product = (props) => {
         </button>
       </div>
       <button type="button" onClick={addToCart}>Add to Cart</button>
-      <button type="button" onClick={messageSeller}>Message Seller</button>
     </div>
   );
 };
@@ -102,9 +100,5 @@ Product.propTypes = {
   supplierID: PropTypes.string,
   sliderLength: PropTypes.number.isRequired,
 };
-
-// supplierID.defaultProps = {
-//   name: '',
-// };
 
 export default Product;

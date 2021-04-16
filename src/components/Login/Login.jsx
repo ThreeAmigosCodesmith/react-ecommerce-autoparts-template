@@ -33,10 +33,7 @@ const Login = () => {
         console.log('res: ', res);
         dispatch({
           type: types.AUTH_USER,
-          payload: {
-            name: res.name,
-            id: res.id,
-          },
+          payload: res,
         });
       })
       .then(() => history.push('/dashboard'))

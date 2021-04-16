@@ -66,16 +66,25 @@ async function getAllProductsByUser(req, res, next) {
 
 async function createProduct(req, res, next) {
   const {
-    title, make, model, year, borough, description, price,
+    title, make, model, year, description, price, images, condition,
   } = req.body;
-
+  // eslint-disable-next-line no-console
+  console.log(req.body);
   const sellerID = req.cookies.ssid;
 
   await product.create({
-    title, make, model, year, borough, description, price, sellerID,
+    productName: title,
+    make,
+    model,
+    year,
+    productDescription: description,
+    condition,
+    price,
+    sellerID,
+    images,
   })
-    .then((data) => {
-      res.locals.product = data;
+    .then((prod) => {
+      res.locals.product = prod;
       return next();
     })
     .catch((error) => {

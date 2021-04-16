@@ -17,7 +17,7 @@ const Home = () => {
     async function getHomePageProducts() {
       console.log('fetching products')
       const res = await axios.get('/api/products/homepage');
-      if(res.status === 200) {
+      if(res.status === 200 && res.data !== "") {
         console.log(res.data)
         const allProducts = res.data.map((el, idx) => ({
           id: el.productId, 

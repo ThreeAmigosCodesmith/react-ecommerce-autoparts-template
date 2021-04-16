@@ -1,0 +1,41 @@
+.upload_img {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-thumbnail {
+  float: left;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+/* .img-thumbnail:hover {
+  width: 500px;
+  height: 500px;
+} */
+
+input {
+  align-self: flex-start;
+}
+
+#form__container {
+  align-self: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+img {
+  border-radius: 5px;
+}
+
+/* .form_container {
+  margin: 10px;
+  border: 1px grey solid;
+  border-radius: 5px;
+  width: 1000px;
+  height: 300px;
+  background-color: white;
+} */

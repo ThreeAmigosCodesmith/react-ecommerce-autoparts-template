@@ -5,8 +5,8 @@ export const uploadImage = (photo) => ({
   photo,
 });
 
-export const setAwsS3ImageUrl = (url) => ({
-  type: types.SET_AWS_S3_IMAGE_URL,
+export const addImageUrl = (url) => ({
+  type: types.ADD_IMAGE_URL,
   url,
 });
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import './Catalog.css';
 import CatalogProduct from './CatalogProduct';
 
@@ -24,18 +25,21 @@ const Catalog = () => {
       <div className="catalog">
         <h2 className="catalog__title">Catalog</h2>
         <div className="catalog__productCont">
-          {catalog.map((item) => (
-            <CatalogProduct
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              make={item.make}
-              year={item.year}
-              condition={item.condition}
-              description={item.description}
-              borough={item.borough}
-            />
-          ))}
+          {(catalog
+            ? catalog.map((item) => (
+              <CatalogProduct
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                make={item.make}
+                year={item.year}
+                condition={item.condition}
+                description={item.description}
+                borough={item.borough}
+                key={uuidv4()}
+              />
+            ))
+            : 'No sellers near you!')}
         </div>
       </div>
     </div>
