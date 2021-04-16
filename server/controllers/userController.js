@@ -14,26 +14,44 @@ async function getUsers(req, res, next) {
     });
 }
 
+// eslint-disable-next-line consistent-return
 async function getUser(req, res, next) {
   const { userId } = req.params;
-  await customer.findOne({ where: { customerID: res.locals.success ? res.locals.ssid : userId } })
-    .then((user) => {
-      res.locals.user = user;
-      return next();
-    })
-    .catch((error) => {
-      res.locals.error = error;
-      return next();
+  console.log('getting user');
+  try {
+    const customerData = await customer.findOne({
+      where: {
+        customerID: res.locals.success ? res.locals.ssid : userId,
+      },
     });
+
+    if (customerData) {
+      res.locals.user = { ...customerData.dataValues, userRole: 'CUSTOMER' };
+      console.log('customer data found');
+    } else {
+      console.log(res.locals.ssid);
+      const supplierData = await supplier.findOne({
+        where: {
+          supplierID: res.locals.ssid,
+        },
+      });
+      if (supplierData) {
+        console.log('supplier data found', supplierData.dataValues);
+        res.locals.user = { ...supplierData.dataValues, userRole: 'OWNER' };
+      }
+    }
+    return next();
+  } catch (err) {
+    res.locals.error = err;
+    return next();
+  }
 }
 
 // eslint-disable-next-line consistent-return
 async function verifyUser(req, res, next) {
   try {
     const existingCustomer = await customer.findOne({ where: { email: req.body.email } });
-    console.log(existingCustomer);
     if (existingCustomer?.dataValues) {
-      console.log('customer exists');
       bcrypt.compare(req.body.password, existingCustomer.password, (error, isMatch) => {
         if (!isMatch) {
           res.locals.error = 'Incorrect Password!';

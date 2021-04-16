@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import {
   BrowserRouter,
   Switch,
   Route,
   Redirect,
+  useHistory,
 } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -18,10 +19,35 @@ import Signup from './components/Signup/Signup';
 import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
 import Stripe from './components/Stripe/Stripe';
+import * as types from './redux/actions/actionTypes';
 
 const App = () => {
   const user = useSelector((state) => state.auth.user);
   const userRole = useSelector((state) => state.auth.userRole);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    fetch('/session')
+      .then((res) => res.json())
+      .then((res) => {
+        // eslint-disable-next-line no-console
+        console.log(res.user.userRole);
+        dispatch({ type: types.SET_USER_ROLE, payload: res.user.userRole });
+
+        const firstName = res.user?.firstName || res.user.contactFirstName;
+        const lastName = res.user?.lastName || res.user.contactLastName;
+        dispatch({
+          type: types.AUTH_USER,
+          payload: {
+            name: `${firstName} ${lastName}`,
+            id: res.user?.customerID || res.user.supplierID,
+            ...res.user,
+          },
+        });
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const loginRoutes = (
     <>
@@ -49,6 +75,9 @@ const App = () => {
           <Route path="/dashboard" component={Dashboard} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/stripe" component={Stripe} />
+          <Route path="*">
+            {userRole === 'CUSTOMER' ? <Redirect to="/" /> : <Redirect to="/dashboard" />}
+          </Route>
         </Switch>
       </div>
       <div className="footer-content">

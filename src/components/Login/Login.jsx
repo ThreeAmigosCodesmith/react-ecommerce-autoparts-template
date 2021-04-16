@@ -20,6 +20,7 @@ const Login = () => {
 
     try {
       const res = await axios.post('/api/users/verify', { email, password });
+      console.log(res.data);
       dispatch({ type: types.AUTH_USER, payload: res.data });
       dispatch({ type: types.SET_USER_ROLE, payload: res.data.userRole });
       if (userRole === 'CUSTOMER') history.push('/');
