@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import * as actions from '../../redux/actions/actionTypes';
 
 const Product = (props) => {
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
