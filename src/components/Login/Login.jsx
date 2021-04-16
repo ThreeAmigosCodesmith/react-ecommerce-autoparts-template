@@ -66,9 +66,9 @@ const Login = () => {
           </form>
           <div className="login__createAccount">
             <p>Don&apos;t have an account?</p>
-            <a href="/signup">
+            <Link to="/signup">
               Sign Up
-            </a>
+            </Link>
           </div>
         </div>
       </div>
