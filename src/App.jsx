@@ -77,10 +77,6 @@ const App = () => (
             <Cart />
           </div>
         </Route>
-<<<<<<< HEAD
-
-=======
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
         <Route exact path="/stripe">
           <div className="header-content">
             <Header />

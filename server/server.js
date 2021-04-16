@@ -18,10 +18,6 @@ const db = require('./models/index');
 
 const stripeRouter = require('./routes/stripe');
 const apiRouter = require('./routes/api');
-<<<<<<< HEAD
-// const imageUploadRouter = require('./routes/upload');
-=======
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
 
 // handle parsing request body
 app.use(express.json());
@@ -40,11 +36,6 @@ app.get('/session', sessionController.isLoggedIn, userController.getUser, (req, 
 app.use('/pay', stripeRouter);
 app.use('/api', apiRouter);
 
-<<<<<<< HEAD
-// app.use('/v1/upload', imageUploadRouter);
-
-=======
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send("This is not the page you're looking for..."));
 
@@ -107,7 +98,6 @@ io.on('connection', async (socket) => {
 
   // SOCKET.IO EVENT LISTENERS
   socket.on('new-message', async (message) => {
-    console.log(message);
     chat.create(message);
   });
 

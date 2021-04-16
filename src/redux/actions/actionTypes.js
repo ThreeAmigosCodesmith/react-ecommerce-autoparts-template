@@ -11,10 +11,8 @@ export const DELETE_USER = 'DELETE_USER';
 export const DELETE_IMAGE_URL = 'DELETE_IMAGE_URL';
 export const ADD_IMAGE_URL = 'ADD_IMAGE_URL';
 export const RESPONSE = 'RESPONSE';
-<<<<<<< HEAD
 export const SET_PRODUCT_INFO = 'SET_PRODUCT_INFO';
 export const CLEAR_ALL_IMAGES = 'CLEAR_ALL_IMAGES';
-=======
 
 // CHAT
 export const TOGGLE_CHAT = 'TOGGLE_CHAT';
@@ -26,4 +24,3 @@ export const START_CHAT = 'START_CHAT';
 export const END_CHAT = 'END_CHAT';
 export const CREATE_SOCKET = 'CREATE_SOCKET';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309

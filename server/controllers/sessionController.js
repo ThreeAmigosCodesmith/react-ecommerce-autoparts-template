@@ -24,12 +24,12 @@ sessionController.isLoggedIn = async (req, res, next) => {
 // /* startSession - create and save a new Session into the database. */
 sessionController.startSession = async (req, res, next) => {
   try {
-    if (res.locals.userId) {
+    if (res.locals.user.customerID) {
       await session.findOrCreate({
-        where: { cookieID: res.locals.userId },
-        cookieID: res.locals.userId,
+        where: { cookieID: res.locals.user.customerID },
+        cookieID: res.locals.user.customerID,
         createdAt: Date.now(),
-        customerID: res.locals.userId,
+        customerID: res.locals.user.customerID,
       });
       return next();
     // eslint-disable-next-line no-else-return

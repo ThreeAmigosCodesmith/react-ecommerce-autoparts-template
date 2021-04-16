@@ -8,13 +8,8 @@ async function getProduct(req, res, next) {
       productId,
     },
   })
-<<<<<<< HEAD
-    .then((prod) => {
-      res.locals.product = prod;
-=======
     .then((data) => {
       res.locals.product = data;
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       return next();
     })
     .catch((error) => {
@@ -71,24 +66,25 @@ async function getAllProductsByUser(req, res, next) {
 
 async function createProduct(req, res, next) {
   const {
-    title, make, model, year, description, price, images,
+    title, make, model, year, description, price, images, condition,
   } = req.body;
   // eslint-disable-next-line no-console
   console.log(req.body);
   const sellerID = req.cookies.ssid;
 
   await product.create({
-<<<<<<< HEAD
-    title, make, model, year, description, price, sellerID, images,
+    productName: title,
+    make,
+    model,
+    year,
+    productDescription: description,
+    condition,
+    price,
+    sellerID,
+    images,
   })
     .then((prod) => {
       res.locals.product = prod;
-=======
-    title, make, model, year, borough, description, price, sellerID,
-  })
-    .then((data) => {
-      res.locals.product = data;
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       return next();
     })
     .catch((error) => {
@@ -120,13 +116,8 @@ async function updateProduct(req, res, next) {
       productId,
     },
   })
-<<<<<<< HEAD
-    .then((prod) => {
-      res.locals.productupdated = prod;
-=======
     .then((data) => {
       res.locals.productupdated = data;
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       return next();
     })
     .catch((error) => {
@@ -143,13 +134,8 @@ async function deleteProduct(req, res, next) {
       productId,
     },
   })
-<<<<<<< HEAD
-    .then((prod) => {
-      res.locals.deletedproduct = prod;
-=======
     .then((data) => {
       res.locals.deletedproduct = data;
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       return next();
     })
     .catch((error) => {

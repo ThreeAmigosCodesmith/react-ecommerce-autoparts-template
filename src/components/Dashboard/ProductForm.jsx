@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-=======
-/* eslint-disable no-unused-vars */
-
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
 import React, { useEffect, useState } from 'react';
 // import { axios } from 'axios';
 import './ProductForm.css';
@@ -12,12 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { CLEAR_ALL_IMAGES } from '../../redux/actions/actionTypes';
 import UploadImages from './UploadImages';
-<<<<<<< HEAD
 // import apiHeaders from '../../apiKeys';
-=======
-import Preview from './Preview';
-/* eslint-disable import/no-named-as-default-member */
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
 import makes from '../../vehicles';
 
 const ProductForm = () => {
@@ -92,7 +82,6 @@ const ProductForm = () => {
     makes.forEach((brand) => carMakes.push(<option value={brand}>{brand}</option>));
     return carMakes;
   };
-<<<<<<< HEAD
   // export const InitialState = {
   //   title: '',
   //   year: '',
@@ -111,10 +100,6 @@ const ProductForm = () => {
   //   note: '',
   //   price: '',
   // };
-=======
-
-  // const getModels = () => {
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
   // useEffect(() => {
   //   const carModels = [];
   //   fetch(`https://parseapi.back4app.com/classes/Carmodels_Car_Model_List_${make}?order=Model&keys=Model,Year`,
