@@ -1,13 +1,11 @@
-<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-=======
-import React from 'react';
->>>>>>> 5465d80da90dfbf59385f1ca5533577b62bcc645
 import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import * as actions from '../../redux/actions/actionTypes';
 
 const Product = (props) => {
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
@@ -19,11 +17,8 @@ const Product = (props) => {
     images,
     location,
     condition,
-<<<<<<< HEAD
     supplierID,
     sliderLength,
-=======
->>>>>>> 5465d80da90dfbf59385f1ca5533577b62bcc645
   } = props;
   console.log(images);
   const addToCart = () => {
@@ -42,7 +37,6 @@ const Product = (props) => {
     });
   };
 
-<<<<<<< HEAD
   const messageSeller = () => {
     const chatSessionID = uuidv4();
     dispatch({
@@ -67,8 +61,6 @@ const Product = (props) => {
     }
   };
 
-=======
->>>>>>> 5465d80da90dfbf59385f1ca5533577b62bcc645
   return (
     <div className="product">
       <div className="product__info">
@@ -105,14 +97,10 @@ Product.propTypes = {
   price: PropTypes.number.isRequired,
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
   condition: PropTypes.string.isRequired,
-<<<<<<< HEAD
   location: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
   supplierID: PropTypes.string,
   sliderLength: PropTypes.number.isRequired,
-=======
-  location: PropTypes.shape({ borough: PropTypes.string.isRequired }).isRequired,
->>>>>>> 5465d80da90dfbf59385f1ca5533577b62bcc645
 };
 
 export default Product;
