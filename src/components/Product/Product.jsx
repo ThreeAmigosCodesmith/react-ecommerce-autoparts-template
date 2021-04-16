@@ -4,11 +4,8 @@ import PropTypes from 'prop-types';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
 import { useDispatch } from 'react-redux';
-<<<<<<< HEAD
-=======
 import { v4 as uuidv4 } from 'uuid';
 import * as actions from '../../redux/actions/actionTypes';
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
 
 const Product = (props) => {
   const dispatch = useDispatch();
@@ -24,10 +21,6 @@ const Product = (props) => {
 
   const addToCart = () => {
     // dispatch item to the data layer
-<<<<<<< HEAD
-
-=======
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
     dispatch({
       type: actions.ADD_TO_CART,
       item: {

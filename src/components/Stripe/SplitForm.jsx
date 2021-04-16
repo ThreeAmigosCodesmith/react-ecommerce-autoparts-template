@@ -8,10 +8,6 @@ import {
 } from '@stripe/react-stripe-js';
 import { useSelector } from 'react-redux';
 import CurrencyFormat from 'react-currency-format';
-<<<<<<< HEAD
-import { useSelector } from 'react-redux';
-=======
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
 import useResponsiveFontSize from './useResponsiveFontSize';
 
 const useOptions = () => {
@@ -96,12 +92,6 @@ const SplitForm = () => {
   /* eslint-disable react/prop-types */
 
   /* eslint-disable react/destructuring-assignment */
-<<<<<<< HEAD
-
-  return (
-    <div style={{ width: '100%' }}>
-      {console.log(cart)}
-=======
   let content= (
     <div style={{ height: '100%', }}>
     <CurrencyFormat
@@ -187,7 +177,6 @@ const SplitForm = () => {
   if(success) {
     content = (
     <div style={{ height: '100%', display:'flex', justifyContent: 'space-evenly', alignItems:'space-between' , flexDirection: 'column' }}>
->>>>>>> 677413cc54e7674a8d75608ad1fa657756b8f309
       <CurrencyFormat
         value={cart.reduce((acc, curr) => (acc + curr.price), 0)}
         renderText={(value) => (

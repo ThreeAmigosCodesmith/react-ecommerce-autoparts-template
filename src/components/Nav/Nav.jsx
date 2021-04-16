@@ -54,7 +54,7 @@ const Nav = () => {
       <div className="nav__left">
         {user ? (
           <div className="nav__logout">
-            <p className="nav__loggedInMsg">{`Hello, ${user.name}`}</p>
+            <p className="nav__loggedInMsg">{`Hello, ${user.firstName}!`}</p>
             <Link style={navStyle} to="/">
               <button id="nav__logOutButton" type="button" onClick={(e) => logOutButton(e)}>Logout</button>
             </Link>

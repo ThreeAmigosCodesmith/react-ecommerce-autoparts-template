@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import './ProductForm.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
+import { v4 as uuidv4 } from 'uuid';
 import { CLEAR_ALL_IMAGES } from '../../redux/actions/actionTypes';
 import UploadImages from './UploadImages';
 // import apiHeaders from '../../apiKeys';
@@ -79,7 +80,7 @@ const ProductForm = () => {
 
   const getMakes = () => {
     const carMakes = [];
-    makes.forEach((brand) => carMakes.push(<option value={brand}>{brand}</option>));
+    makes.forEach((brand) => carMakes.push(<option value={brand} key={uuidv4()}>{brand}</option>));
     return carMakes;
   };
   // export const InitialState = {
@@ -143,7 +144,6 @@ const ProductForm = () => {
                 <textarea rows="10" name="description" type="text" id="form__description" value={description} onChange={(e) => setDescription(e.target.value)} />
               </label>
             </div>
-
           </div>
 
           <div className="productForm__details__cont">
@@ -152,7 +152,7 @@ const ProductForm = () => {
               <label htmlFor="form__manufacturer">
                 <h4>Make/Manufacturer</h4>
                 <select name="make" id="form__manufacturer" value={make} onChange={(e) => setMake(e.target.value)}>
-                  <option value="none" selected disabled>None</option>
+                  <option value="none">None</option>
                   <option value="multiple">Multiple</option>
                   {getMakes()}
                 </select>
@@ -163,7 +163,7 @@ const ProductForm = () => {
               <label htmlFor="form__manufacturer">
                 <h4>Model</h4>
                 <select name="model" id="form__manufacturer" value={model} onChange={(e) => setModel(e.target.value)}>
-                  <option value="none" selected disabled>None</option>
+                  <option value="none">None</option>
                   <option value="Pinto">Pinto</option>
                   <option value="Prius">Prius</option>
                   <option value="multiple">Multiple</option>
@@ -176,7 +176,7 @@ const ProductForm = () => {
               <label htmlFor="form__year">
                 <h4>Year</h4>
                 <select name="year" id="form__year" value={year} onChange={(e) => setYear(e.target.value)}>
-                  <option value="none" selected disabled>Select</option>
+                  <option value="none">Select</option>
                   <option value="2018">2018</option>
                   {/* {getModels().carYears} */}
                 </select>
@@ -186,7 +186,7 @@ const ProductForm = () => {
             <label htmlFor="form__condition">
               <h4>Condition</h4>
               <select name="condition" id="form__condition" value={condition} onChange={(e) => setCondition(e.target.value)}>
-                <option value="none" selected disabled>Select</option>
+                <option value="none">Select</option>
                 <option value="Like New">Like New</option>
                 <option value="Excellent">Excellent</option>
                 <option value="Good">Good</option>
@@ -194,8 +194,15 @@ const ProductForm = () => {
                 <option value="Salvage">Salvage</option>
               </select>
             </label>
-            <UploadImages />
+
+            <div className="productForm__details">
+              <label htmlFor="form__color">
+                <h4>Color</h4>
+                <input name="color" id="form__color" value={year} onChange={(e) => setYear(e.target.value)} />
+              </label>
+            </div>
           </div>
+          <UploadImages />
           <div className="form__buttons">
             <Button color="primary" variant="contained" type="button" onClick={submitProduct} className="button__createListing">Create Listing</Button>
             <Button variant="contained" type="button" onClick={clearFields} className="button__clearListing">Clear All Fields</Button>
