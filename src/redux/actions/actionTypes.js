@@ -9,6 +9,7 @@ export const EMPTY_CART = 'EMPTY_CART';
 export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
 export const DELETE_USER = 'DELETE_USER';
+export const SET_USER_ROLE = 'SET_USER_ROLE';
 
 // IMAGES
 export const DELETE_IMAGE_URL = 'DELETE_IMAGE_URL';

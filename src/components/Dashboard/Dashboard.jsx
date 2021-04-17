@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   useHistory,
+  Redirect,
 } from 'react-router-dom';
 import './Dashboard.css';
 import { useSelector } from 'react-redux';
@@ -16,7 +17,28 @@ import Messages from './Messages/Messages';
 
 const Dashboard = () => {
   const user = useSelector((state) => state.auth.user);
+  const userRole = useSelector((state) => state.auth.userRole);
   const history = useHistory();
+
+  const customerRoutes = (
+    <>
+      <Route exact path="/dashboard/purchases" component={Purchases} />
+      <Route exact path="/dashboard/messages" component={Messages} />
+      <Route>
+        <Redirect to="/dashboard/purchases" />
+      </Route>
+    </>
+  );
+
+  const ownerRoutes = (
+    <>
+      <Route exact path="/dashboard" component={Main} />
+      <Route exact path="/dashboard/newProduct" component={ProductForm} />
+      <Route exact path="/dashboard/inventory" component={Inventory} />
+      <Route exact path="/dashboard/purchases" component={Purchases} />
+      <Route exact path="/dashboard/messages" component={Messages} />
+    </>
+  );
 
   useEffect(() => {
     if (!user) {
@@ -28,21 +50,7 @@ const Dashboard = () => {
     <div className="dashboard">
       <Sidebar />
       <Switch>
-        <Route exact path="/dashboard">
-          <Main />
-        </Route>
-        <Route exact path="/dashboard/newProduct">
-          <ProductForm />
-        </Route>
-        <Route exact path="/dashboard/inventory">
-          <Inventory />
-        </Route>
-        <Route exact path="/dashboard/purchases">
-          <Purchases />
-        </Route>
-        <Route exact path="/dashboard/messages">
-          <Messages />
-        </Route>
+        {userRole === 'CUSTOMER' ? customerRoutes : ownerRoutes}
       </Switch>
     </div>
   );

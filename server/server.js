@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
 const http = require('http');
@@ -30,7 +31,8 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.get('/session', sessionController.isLoggedIn, userController.getUser, (req, res) => {
-  res.status(200).send(JSON.stringify({ user: res.locals.user.dataValues }));
+  console.log(res.locals.user);
+  res.status(200).send(JSON.stringify({ user: res.locals.user }));
 });
 // define route handlers
 app.use('/pay', stripeRouter);
