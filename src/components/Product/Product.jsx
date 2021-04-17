@@ -98,7 +98,7 @@ const Product = (props) => {
         <p>{`Condition: ${condition}`}</p>
         <p className="product__location">
           <LocationOnIcon />
-          <span>{location.borough}</span>
+          <span>{location}</span>
         </p>
       </div>
       <div className="product__image">

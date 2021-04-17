@@ -1,23 +1,66 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import {
+  FormLabel,
+  FormControl,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  Chip,
+} from '@material-ui/core';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import './Catalog.css';
 import Product from '../Product/Product';
 import * as actions from '../../redux/actions/actionTypes';
 
+const styles = {
+  formLabel: {
+    fontWeight: 'bold',
+    color: 'black',
+    padding: '2rem 0 0',
+    textAlign: 'left',
+  },
+  conditionButton: {
+    color: '#3b945e',
+  },
+  input: {
+    border: '1px solid gray',
+    fontSize: '.8rem',
+    padding: '.6rem',
+    marginBottom: '1rem',
+  },
+  chip: {
+    padding: '1.2rem',
+    fill: '#3b945e',
+  },
+};
+
 function Catalog() {
-  const products = useSelector((state) => state.products.homePage);
+  const products = useSelector((state) => state.products.catalog);
+  console.log('loaded', products);
   const dispatch = useDispatch();
+  const conditions = ['Good', 'Bad', 'Decent', 'New'];
+  const colors = ['Red', 'Blue', 'Green', 'Purple', 'Orange'];
+  const [searchText, setSearchText] = useState('');
+  const [checkbox, setCheckbox] = useState({
+    Good: true,
+    Bad: true,
+    Decent: true,
+    New: true,
+    Red: true,
+    Blue: true,
+    Green: true,
+    Purple: true,
+    orange: true,
+  });
 
   useEffect(() => {
-    async function getHomePageProducts() {
-      console.log('fetching products');
+    async function getAllProducts() {
       const res = await axios.get('/api/products');
-      console.log('this is the datea', res.data);
       if (res.status === 200) {
-        console.log(res.data);
         const allProducts = res.data.map((el) => ({
           id: el.productId,
           title: el.productName,
@@ -28,17 +71,72 @@ function Catalog() {
           supplierID: el.supplierID,
         }));
 
-        dispatch({ type: actions.LOAD_HOME_PAGE, payload: allProducts });
+        dispatch({ type: actions.LOAD_CATALOG, payload: allProducts });
       }
     }
-    getHomePageProducts();
+    getAllProducts();
   }, []);
+
+  const handleChange = (e) => {
+    const { target: { checked, name } } = e;
+    setCheckbox({ ...checkbox, [name]: checked });
+  };
+
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+  };
 
   return (
     <div className="homeCatalog">
-      <div className="catalog">
+      <div className="title__container">
         <h2 className="catalog_title">Catalog</h2>
         <h2>Items near you:</h2>
+      </div>
+      <div className="catalog__container">
+        <div className="filter__features">
+          <input type="text" placeholder="Enter search here" style={styles.input} onKeyUp={handleSearch} />
+          {searchText ? <Chip label={searchText} variant="outlined" /> : null}
+          <div className="checkbox__options">
+            <FormControl component="fieldset">
+              <FormLabel style={styles.formLabel} component="legend">Condition</FormLabel>
+              <FormGroup>
+                {conditions.map((condition) => (
+                  <FormControlLabel
+                    control={(
+                      <Checkbox
+                        checked={checkbox[condition]}
+                        onChange={handleChange}
+                        name={condition}
+                        style={styles.conditionButton}
+                      />
+                      )}
+                    label={condition}
+                  />
+                ))}
+              </FormGroup>
+            </FormControl>
+
+            <FormControl component="fieldset">
+              <FormLabel style={styles.formLabel} component="legend">Color</FormLabel>
+              <FormGroup>
+                {colors.map((color) => (
+                  <FormControlLabel
+                    control={(
+                      <Checkbox
+                        checked={checkbox[color]}
+                        onChange={handleChange}
+                        name={color}
+                        style={{ color }}
+                      />
+                      )}
+                    label={color}
+                  />
+                ))}
+              </FormGroup>
+            </FormControl>
+          </div>
+        </div>
+
         <div className="home_productsNearby">
           {products.length > 0 ? products.map((item) => (
             <div style={{ width: '450px' }}>
