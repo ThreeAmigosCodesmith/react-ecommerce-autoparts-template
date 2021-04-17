@@ -28,7 +28,7 @@ const Inventory = () => {
   return (
     <div id="inventory">
       <h1>Inventory</h1>
-      <InventoryChart />
+      {/* <InventoryChart /> */}
       <div>
         <MaterialTable title="Inventory" columns={columns} data={inventory} />
       </div>
@@ -44,7 +44,7 @@ const columns = [
     field: 'productName',
   },
   {
-    title: 'Codition',
+    title: 'Condition',
     field: 'condition',
   },
   {
@@ -52,7 +52,7 @@ const columns = [
     field: 'images',
     render: (row) => {
       const { images } = row;
-      return <img src={images[0]} style={{ height: 100, width: 100 }} alt="Product" />;
+      return <img src={images[0]} style={{ height: 150, width: 150 }} alt="Product" />;
     },
   },
   {
