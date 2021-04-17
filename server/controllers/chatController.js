@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { models: { chat } } = require('../models/index');
 
 async function getAllChats(req, res, next) {

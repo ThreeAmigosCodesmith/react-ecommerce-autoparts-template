@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const cookieController = {};
 
 /* setSSIDCookie - store the user id in a cookie */

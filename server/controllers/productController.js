@@ -133,7 +133,6 @@ async function deleteProduct(req, res, next) {
 }
 
 async function getAllProducts(req, res, next) {
-  console.log('getting all products');
   try {
     const products = await product.findAll();
     res.locals.products = products;
@@ -146,7 +145,6 @@ async function getAllProducts(req, res, next) {
 }
 
 async function getHomepageProducts(req, res, next) {
-  console.log('getting homepage');
   try {
     const products = await product.findAll({ limit: 9 });
     res.locals.products = products;

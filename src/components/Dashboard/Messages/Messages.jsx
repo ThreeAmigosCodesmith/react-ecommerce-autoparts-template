@@ -21,6 +21,7 @@ const Messages = () => {
         // axios
       } else {
         const messages = await axios.post('/api/chat/owner', { supplierID });
+        // eslint-disable-next-line no-console
         console.log(messages.data);
         dispatch({ type: types.ADD_CHATS, payload: messages.data });
       }
@@ -30,7 +31,7 @@ const Messages = () => {
 
   const handleChat = async (e, rowData) => {
     const { chatSessionID, customerID } = rowData;
-    console.log('handling chat', customerID, chatSessionID, supplierID);
+    // console.log('handling chat', customerID, chatSessionID, supplierID);
     dispatch({
       type: types.START_CHAT,
       payload: {
