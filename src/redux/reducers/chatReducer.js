@@ -8,6 +8,7 @@ export const chatState = {
   productID: null,
   title: null,
   socket: null,
+  allChats: [],
 };
 
 const authReducer = (state = chatState, action) => {
@@ -35,6 +36,11 @@ const authReducer = (state = chatState, action) => {
       return {
         ...state,
         messages: [...state.messages, action.payload],
+      };
+    case types.ADD_CHATS:
+      return {
+        ...state,
+        allChats: action.payload,
       };
     case types.END_CHAT:
       return {

@@ -21,6 +21,7 @@ export const CLEAR_ALL_IMAGES = 'CLEAR_ALL_IMAGES';
 // CHAT
 export const TOGGLE_CHAT = 'TOGGLE_CHAT';
 export const LOAD_CHATS = 'LOAD_CHATS';
+export const ADD_CHATS = 'ADD_CHATS';
 
 // PRODUCTS
 export const LOAD_HOME_PAGE = 'LOAD_HOME_PAGE';
