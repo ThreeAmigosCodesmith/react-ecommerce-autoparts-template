@@ -21,8 +21,7 @@ const Product = (props) => {
     supplierID,
     sliderLength,
   } = props;
-  // eslint-disable-next-line no-console
-  console.log(images);
+
   const addToCart = () => {
     // dispatch item to the data layer
     // eslint-disable-next-line no-console

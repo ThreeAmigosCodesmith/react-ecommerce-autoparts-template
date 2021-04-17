@@ -6,7 +6,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockIcon from '@material-ui/icons/Lock';
 import { useSelector, useDispatch } from 'react-redux';
 import Logo from '../../yardhop-logo.png';
-import * as types from '../../redux/actions/actionTypes';
+import { AUTH_USER } from '../../redux/actions/actionTypes';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -32,7 +32,7 @@ const Login = () => {
         // eslint-disable-next-line no-console
         console.log('res: ', res);
         dispatch({
-          type: types.AUTH_USER,
+          type: AUTH_USER,
           payload: res,
         });
       })
