@@ -37,6 +37,7 @@ const useOptions = () => {
 
 const SplitForm = () => {
   const cart = useSelector((state) => state.cart.cart);
+  const user = useSelector((state) => state.auth.user);
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
@@ -46,6 +47,22 @@ const SplitForm = () => {
   /* eslint-disable jsx-a11y/label-has-associated-control */
 
   /*eslint-disable*/
+
+  let today  = new Date();
+
+  let productIds = []
+
+  console.log(user)
+
+  for(let x = 0; x < cart.length; x++) {
+    if(cart[x].id) {
+      productIds.push(cart[x].id)
+    }
+  }
+
+  const userId = user.customerID
+
+  let orderDate =  today.toLocaleDateString("en-US")
 
   function stripePaymentMethodHandler(result) {
     console.log('hello')
@@ -58,7 +75,8 @@ const SplitForm = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           payment_method_id: result.paymentMethod.id,
-          payment_amount: cart.reduce((acc, curr) => (acc + curr.price), 0)
+          payment_amount: cart.reduce((acc, curr) => (acc + curr.price), 0),
+          order: {orderDate: orderDate, productId: productIds, sellerId: '21651651adwsaw', buyerId: userId, amount: cart.reduce((acc, curr) => (acc + curr.price), 0)},
         }),
       }).then(function(result) {
         // Handle server response (see Step 4)

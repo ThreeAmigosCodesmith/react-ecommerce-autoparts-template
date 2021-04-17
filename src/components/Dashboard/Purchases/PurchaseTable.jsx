@@ -2,7 +2,13 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import './PurchaseTable.css';
 
-function PurchaseTable() {
+const PurchaseTable = (props) => {
+  /*eslint-disable*/
+
+  const { purchases } = props;
+
+  console.log(purchases);
+
   const data = [
     {
       purchasedDate: '6/5/2020',
@@ -112,51 +118,24 @@ function PurchaseTable() {
   const columns = [
     {
       title: 'Purchase Date',
-      field: 'purchasedDate',
+      field: 'orderDate',
     },
     {
-      title: 'Make',
-      field: 'make',
-    },
-    {
-      title: 'Model',
-      field: 'model',
-    },
-    {
-      title: 'Borough',
-      field: 'borough',
-    },
-    {
-      title: 'Year',
-      field: 'year',
-    },
-    {
-      title: 'Image Link',
-      field: 'imageLink',
-    },
-    {
-      title: 'Description',
-      field: 'description',
+      title: 'Order ID',
+      field: 'orderID',
     },
     {
       title: 'Price ($ USD)',
-      field: 'price',
+      field: 'amount',
     },
-    {
-      title: 'Condition',
-      field: 'condition',
-    },
-    {
-      title: 'SellerId',
-      field: 'sellerID',
-    },
+
   ];
 
   return (
     <div className="purchaseParent">
-      <MaterialTable title="Purchase History" data={data} columns={columns} />
+      <MaterialTable title="Purchase History" data={purchases} columns={columns} />
     </div>
   );
-}
+};
 
 export default PurchaseTable;

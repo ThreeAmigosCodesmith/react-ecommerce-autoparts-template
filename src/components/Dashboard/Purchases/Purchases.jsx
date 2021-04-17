@@ -6,11 +6,11 @@ import PurchaseTable from './PurchaseTable';
 const Purchases = () => {
   const user = useSelector((state) => state.auth.user);
   const [purchases, setPurchases] = useState([]);
-  const testingBool = false;
+  const testingBool = true;
 
   if (testingBool === true) {
     const getPurchases = () => {
-      fetch(`/api/ordersByUser/${user.id}`, {
+      fetch(`/api/orders/ordersByUser/${user.customerID}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -22,21 +22,18 @@ const Purchases = () => {
 
     useEffect(() => {
       getPurchases();
-    }, []);
+    }, [user]);
   }
+
+  /* eslint-disable */
+
+  console.log(purchases)
 
   return (
     <div id="purchases">
       <h1>Purchased History</h1>
-      <PurchaseTable />
+      <PurchaseTable purchases={purchases}/>
       <div>
-        {purchases.map((purchase) => (
-          <div className="purchasedItems">
-            <p>{`Data: ${purchase.date}`}</p>
-            <p>{`ProductId: ${purchase.productId}`}</p>
-            <p>{`SellerId: ${purchase.sellerId}`}</p>
-          </div>
-        ))}
       </div>
     </div>
   );

@@ -51,7 +51,8 @@ async function getUser(req, res, next) {
 async function verifyUser(req, res, next) {
   try {
     const existingCustomer = await customer.findOne({ where: { email: req.body.email } });
-    if (existingCustomer?.dataValues) {
+    if (existingCustomer) {
+      console.log('customer');
       bcrypt.compare(req.body.password, existingCustomer.password, (error, isMatch) => {
         if (!isMatch) {
           res.locals.error = 'Incorrect Password!';
@@ -65,6 +66,7 @@ async function verifyUser(req, res, next) {
     } else {
       const existingOwner = await supplier.findOne({ where: { email: req.body.email } });
       if (existingOwner) {
+        console.log('owner');
         bcrypt.compare(req.body.password, existingOwner.password, (error, isMatch) => {
           if (!isMatch) {
             res.locals.error = 'Incorrect Password!';
@@ -78,6 +80,7 @@ async function verifyUser(req, res, next) {
       }
     }
   } catch (error) {
+    console.log('error', error);
     res.locals.error = error;
     return next();
   }
