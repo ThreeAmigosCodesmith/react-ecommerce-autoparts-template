@@ -8,10 +8,11 @@ router.get('/:chatSessionID', chatController.getAllUserChats, (req, res) => {
   else res.status(200).json(res.locals.chat);
 });
 
-router.post('/customer', chatController.getlAllSupplierChats, (req, res) => {
-  if (res.locals.error) res.status(400).json(res.locals.error);
-  else res.status(200).json(res.locals.chats);
-});
+router.post('/customer', chatController.getAllCustomerChats, chatController.formatChatList2,
+  (req, res) => {
+    if (res.locals.error) res.status(400).json(res.locals.error);
+    else res.status(200).json(res.locals.chats);
+  });
 
 router.post('/owner', chatController.getlAllSupplierChats, chatController.formatChatList,
   (req, res) => {

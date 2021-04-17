@@ -12,6 +12,7 @@ import * as types from '../../../redux/actions/actionTypes';
 const Messages = () => {
   const userRole = useSelector((state) => state.auth.userRole);
   const { supplierID } = useSelector((state) => state.auth.user);
+  const customer = useSelector((state) => state?.auth?.user?.customerID);
   const allChats = useSelector((state) => state.chat.allChats);
   const dispatch = useDispatch();
 
@@ -19,7 +20,10 @@ const Messages = () => {
     const loadChats = async () => {
       console.log('loading chats');
       if (userRole === 'CUSTOMER') {
-        // axios
+        console.log(customer);
+        const messages = await axios.post('/api/chat/customer', { customerID: customer });
+        console.log(messages.data);
+        dispatch({ type: types.ADD_CHATS, payload: messages.data });
       } else {
         const messages = await axios.post('/api/chat/owner', { supplierID });
         console.log(messages.data);
@@ -48,7 +52,7 @@ const Messages = () => {
   return (
     <div id="messages">
       <h1>Message History</h1>
-      <MaterialTable style={tableStyle} title="" data={allChats.map((el) => el[0])} columns={columns} onRowClick={handleChat} />
+      <MaterialTable style={tableStyle} title="" data={allChats.map((el) => el[0])} columns={userRole === 'CUSTOMER' ? customerColumns : ownerColumns} onRowClick={handleChat} />
       <Chat />
     </div>
   );
@@ -58,7 +62,39 @@ const tableStyle = {
   width: '100%',
 };
 
-const columns = [
+const customerColumns = [
+  {
+    title: 'Supplier',
+    field: 'supplier',
+  },
+  {
+    title: 'Supplier Contact',
+    field: 'supplierContact',
+  },
+  {
+    title: 'Contact Phone',
+    field: 'phone',
+  },
+  {
+    title: 'Contact Email',
+    field: 'email',
+  },
+  {
+    title: 'Chat Started',
+    field: 'createdAt',
+    render: (row) => {
+      const { createdAt } = row;
+      return (
+        <>
+          <p>{new Date(createdAt).toLocaleDateString()}</p>
+          <p>{new Date(createdAt).toLocaleTimeString()}</p>
+        </>
+      );
+    },
+  },
+];
+
+const ownerColumns = [
   {
     title: 'Customer Name',
     field: 'customerName',
