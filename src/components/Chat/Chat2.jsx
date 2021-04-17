@@ -31,7 +31,6 @@ function Chat(props) {
     supplierID,
     messages,
   } = useSelector((state) => state?.chat);
-  const { backupCustomerID } = props;
   const [socketConnection, setSocketConnetion] = useState();
   const dispatch = useDispatch();
   const containerRef = useRef();
