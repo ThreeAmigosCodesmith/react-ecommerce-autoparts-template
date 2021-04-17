@@ -1,5 +1,6 @@
 import './Sidebar.css';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const styles = {
@@ -9,42 +10,39 @@ const styles = {
   },
 };
 
-const Sidebar = () => (
-  <div id="sidebar">
-    {/* apply active_menu_link to currently selected page */}
-    <div className="sidebar__menu">
-      <div className="sidebar__link">
-        <NavLink activeStyle={styles.activeMenuLink} exact to="/dashboard">
-          <p>Dashboard</p>
-        </NavLink>
-      </div>
-      <div className="sidebar__link">
-        <NavLink activeStyle={styles.activeMenuLink} exact to="/dashboard/newProduct">
-          <p>New Listing</p>
-        </NavLink>
-      </div>
-      <div className="sidebar__link">
-        <NavLink activeStyle={styles.activeMenuLink} exact to="/dashboard/inventory">
-          <p>Inventory</p>
-        </NavLink>
-      </div>
-      <div className="sidebar__link">
-        <NavLink activeStyle={styles.activeMenuLink} exact to="/dashboard/purchases">
-          <p>Purchases</p>
-        </NavLink>
-      </div>
-      <div className="sidebar__link">
-        <NavLink activeStyle={styles.activeMenuLink} exact to="/dashboard/messages">
-          <p>Messages</p>
-        </NavLink>
-      </div>
-      <div className="sidebar__link">
-        <NavLink activeStyle={styles.activeMenuLink} exact to="/dashboard/settings">
-          <p>Settings</p>
-        </NavLink>
+const customerRoutes = {
+  Purchases: '/dashboard/purchases',
+  Messages: '/dashboard/messages',
+};
+
+const ownerRoutes = {
+  Dashboard: '/dashboard',
+  'New Listing': '/dashboard/newProduct',
+  Inventory: '/dashboard/inventory',
+  Purchases: '/dashboard/purchases',
+  Messages: '/dashboard/messages',
+  Settings: '/dashboard/settings',
+};
+
+const Sidebar = () => {
+  const userRole = useSelector((state) => state.auth.userRole);
+
+  // Create sidebar based on user role CUSTOMER / OWNER
+  const createSidebar = (roleValue) => Object.keys(roleValue).map((route) => (
+    <div className="sidebar__link">
+      <NavLink activeStyle={styles.activeMenuLink} exact to={roleValue[route]}>
+        <p>{route}</p>
+      </NavLink>
+    </div>
+  ));
+
+  return (
+    <div id="sidebar">
+      <div className="sidebar__menu">
+        {userRole === 'CUSTOMER' ? createSidebar(customerRoutes) : createSidebar(ownerRoutes)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Sidebar;

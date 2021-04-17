@@ -30,7 +30,8 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.get('/session', sessionController.isLoggedIn, userController.getUser, (req, res) => {
-  res.status(200).send(JSON.stringify({ user: res.locals.user.dataValues }));
+  console.log(res.locals.user);
+  res.status(200).send(JSON.stringify({ user: res.locals.user }));
 });
 // define route handlers
 app.use('/pay', stripeRouter);
@@ -98,7 +99,6 @@ io.on('connection', async (socket) => {
 
   // SOCKET.IO EVENT LISTENERS
   socket.on('new-message', async (message) => {
-    console.log(message);
     chat.create(message);
   });
 

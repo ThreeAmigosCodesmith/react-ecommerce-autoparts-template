@@ -1,28 +1,29 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { DELETE_IMAGE_URL } from '../../redux/actions/actionTypes';
+import './Preview.css';
 
 const Preview = () => {
   const [thumb, setThumb] = useState(undefined);
-  const [loading, isLoading] = useState(false);
-  const file = useSelector((state) => state.image.file);
+  const file = useSelector((state) => state.image.imageUrls);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   isLoading(true);
-  //   const reader = new FileReader();
-  //   reader.onloadend = () => {
-  //     isLoading(false);
-  //     setThumb(reader.result);
-  //   };
-  //   reader.readAsDataURL(reader.result);
-  // }, [file]);
+  const deleteImg = (e) => {
+    const imgIndex = file.indexOf(e.target.src);
+    dispatch({
+      type: DELETE_IMAGE_URL,
+      index: imgIndex,
+    });
+  };
 
   return (
-    <div className="row">
-      <div className="col-md-12">
-        {loading ? <img src={thumb} alt={file.name} className="img-thumbnail" /> : null }
-      </div>
+    <div className="img_container">
+      {file.map((img) => <img src={img} key={uuidv4()} alt={thumb} className="img-thumbnail" onClick={deleteImg} />)}
     </div>
   );
 };

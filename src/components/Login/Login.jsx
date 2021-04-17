@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './Login.css';
+import axios from 'axios';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockIcon from '@material-ui/icons/Lock';
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,37 +13,24 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
-  // eslint-disable-next-line no-unused-vars
-  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
-  const signInButton = (event) => {
+  const userRole = useSelector((state) => state.auth.userRole);
+  const signInButton = async (event) => {
     event.preventDefault();
 
-    fetch('/api/users/verify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    }).then((res) => res.json())
-      .then((res) => {
-        // eslint-disable-next-line no-console
-        console.log('res: ', res);
-        dispatch({
-          type: types.AUTH_USER,
-          payload: {
-            name: res.name,
-            id: res.id,
-          },
-        });
-      })
-      .then(() => history.push('/dashboard'))
+    try {
+      const res = await axios.post('/api/users/verify', { email, password });
+      console.log(res.data);
+      dispatch({ type: types.AUTH_USER, payload: res.data });
+      dispatch({ type: types.SET_USER_ROLE, payload: res.data.userRole });
+      if (userRole === 'CUSTOMER') history.push('/');
+      else history.push('/dashboard');
+    } catch (err) {
       // eslint-disable-next-line no-console
-      .catch((error) => console.log(error));
+      console.log(err);
+    }
   };
+
   return (
     <div className="login__background">
       <div className="login">
@@ -66,9 +54,9 @@ const Login = () => {
           </form>
           <div className="login__createAccount">
             <p>Don&apos;t have an account?</p>
-            <a href="/signup">
+            <Link to="/signup">
               Sign Up
-            </a>
+            </Link>
           </div>
         </div>
       </div>

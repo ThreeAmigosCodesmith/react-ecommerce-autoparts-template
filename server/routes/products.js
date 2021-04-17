@@ -21,17 +21,19 @@ router.get('/:orderId', productController.getProduct, (req, res) => {
   else res.status(200).json(res.locals.product);
 });
 
-router.get('/', productController.getAllProducts, (req, res) => {
-  if (res.locals.error) res.status(400).json(res.locals.error);
-  else res.status(200).json({ products: res.locals.products });
-});
-
 router.get('/ByUser/:id', productController.getAllProductsByUser, (req, res) => {
   if (res.locals.error) res.status(400).json(res.locals.error);
   else res.status(200).json(res.locals.products);
 });
 
-router.post('/', productController.createProduct, (req, res) => {
+router.get('/', productController.getAllProducts, (req, res) => {
+  if (res.locals.error) res.status(400).json(res.locals.error);
+  else res.status(200).json(res.locals.products);
+});
+
+router.post('/create', productController.createProduct, (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log(req.body);
   if (res.locals.error) res.status(400).json(res.locals.error);
   else res.status(200).json(res.locals.product);
 });

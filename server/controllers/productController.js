@@ -18,18 +18,6 @@ async function getProduct(req, res, next) {
     });
 }
 
-async function getAllProducts(req, res, next) {
-  await product.findAll()
-    .then((products) => {
-      res.locals.products = products;
-      return next();
-    })
-    .catch((error) => {
-      res.locals.error = error;
-      return next();
-    });
-}
-
 async function getProductsByUserId(req, res, next) {
   const { userId } = req.params;
 
@@ -66,16 +54,25 @@ async function getAllProductsByUser(req, res, next) {
 
 async function createProduct(req, res, next) {
   const {
-    title, make, model, year, borough, description, price,
+    title, make, model, year, description, price, images, condition,
   } = req.body;
-
+  // eslint-disable-next-line no-console
+  console.log(req.body);
   const sellerID = req.cookies.ssid;
 
   await product.create({
-    title, make, model, year, borough, description, price, sellerID,
+    productName: title,
+    make,
+    model,
+    year,
+    productDescription: description,
+    condition,
+    price,
+    sellerID,
+    images,
   })
-    .then((data) => {
-      res.locals.product = data;
+    .then((prod) => {
+      res.locals.product = prod;
       return next();
     })
     .catch((error) => {
@@ -135,9 +132,23 @@ async function deleteProduct(req, res, next) {
     });
 }
 
-async function getHomepageProducts(req, res, next) {
+async function getAllProducts(req, res, next) {
+  console.log('getting all products');
   try {
     const products = await product.findAll();
+    res.locals.products = products;
+
+    return next();
+  } catch (err) {
+    res.locals.err = err;
+    return next();
+  }
+}
+
+async function getHomepageProducts(req, res, next) {
+  console.log('getting homepage');
+  try {
+    const products = await product.findAll({ limit: 9 });
     res.locals.products = products;
 
     return next();

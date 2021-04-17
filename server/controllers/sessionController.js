@@ -5,7 +5,7 @@ const sessionController = {};
 // /* isLoggedIn - find the appropriate session for this request in the database, then verify
 // whether or not the session is still valid */
 sessionController.isLoggedIn = async (req, res, next) => {
-  // console.log('checking session ', req.cookies.ssid);
+  console.log('checking session ', req.cookies.ssid);
   res.locals.ssid = req.cookies.ssid;
   try {
     if (req.cookies.ssid) {
@@ -17,19 +17,19 @@ sessionController.isLoggedIn = async (req, res, next) => {
   } catch (error) {
     res.locals.success = false;
     // eslint-disable-next-line no-console
-    console.log(error);
+    console.log('isLoggedIn', error);
   }
 };
 
 // /* startSession - create and save a new Session into the database. */
 sessionController.startSession = async (req, res, next) => {
   try {
-    if (res.locals.userId) {
+    if (res.locals.user.customerID) {
       await session.findOrCreate({
-        where: { cookieID: res.locals.userId },
-        cookieID: res.locals.userId,
+        where: { cookieID: res.locals.user.customerID },
+        cookieID: res.locals.user?.customerID || res.locals.supplierID,
         createdAt: Date.now(),
-        customerID: res.locals.userId,
+        customerID: res.locals.user?.customerID || res.locals.supplierID,
       });
       return next();
     // eslint-disable-next-line no-else-return
@@ -37,6 +37,7 @@ sessionController.startSession = async (req, res, next) => {
       return next(Error('userId not present'));
     }
   } catch (error) {
+    console.log('error sarting session');
     return next(error);
   }
 };
