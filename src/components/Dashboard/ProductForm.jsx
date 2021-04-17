@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { CLEAR_ALL_IMAGES } from '../../redux/actions/actionTypes';
 import UploadImages from './UploadImages';
 // import apiHeaders from '../../apiKeys';
-import makes from '../../vehicles';
+import cars from '../../vehicles';
 
 const ProductForm = () => {
   const [title, setTitle] = useState('');
@@ -17,7 +17,6 @@ const ProductForm = () => {
   const [description, setDescription] = useState('');
   const [make, setMake] = useState('none');
   const [model, setModel] = useState('none');
-  // const [models, setModels] = useState([]);
   const [condition, setCondition] = useState('none');
   const [year, setYear] = useState('none');
   const [color, setColor] = useState('none');
@@ -28,6 +27,7 @@ const ProductForm = () => {
 
   const submitProduct = (event) => {
     event.preventDefault();
+
     fetch('/api/products/create', {
       method: 'POST',
       headers: {
@@ -80,27 +80,27 @@ const ProductForm = () => {
 
   const getMakes = () => {
     const carMakes = [];
-    makes.forEach((brand) => carMakes.push(<option value={brand} key={uuidv4()}>{brand}</option>));
+    cars.makes.forEach((brand) => carMakes.push(<option value={brand} key={uuidv4()}>{brand}</option>));
     return carMakes;
   };
-  // export const InitialState = {
-  //   title: '',
-  //   year: '',
-  //   make: '',
-  //   model: [],
-  //   sku: '',
-  //   productName: '',
-  //   productDescription: '',
-  //   color: '',
-  //   discount: '',
-  //   unitsInStock: 0,
-  //   unitsOnOrder: 0,
-  //   productAvailable: false,
-  //   discountAvailable: false,
-  //   images: [],
-  //   note: '',
-  //   price: '',
-  // };
+
+  const getModels = () => {
+    const carModels = [];
+    cars.models.forEach((mod) => carModels.push(<option value={mod} key={uuidv4()}>{mod}</option>));
+    return carModels;
+  };
+
+  const carYears = () => {
+    const years = [];
+    for (let i = 2021; i > 1900; i -= 1) {
+      years.push(
+        <option key={uuidv4()} value={i.toString()}>
+          {i}
+        </option>,
+      );
+    }
+    return years;
+  };
   // useEffect(() => {
   //   const carModels = [];
   //   fetch(`https://parseapi.back4app.com/classes/Carmodels_Car_Model_List_${make}?order=Model&keys=Model,Year`,
@@ -164,10 +164,9 @@ const ProductForm = () => {
                 <h4>Model</h4>
                 <select name="model" id="form__manufacturer" value={model} onChange={(e) => setModel(e.target.value)}>
                   <option value="none">None</option>
-                  <option value="Pinto">Pinto</option>
                   <option value="Prius">Prius</option>
                   <option value="multiple">Multiple</option>
-                  {/* {models} */}
+                  {getModels()}
                 </select>
               </label>
             </div>
@@ -178,7 +177,7 @@ const ProductForm = () => {
                 <select name="year" id="form__year" value={year} onChange={(e) => setYear(e.target.value)}>
                   <option value="none">Select</option>
                   <option value="2018">2018</option>
-                  {/* {getModels().carYears} */}
+                  {carYears()}
                 </select>
               </label>
             </div>
@@ -206,7 +205,7 @@ const ProductForm = () => {
           <UploadImages />
           <div className="form__buttons">
             <Button color="primary" variant="contained" type="button" onClick={submitProduct} className="button__createListing">Create Listing</Button>
-            <Button variant="contained" type="button" onClick={clearFields} className="button__clearListing">Clear All Fields</Button>
+            <Button variant="contained" type="button" onClick={clearFields} className="button__clearListing">Clear</Button>
           </div>
         </form>
       </div>
