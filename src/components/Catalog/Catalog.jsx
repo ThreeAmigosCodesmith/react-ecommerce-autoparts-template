@@ -34,7 +34,8 @@ const styles = {
   },
   chip: {
     padding: '1.2rem',
-    fill: '#3b945e',
+    background: '#3b945e',
+    color: '#3b945e',
   },
 };
 
