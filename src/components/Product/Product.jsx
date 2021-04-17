@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -20,6 +21,7 @@ const Product = (props) => {
     supplierID,
     sliderLength,
   } = props;
+  // eslint-disable-next-line no-console
   console.log(images);
   const addToCart = () => {
     // dispatch item to the data layer

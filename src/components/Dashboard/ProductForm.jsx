@@ -195,12 +195,13 @@ const ProductForm = () => {
               </select>
             </label>
 
-            <div className="productForm__details">
+            <div className="productForm__color">
               <label htmlFor="form__color">
                 <h4>Color</h4>
-                <input name="color" id="form__color" value={year} onChange={(e) => setYear(e.target.value)} />
+                <input name="color" id="form__condition" value={color} onChange={(e) => setColor(e.target.value)} />
               </label>
             </div>
+
           </div>
           <UploadImages />
           <div className="form__buttons">

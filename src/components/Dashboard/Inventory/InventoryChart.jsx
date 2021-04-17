@@ -11,6 +11,7 @@ function InventoryChart() {
   const supplierID = useSelector((state) => state.auth.user.id);
 
   const openModal = (idx) => {
+    // eslint-disable-next-line no-console
     console.log('open');
   };
 

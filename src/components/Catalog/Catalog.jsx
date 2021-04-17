@@ -13,11 +13,11 @@ function Catalog() {
 
   useEffect(() => {
     async function getHomePageProducts() {
-      console.log('fetching products');
+      // console.log('fetching products');
       const res = await axios.get('/api/products');
-      console.log('this is the datea', res.data);
+      // console.log('this is the datea', res.data);
       if (res.status === 200) {
-        console.log(res.data);
+        // console.log(res.data);
         const allProducts = res.data.map((el) => ({
           id: el.productId,
           title: el.productName,

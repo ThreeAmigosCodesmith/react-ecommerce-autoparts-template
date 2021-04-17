@@ -35,10 +35,7 @@ const Signup = () => {
       .then((res) => {
         dispatch({
           type: 'AUTH_USER',
-          payload: {
-            name: res.name,
-            id: res.id,
-          },
+          payload: res,
         });
       })
       .then(() => history.push('/dashboard'))

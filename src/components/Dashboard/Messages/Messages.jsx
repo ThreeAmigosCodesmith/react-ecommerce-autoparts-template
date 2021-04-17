@@ -14,7 +14,6 @@ const Messages = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleChat = (e, rowData) => {
-    console.log(rowData);
     setModalOpen(true);
     // dispatch({ type: types. })
   };
