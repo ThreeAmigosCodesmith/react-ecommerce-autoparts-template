@@ -52,7 +52,7 @@ async function getUser(req, res, next) {
 async function verifyUser(req, res, next) {
   try {
     const existingCustomer = await customer.findOne({ where: { email: req.body.email } });
-    if (existingCustomer?.dataValues) {
+    if (existingCustomer) {
       bcrypt.compare(req.body.password, existingCustomer.password, (error, isMatch) => {
         if (!isMatch) {
           res.locals.error = 'Incorrect Password!';
