@@ -21,7 +21,6 @@ const ownerRoutes = {
   Inventory: '/dashboard/inventory',
   Purchases: '/dashboard/purchases',
   Messages: '/dashboard/messages',
-  Settings: '/dashboard/settings',
 };
 
 const Sidebar = () => {
