@@ -1,48 +1,62 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 import './Inventory.css';
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import MaterialTable from 'material-table';
 import InventoryChart from './InventoryChart';
+import * as types from '../../../redux/actions/actionTypes';
+
 // import PurchaseTable from "../Purchases/PurchaseTable";
 
 const Inventory = () => {
-  const testing = false;
-  const user = useSelector((state) => state.auth.user);
-  const [inventory, setInventory] = useState([]);
-  if (testing === true) {
-    const getInventory = () => {
-      fetch(`/api/productsByUser/${user.id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((data) => data.json())
-        .then((parsedData) => setInventory(parsedData));
-    };
+  const supplierID = useSelector((state) => state?.auth?.user?.id);
+  const inventory = useSelector((state) => state.products.inventory);
+  const dispath = useDispatch();
 
-    useEffect(() => {
-      getInventory();
-    }, []);
-  }
+  const getInventory = async () => {
+    const res = await axios.get(`/api/products/ByUser/${supplierID}`);
+    console.log(res.data);
+    dispath({ type: types.ADD_INVENTORY, payload: res.data });
+  };
+
+  useEffect(() => {
+    getInventory();
+  }, []);
+
   return (
     <div id="inventory">
       <h1>Inventory</h1>
       <InventoryChart />
       <div>
-        {inventory.map((item) => (
-          <div className="inventoryItems">
-            <h4 className="inventoryItems__title">{`Title: ${item.title}`}</h4>
-            <p>{`Make: ${item.make}`}</p>
-            <p>{`Year: ${item.year}`}</p>
-            <p>{`description: ${item.description}`}</p>
-            <p>{`Price: ${item.price}`}</p>
-            <p>{`Condition: ${item.condition}`}</p>
-            <p>{`Borough: ${item.borough}`}</p>
-          </div>
-        ))}
+        <MaterialTable title="Inventory" columns={columns} data={inventory} />
       </div>
     </div>
   );
 };
 
 export default Inventory;
+
+const columns = [
+  {
+    title: 'Product',
+    field: 'productName',
+  },
+  {
+    title: 'Codition',
+    field: 'condition',
+  },
+  {
+    title: 'Image',
+    field: 'images',
+    render: (row) => {
+      const { images } = row;
+      return <img src={images[0]} style={{ height: 100, width: 100 }} alt="Product" />;
+    },
+  },
+  {
+    title: 'Price',
+    field: 'price',
+  },
+];

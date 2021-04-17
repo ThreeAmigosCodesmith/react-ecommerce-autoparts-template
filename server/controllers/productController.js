@@ -37,12 +37,15 @@ async function getProductsByUserId(req, res, next) {
 }
 
 async function getAllProductsByUser(req, res, next) {
+  const { id } = req.params;
+  console.log('getting inventory', id);
   await product.findAll({
     where: {
-      supplierId: req.params.id,
+      supplierID: id,
     },
   })
     .then((products) => {
+      console.log('products', products);
       res.locals.products = products;
       return next();
     })

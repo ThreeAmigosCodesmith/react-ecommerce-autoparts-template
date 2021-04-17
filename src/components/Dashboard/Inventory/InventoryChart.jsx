@@ -105,9 +105,9 @@ function InventoryChart() {
           />
         </div>
       </div>
-      <div className="purchaseTable">
+      {/* <div className="purchaseTable">
         <PurchaseTable />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -30,3 +30,4 @@ export const START_CHAT = 'START_CHAT';
 export const END_CHAT = 'END_CHAT';
 export const CREATE_SOCKET = 'CREATE_SOCKET';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const ADD_INVENTORY = 'ADD_INVENTORY';
