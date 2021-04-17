@@ -53,13 +53,6 @@ const ProductDetail = (props) => {
           <span style={{ fontWeight: 'bold', margin: '20px 0' }}>Price ($ USD): </span>
           <span>{`$${price}`}</span>
         </div>
-        <div className="colors">
-          <span style={{ fontWeight: 'bold' }}>Colors:</span>
-          {colors.map((color) => (
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-            <button type="button" disabled style={{ background: color, borderRadius: '999999px' }} key={uuidv4()}> </button>
-          ))}
-        </div>
 
         <p style={{ fontFamily: 'Verdana' }}>
           <span style={{ fontWeight: 'bold' }}>Description: </span>

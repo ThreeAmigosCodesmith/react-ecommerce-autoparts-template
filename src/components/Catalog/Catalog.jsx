@@ -52,24 +52,6 @@ function Catalog() {
     Decent: true,
     New: true,
   });
-  const [colors, setColors] = useState({
-    Red: true,
-    Blue: true,
-    Green: true,
-    Purple: true,
-    orange: true,
-  });
-  const [checkbox, setCheckbox] = useState({
-    Good: true,
-    Bad: true,
-    Decent: true,
-    New: true,
-    Red: true,
-    Blue: true,
-    Green: true,
-    Purple: true,
-    orange: true,
-  });
 
   useEffect(() => {
     async function getAllProducts() {
@@ -102,11 +84,6 @@ function Catalog() {
     // setSearchText(e.target.value);
   };
 
-  const handleColor = (e) => {
-    const { target: { checked, name } } = e;
-    console.log(checked, name);
-  };
-
   return (
     <div className="homeCatalog">
       <div className="title__container">
@@ -133,26 +110,6 @@ function Catalog() {
                       />
                       )}
                     label={condition}
-                  />
-                ))}
-              </FormGroup>
-            </FormControl>
-
-            <FormControl component="fieldset">
-              <FormLabel style={styles.formLabel} component="legend">Color</FormLabel>
-              <FormGroup>
-                {Object.keys(colors).map((color) => (
-                  <FormControlLabel
-                    key={uuidv4()}
-                    control={(
-                      <Checkbox
-                        checked={colors[color]}
-                        onChange={handleColor}
-                        name={color}
-                        style={{ color }}
-                      />
-                      )}
-                    label={color}
                   />
                 ))}
               </FormGroup>

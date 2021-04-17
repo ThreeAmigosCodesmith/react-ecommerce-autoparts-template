@@ -40,6 +40,9 @@ module.exports = (sequelize) => {
     paid: {
       type: DataTypes.BOOLEAN,
     },
+    amount: {
+      type: DataTypes.DOUBLE,
+    },
     paymentDate: {
       type: DataTypes.DATE,
     },

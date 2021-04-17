@@ -33,10 +33,12 @@ async function getlAllSupplierChats(req, res, next) {
     const { supplierID } = req.body;
     console.log(supplierID);
     const data = await chat.findAll({
+      limit: 12,
       where: { supplierID },
       include: ['customer'],
       order: [['createdAt', 'DESC']],
     });
+    console.log('getting all chats function data', data);
     res.locals.chats = data;
     return next();
   } catch (err) {
@@ -74,6 +76,7 @@ async function formatChatList(req, res, next) {
   const messagesArr = [];
 
   Object.keys(messagesObj).forEach((chatSession) => messagesArr.push(messagesObj[chatSession]));
+  console.log('messsagesArr', messagesArr);
 
   res.locals.chats = messagesArr;
   return next();

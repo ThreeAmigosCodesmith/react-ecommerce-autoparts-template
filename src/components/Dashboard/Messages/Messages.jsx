@@ -17,6 +17,7 @@ const Messages = () => {
 
   useEffect(() => {
     const loadChats = async () => {
+      console.log('loading chats');
       if (userRole === 'CUSTOMER') {
         // axios
       } else {
@@ -26,19 +27,22 @@ const Messages = () => {
       }
     };
     loadChats();
+    return null;
   }, []);
 
   const handleChat = async (e, rowData) => {
     const { chatSessionID, customerID } = rowData;
     console.log('handling chat', customerID, chatSessionID, supplierID);
-    dispatch({
-      type: types.START_CHAT,
-      payload: {
-        supplierID,
-        chatSessionID,
-        customerID,
-      },
-    });
+    if (rowData.active) {
+      dispatch({
+        type: types.START_CHAT,
+        payload: {
+          supplierID,
+          chatSessionID,
+          customerID,
+        },
+      });
+    }
   };
 
   return (
@@ -110,103 +114,103 @@ const columns = [
   },
 ];
 
-const messages = [
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link2',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    'Customer Phone': '123-456-7890',
-    'Customer Email': 'test@test.com',
-    active: 'true',
-    chatLink: 'link.link',
-  },
-];
+// const messages = [
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link2',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     customerPhone: '123-456-7890',
+//     customerEmail: 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+//   {
+//     chatID: '12345',
+//     customerName: 'Ashley Pean',
+//     'Customer Phone': '123-456-7890',
+//     'Customer Email': 'test@test.com',
+//     active: 'true',
+//     chatLink: 'link.link',
+//   },
+// ];
 
 export default Messages;
