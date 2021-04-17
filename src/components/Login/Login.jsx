@@ -7,7 +7,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockIcon from '@material-ui/icons/Lock';
 import { useSelector, useDispatch } from 'react-redux';
 import Logo from '../../yardhop-logo.png';
-import * as types from '../../redux/actions/actionTypes';
+import { AUTH_USER, SET_USER_ROLE } from '../../redux/actions/actionTypes';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -20,9 +20,9 @@ const Login = () => {
 
     try {
       const res = await axios.post('/api/users/verify', { email, password });
-      console.log(res.data);
-      dispatch({ type: types.AUTH_USER, payload: res.data });
-      dispatch({ type: types.SET_USER_ROLE, payload: res.data.userRole });
+      // console.log(res.data);
+      dispatch({ type: AUTH_USER, payload: res.data });
+      dispatch({ type: SET_USER_ROLE, payload: res.data.userRole });
       if (userRole === 'CUSTOMER') history.push('/');
       else history.push('/dashboard');
     } catch (err) {

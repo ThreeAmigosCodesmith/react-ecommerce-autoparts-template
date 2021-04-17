@@ -26,6 +26,7 @@ const Messages = () => {
         dispatch({ type: types.ADD_CHATS, payload: messages.data });
       } else {
         const messages = await axios.post('/api/chat/owner', { supplierID });
+        // eslint-disable-next-line no-console
         console.log(messages.data);
         dispatch({ type: types.ADD_CHATS, payload: messages.data });
       }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { models: { session } } = require('../models/index');
 
 const sessionController = {};
@@ -27,9 +28,9 @@ sessionController.startSession = async (req, res, next) => {
     if (res.locals.user.customerID) {
       await session.findOrCreate({
         where: { cookieID: res.locals.user.customerID },
-        cookieID: res.locals.user?.customerID || res.locals.supplierID,
+        cookieID: res.locals.user.customerID || res.locals.supplierID,
         createdAt: Date.now(),
-        customerID: res.locals.user?.customerID || res.locals.supplierID,
+        customerID: res.locals.user.customerID || res.locals.supplierID,
       });
       return next();
     // eslint-disable-next-line no-else-return

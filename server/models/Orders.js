@@ -22,6 +22,9 @@ module.exports = (sequelize) => {
     salesTax: {
       type: DataTypes.DOUBLE,
     },
+    amount: {
+      type: DataTypes.DOUBLE,
+    },
     timestamp: {
       type: DataTypes.DATE,
     },

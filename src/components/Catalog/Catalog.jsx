@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
