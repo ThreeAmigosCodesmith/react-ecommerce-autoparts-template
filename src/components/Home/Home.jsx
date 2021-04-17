@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../redux/actions/actionTypes'
 import Product from '../Product/Product';
 import './Home.css';
-import Banner from '../../banner.jpeg';
-import Chat from '../Chat/Chat';
+import Banner from '../../banner.jpg';
+import Chat from '../Chat/Chat2';
 
 const Home = () => {
   const products = useSelector((state) => state.products.homePage);

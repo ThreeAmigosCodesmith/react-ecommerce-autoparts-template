@@ -36,6 +36,7 @@ const UploadImage = () => {
       const file = allFiles[i];
       // eslint-disable-next-line no-await-in-loop
       await handleUpload(file, aws.aws);
+      e.target.files = null;
     }
   };
 
@@ -43,7 +44,6 @@ const UploadImage = () => {
     <div className="upload_img">
       <h3 id="form__container">Pictures:</h3>
       <Input type="file" inputProps={{ multiple: true }} onChange={upload} />
-      {/* <Button type="button" onClick={() => upload()}>Add image</Button> */}
       <Preview />
     </div>
   );

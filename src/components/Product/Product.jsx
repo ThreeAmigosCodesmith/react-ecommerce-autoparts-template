@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -98,7 +99,7 @@ const Product = (props) => {
         <p>{`Condition: ${condition}`}</p>
         <p className="product__location">
           <LocationOnIcon />
-          <span>{location.borough}</span>
+          <span>{location}</span>
         </p>
       </div>
       <div className="product__image">

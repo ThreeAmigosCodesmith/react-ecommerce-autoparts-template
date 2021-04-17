@@ -21,9 +21,11 @@ export const CLEAR_ALL_IMAGES = 'CLEAR_ALL_IMAGES';
 // CHAT
 export const TOGGLE_CHAT = 'TOGGLE_CHAT';
 export const LOAD_CHATS = 'LOAD_CHATS';
+export const ADD_CHATS = 'ADD_CHATS';
 
 // PRODUCTS
 export const LOAD_HOME_PAGE = 'LOAD_HOME_PAGE';
+export const LOAD_CATALOG = 'LOAD_CATALOG';
 export const START_CHAT = 'START_CHAT';
 export const END_CHAT = 'END_CHAT';
 export const CREATE_SOCKET = 'CREATE_SOCKET';

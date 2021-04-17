@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { models: { chat } } = require('../models/index');
 
 async function getAllChats(req, res, next) {
@@ -27,10 +28,62 @@ async function getAllUserChats(req, res, next) {
   }
 }
 
+async function getlAllSupplierChats(req, res, next) {
+  console.log('getting supplier chats');
+  try {
+    const { supplierID } = req.body;
+    console.log(supplierID);
+    const data = await chat.findAll({
+      where: { supplierID },
+      include: ['customer'],
+      order: [['createdAt', 'DESC']],
+    });
+    res.locals.chats = data;
+    return next();
+  } catch (err) {
+    res.locals.error = err;
+    return next();
+  }
+}
+
+async function formatChatList(req, res, next) {
+  const messagesObj = {};
+  const { chats } = res.locals;
+
+  chats.forEach((chatEntry) => {
+    const newChat = {
+      chatSessionID: chatEntry.chatSessionID,
+      chatID: chatEntry.chatID,
+      message: chatEntry.message,
+      createdAt: chatEntry.createdAt,
+      active: chatEntry.active,
+      customerID: chatEntry.customerID,
+      supplierID: chatEntry.supplierID,
+      sender: chatEntry.sender,
+      chatLink: `chat.supplier-${chatEntry.chatSessionID}`,
+      customerName: `${chatEntry.customer.firstName} ${chatEntry.customer.lastName}`,
+      customerPhone: chatEntry.customer?.phone || 'N/A',
+      customerEmail: chatEntry.customer.email,
+    };
+    if (messagesObj[newChat.chatSessionID]) {
+      messagesObj[newChat.chatSessionID] = messagesObj[newChat.chatSessionID].concat(newChat);
+    } else {
+      messagesObj[newChat.chatSessionID] = [newChat];
+    }
+  });
+
+  const messagesArr = [];
+
+  Object.keys(messagesObj).forEach((chatSession) => messagesArr.push(messagesObj[chatSession]));
+
+  res.locals.chats = messagesArr;
+  return next();
+}
+
 async function getChatByID(req, res, next) {
   try {
     const { chatSessionID } = req.params;
-    const data = await chat.find({
+    const data = await chat.findAll({
       where: { sessionID: chatSessionID },
     });
 
@@ -84,4 +137,6 @@ module.exports = {
   getChatByID,
   addMesasageToChat,
   startChat,
+  getlAllSupplierChats,
+  formatChatList,
 };

@@ -19,7 +19,7 @@ const makeStyles = (chat, userID) => (
 );
 
 const ChatBubble = ({ chat }) => {
-  const userID = useSelector((state) => state?.auth?.user?.id);
+  const userID = useSelector((state) => state?.auth?.user?.id || state?.auth?.user?.supplierID);
   const styles = makeStyles(chat, userID);
 
   return (

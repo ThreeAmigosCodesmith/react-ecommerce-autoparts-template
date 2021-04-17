@@ -27,9 +27,10 @@ input {
   margin-bottom: 20px;
 }
 
-img {
-  border-radius: 5px;
-}
+/* img {
+  border: 1px solid black;
+
+} */
 
 /* .form_container {
   margin: 10px;

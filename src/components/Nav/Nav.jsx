@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './Nav.css';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Button } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Nav = () => {
@@ -57,7 +58,7 @@ const Nav = () => {
           <div className="nav__logout">
             <p className="nav__loggedInMsg">{`Hello, ${user?.firstName || user.companyName}!`}</p>
             <Link style={navStyle} to="/">
-              <button id="nav__logOutButton" type="button" onClick={(e) => logOutButton(e)}>Logout</button>
+              <Button id="nav__logOutButton" type="button" variant="contained" onClick={(e) => logOutButton(e)}>Logout</Button>
             </Link>
           </div>
         ) : (

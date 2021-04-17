@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { models: { session } } = require('../models/index');
 
 const sessionController = {};
