@@ -9,7 +9,7 @@ import ChatBubble from './ChatBubble/ChatBubble';
 import ChatInput from './ChatInput/ChatInput';
 import * as types from '../../redux/actions/actionTypes';
 import './Chat.css';
-import { initializeChat } from './socket';
+import { initializeChatCustomer, initializeChatOwner } from './socket';
 
 const iconStyles = {
   alignSelf: 'flex-end',
@@ -22,7 +22,7 @@ const iconStyles = {
   boxShadow: '1 1 1 1px #57ba98',
 };
 
-function Chat() {
+function Chat(props) {
   const customerID = useSelector((state) => state?.auth?.user?.customerID);
   const userRole = useSelector((state) => state.auth.userRole);
   const {
@@ -31,11 +31,12 @@ function Chat() {
     supplierID,
     messages,
   } = useSelector((state) => state?.chat);
+  const { backupCustomerID } = props;
   const [socketConnection, setSocketConnetion] = useState();
   const dispatch = useDispatch();
   const containerRef = useRef();
   const { localStorage } = window;
-  // Scroll to end of chat on page load and new message
+  // Scroll to end of window on page load and new message
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     console.log('opn1');
@@ -44,7 +45,6 @@ function Chat() {
       msgContainer.scrollTop = msgContainer.scrollHeight - msgContainer.clientHeight;
     }
     // eslint-disable-next-line consistent-return
-    // return dispatch({ type: types.END_CHAT });
   }, [messages, isOpen]);
 
   // Enable socket connection and create client event listeners
@@ -56,51 +56,50 @@ function Chat() {
       if (!localStorage.getItem('latestChat')) localStorage.setItem('latesChat', JSON.stringify([]));
       const createConnection = async () => {
         console.log('initializing socket');
-        console.log(chatSessionID,
-          supplierID,
-          customerID,
-          userRole);
-        const newSocket = await initializeChat(dispatch, {
-          chatSessionID,
-          supplierID,
-          customerID,
-          userRole,
-          createdAt: new Date(),
-        });
-        await setSocketConnetion(newSocket);
-
-        console.log(socketConnection);
-        if (userRole === 'OWNER') {
-          setTimeout(() => {
-            console.log(socketConnection);
-            socketConnection.emit('join-room', chatSessionID);
-          }, 2000);
+        if (userRole === 'CUSTOMER') {
+          const newSocket = await initializeChatCustomer(dispatch, {
+            chatSessionID,
+            supplierID,
+            customerID,
+            userRole,
+            createdAt: new Date(),
+          });
+          await setSocketConnetion(newSocket);
+        } else {
+          const newSocket = await initializeChatOwner(dispatch, {
+            chatSessionID,
+            supplierID,
+            userRole,
+          });
+          await setSocketConnetion(newSocket);
         }
       };
       createConnection();
-    } else return socketConnection ? socketConnection.emit('end') : null;
+    } else return socketConnection ? socketConnection.disconnect() : null;
   }, [isOpen]);
 
   // Send message to server
   const handleMessage = (messageText) => {
-    console.log('new message', messageText);
+    console.log('new message', { messageText, chatSessionID });
     if (!messageText.trim()) return;
 
     const newMessage = {
       chatSessionID,
       customerID,
       supplierID,
-      sender: customerID,
+      sender: userRole === 'CUSTOMER' ? customerID : supplierID,
       message: messageText,
       active: true,
       timestamp: new Date().toDateString(),
     };
 
+    console.log(newMessage);
+
     // sendMessage(socketConnection, newMessage, messages);
     localStorage.setItem('latestChat', JSON.stringify([...messages, newMessage]));
 
-    socketConnection.emit('new-message', newMessage);
-    dispatch({ type: types.ADD_MESSAGE, payload: newMessage });
+    socketConnection.emit('new-message', { newMessage, chatSessionID });
+    // dispatch({ type: types.ADD_MESSAGE, payload: newMessage });
   };
 
   const closeChat = () => {
@@ -130,7 +129,7 @@ function Chat() {
             {messages ? messages.map((chat) => (
               <ChatBubble chat={chat} key={uuidv4()} />
             ))
-              : null}
+              : <p>Start conversation here</p>}
           </div>
           <ChatInput sendMessage={handleMessage} handleTyping={handleTypingDialog} />
         </div>

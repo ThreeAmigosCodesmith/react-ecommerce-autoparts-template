@@ -2,32 +2,51 @@
 /* eslint-disable no-use-before-define */
 import './Messages.css';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import MaterialTable from 'material-table';
-import Modal from '@material-ui/core/Modal';
-import Chat from '../../Chat/Chat';
+import { Checkbox } from '@material-ui/core';
+import Chat from '../../Chat/Chat2';
 import * as types from '../../../redux/actions/actionTypes';
 
 const Messages = () => {
-  // eslint-disable-next-line no-console
-  console.log('placeholder');
-  const [modalOpen, setModalOpen] = useState(false);
+  const userRole = useSelector((state) => state.auth.userRole);
+  const { supplierID } = useSelector((state) => state.auth.user);
+  const allChats = useSelector((state) => state.chat.allChats);
+  const dispatch = useDispatch();
 
-  const handleChat = (e, rowData) => {
-    setModalOpen(true);
-    // dispatch({ type: types. })
+  useEffect(() => {
+    const loadChats = async () => {
+      if (userRole === 'CUSTOMER') {
+        // axios
+      } else {
+        const messages = await axios.post('/api/chat/owner', { supplierID });
+        // eslint-disable-next-line no-console
+        console.log(messages.data);
+        dispatch({ type: types.ADD_CHATS, payload: messages.data });
+      }
+    };
+    loadChats();
+  }, []);
+
+  const handleChat = async (e, rowData) => {
+    const { chatSessionID, customerID } = rowData;
+    // console.log('handling chat', customerID, chatSessionID, supplierID);
+    dispatch({
+      type: types.START_CHAT,
+      payload: {
+        supplierID,
+        chatSessionID,
+        customerID,
+      },
+    });
   };
 
   return (
     <div id="messages">
       <h1>Message History</h1>
-      <h4>Current Chats</h4>
-      <MaterialTable style={tableStyle} title="" data={messages} columns={columns} onRowClick={handleChat} />
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <Chat />
-      </Modal>
-      <h4>Past Chats</h4>
-      <MaterialTable style={tableStyle} title="" data={messages} columns={columns} />
+      <MaterialTable style={tableStyle} title="" data={allChats.map((el) => el[0])} columns={columns} onRowClick={handleChat} />
+      <Chat />
     </div>
   );
 };
@@ -37,10 +56,6 @@ const tableStyle = {
 };
 
 const columns = [
-  {
-    title: 'Chat ID',
-    field: 'chatID',
-  },
   {
     title: 'Customer Name',
     field: 'customerName',
@@ -56,6 +71,43 @@ const columns = [
   {
     title: 'Chat Link',
     field: 'chatLink',
+    render: (row) => {
+      const { chatID, active } = row;
+      return active
+        ? (
+          <p style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>
+            {`link.chat.${chatID}`}
+          </p>
+        )
+        : (
+          <p style={{ color: 'black' }}>
+            {`link.chat.${chatID}`}
+          </p>
+        );
+    },
+  },
+  {
+    title: 'Active',
+    field: 'active',
+    render: (row) => {
+      const { active } = row;
+      return active
+        ? <Checkbox checked={Boolean(active)} style={{ color: '#3ea175' }} />
+        : <Checkbox checked={Boolean(active)} disabled />;
+    },
+  },
+  {
+    title: 'Chat Started',
+    field: 'createdAt',
+    render: (row) => {
+      const { createdAt } = row;
+      return (
+        <>
+          <p>{new Date(createdAt).toLocaleDateString()}</p>
+          <p>{new Date(createdAt).toLocaleTimeString()}</p>
+        </>
+      );
+    },
   },
 ];
 
@@ -65,7 +117,15 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
+    chatLink: 'link.link2',
+  },
+  {
+    chatID: '12345',
+    customerName: 'Ashley Pean',
+    customerPhone: '123-456-7890',
+    customerEmail: 'test@test.com',
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -73,7 +133,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -81,7 +141,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -89,7 +149,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -97,7 +157,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -105,7 +165,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -113,7 +173,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -121,7 +181,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -129,7 +189,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -137,15 +197,7 @@ const messages = [
     customerName: 'Ashley Pean',
     customerPhone: '123-456-7890',
     customerEmail: 'test@test.com',
-    active: true,
-    chatLink: 'link.link',
-  },
-  {
-    chatID: '12345',
-    customerName: 'Ashley Pean',
-    customerPhone: '123-456-7890',
-    customerEmail: 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
   {
@@ -153,7 +205,7 @@ const messages = [
     customerName: 'Ashley Pean',
     'Customer Phone': '123-456-7890',
     'Customer Email': 'test@test.com',
-    active: true,
+    active: 'true',
     chatLink: 'link.link',
   },
 ];
