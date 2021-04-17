@@ -23,7 +23,7 @@ stripeController.processPayment = async (request, response, next) => {
       );
     }
     // Send the response to the client
-    console.log(intent);
+    //console.log(intent);
     response.send(generateResponse(intent, intent.id));
   } catch (e) {
     // Display error on client

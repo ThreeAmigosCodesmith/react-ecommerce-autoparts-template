@@ -3,7 +3,8 @@ const cookieController = {};
 
 /* setSSIDCookie - store the user id in a cookie */
 cookieController.setSSIDCookie = (req, res, next) => {
-  console.log('setting cookie');
+  console.log('setting cookie!!!');
+  console.log('Customer ID ', res.locals.user.customerID);
   res.cookie('ssid', res.locals.user.customerID, {
     httpOnly: true,
   });
