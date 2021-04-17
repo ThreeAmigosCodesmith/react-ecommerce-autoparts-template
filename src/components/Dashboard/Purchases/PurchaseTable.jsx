@@ -15,7 +15,7 @@ function PurchaseTable() {
       description: 'Used',
       price: 1300,
       condition: 'Good',
-      sellerID: 'Son & Co.',
+      sellerID: 'Ortiz, Doyle and Reilly.',
     },
     {
       purchasedDate: '3/02/2021',
@@ -28,7 +28,7 @@ function PurchaseTable() {
       description: 'Used',
       price: 1300,
       condition: 'Good',
-      sellerID: 'Son & Co.',
+      sellerID: 'Ortiz, Doyle and Reilly.',
     },
     {
       purchasedDate: '2/3/2021',
@@ -41,7 +41,7 @@ function PurchaseTable() {
       description: 'Used',
       price: 1300,
       condition: 'Good',
-      sellerID: 'Son & Co.',
+      sellerID: 'Ortiz, Doyle and Reilly.',
     },
     {
       purchasedDate: '4/4/2021',
@@ -54,7 +54,7 @@ function PurchaseTable() {
       description: 'Used',
       price: 1300,
       condition: 'Good',
-      sellerID: 'Son & Co.',
+      sellerID: 'Ortiz, Doyle and Reilly.',
     },
     {
       purchasedDate: '5/4/2021',
@@ -67,7 +67,7 @@ function PurchaseTable() {
       description: 'Used',
       price: 1300,
       condition: 'Good',
-      sellerID: 'Son & Co.',
+      sellerID: 'Ortiz, Doyle and Reilly.',
     },
     {
       purchasedDate: '1/1/2021',
@@ -80,7 +80,7 @@ function PurchaseTable() {
       description: 'Used',
       price: 1300,
       condition: 'Good',
-      sellerID: 'Son & Co.',
+      sellerID: 'Ortiz, Doyle and Reilly.',
     },
     {
       purchasedDate: '7/12/2021',
@@ -93,7 +93,7 @@ function PurchaseTable() {
       description: 'Used',
       price: 1300,
       condition: 'Good',
-      sellerID: 'Son & Co.',
+      sellerID: 'Ortiz, Doyle and Reilly.',
     },
     {
       purchasedDate: '9/1/2021',
@@ -106,7 +106,7 @@ function PurchaseTable() {
       description: 'Used',
       price: 1300,
       condition: 'Good',
-      sellerID: 'Son & Co.',
+      sellerID: 'Ortiz, Doyle and Reilly.',
     },
   ];
   const columns = [
