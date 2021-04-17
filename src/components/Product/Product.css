@@ -67,6 +67,22 @@
   cursor: pointer;
 }
 
+div.button-group {
+  display: flex;
+  gap: .6rem;
+}
+
+div.button-group > button {
+  background: #3b945e;
+  border: 1px solid;
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
 .product__price {
   margin-top: 5px;
 }

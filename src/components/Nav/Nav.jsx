@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 const Nav = () => {
   const user = useSelector((state) => state.auth.user);
   const cart = useSelector((state) => state.cart.cart);
+  const userRole = useSelector((state) => state.auth.userRole);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -36,25 +37,25 @@ const Nav = () => {
   return (
     <div className="nav">
       <div className="nav__links">
-        <Link style={navStyle} to="/">
-          <p className="link">Home</p>
-        </Link>
-        <Link style={navStyle} to="/catalog">
-          <p className="link">Catalog</p>
-        </Link>
-        <Link style={navStyle} to="/order">
-          <p className="link">Track Order</p>
-        </Link>
-        { user && (
-          <Link style={navStyle} to="/dashboard">
-            <p className="link">Dashboard</p>
-          </Link>
-        )}
+        {userRole === 'CUSTOMER' ? (
+          <>
+            <Link style={navStyle} to="/">
+              <p className="link">Home</p>
+            </Link>
+            <Link style={navStyle} to="/catalog">
+              <p className="link">Catalog</p>
+            </Link>
+            <Link style={navStyle} to="/dashboard">
+              <p className="link">Dashboard</p>
+            </Link>
+          </>
+        ) : null}
       </div>
+
       <div className="nav__left">
         {user ? (
           <div className="nav__logout">
-            <p className="nav__loggedInMsg">{`Hello, ${user.firstName}!`}</p>
+            <p className="nav__loggedInMsg">{`Hello, ${user?.firstName || user.companyName}!`}</p>
             <Link style={navStyle} to="/">
               <button id="nav__logOutButton" type="button" onClick={(e) => logOutButton(e)}>Logout</button>
             </Link>
@@ -71,10 +72,14 @@ const Nav = () => {
           </div>
         )}
         <div className="nav__basket">
-          <Link to="/cart">
-            <ShoppingCartIcon style={{ fill: '#f8f8f8' }} />
-          </Link>
-          <span className="nav__basketCount">{cart?.length}</span>
+          {userRole === 'CUSTOMER' ? (
+            <>
+              <Link to="/cart">
+                <ShoppingCartIcon style={{ fill: '#f8f8f8' }} />
+              </Link>
+              <span className="nav__basketCount">{cart?.length}</span>
+            </>
+          ) : null}
         </div>
       </div>
     </div>

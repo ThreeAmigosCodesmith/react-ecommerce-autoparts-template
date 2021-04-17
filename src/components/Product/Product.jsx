@@ -5,10 +5,36 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './Product.css';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import Modal from '@material-ui/core/Modal';
+import Fade from '@material-ui/core/Fade';
+import Backdrop from '@material-ui/core/Backdrop';
 import * as actions from '../../redux/actions/actionTypes';
+import ProductDetail from './ProductDetail';
+
+const classes = {
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    backgroundColor: 'blue',
+    border: '2px solid #000',
+    padding: '2rem',
+  },
+};
 
 const Product = (props) => {
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const dispatch = useDispatch();
   const {
     id,
@@ -20,7 +46,7 @@ const Product = (props) => {
     supplierID,
     sliderLength,
   } = props;
-  console.log(images);
+
   const addToCart = () => {
     // dispatch item to the data layer
     // eslint-disable-next-line no-console
@@ -86,8 +112,43 @@ const Product = (props) => {
           &gt;
         </button>
       </div>
-      <button type="button" onClick={messageSeller}>Message Seller</button>
-      <button type="button" onClick={addToCart}>Add to Cart</button>
+
+      <div className="button-group">
+        <button type="button" onClick={messageSeller}>Message Seller</button>
+        <button type="button" onClick={addToCart}>Add to Cart</button>
+        <button type="button" className="product__details" onClick={handleOpen}>
+          Product Details
+        </button>
+      </div>
+
+      <div>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <ProductDetail
+              id={id}
+              title={title}
+              price={price}
+              images={images}
+              location={location}
+              condition={condition}
+              supplierID={supplierID}
+              sliderLength={sliderLength}
+              setOpen={setOpen}
+            />
+          </Fade>
+        </Modal>
+      </div>
     </div>
   );
 };
