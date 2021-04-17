@@ -92,9 +92,8 @@ function Catalog() {
     getAllProducts();
   }, []);
 
-  const handleCondition = (e, condition) => {
+  const handleCondition = (e) => {
     const { target: { checked, name } } = e;
-    console.log(checked, name);
     setConditions({ ...conditions, [name]: checked });
   };
 
@@ -128,7 +127,7 @@ function Catalog() {
                     control={(
                       <Checkbox
                         checked={conditions[condition]}
-                        onChange={(e) => handleCondition(e, condition)}
+                        onChange={handleCondition}
                         name={condition}
                         style={styles.conditionButton}
                       />
@@ -148,7 +147,7 @@ function Catalog() {
                     control={(
                       <Checkbox
                         checked={colors[color]}
-                        onChange={(e) => handleColor(e, color)}
+                        onChange={handleColor}
                         name={color}
                         style={{ color }}
                       />
