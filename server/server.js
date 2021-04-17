@@ -61,13 +61,15 @@ const io = socketio(server, {
   cors: {
     origin: '*',
   },
-  forceNewConnection: false,
+  forceNewConnection: true,
 });
 
-io.on('connection', async (socket) => {
+io.sockets.on('connection', async (socket) => {
   const { chat } = db.models;
 
-  const createWelcomeChat = () => {
+  const { query: { userRole } } = socket.handshake;
+
+  if (userRole === 'CUSTOMER') {
     const {
       query: {
         chatSessionID,
@@ -76,9 +78,11 @@ io.on('connection', async (socket) => {
         createdAt,
       },
     } = socket.handshake;
+    console.log('customer', chatSessionID);
+
     // Generate an inital chat from the supplier
     const firstChat = {
-      chatSessionID,
+      chatSessionID: socket.handshake.query.chatSessionID,
       message: 'Thank you for chatting with us! Please standby and we\'ll be with you in a moment.',
       createdAt,
       customerID,
@@ -93,17 +97,29 @@ io.on('connection', async (socket) => {
 
     // Join a room with that specific chat ID
     socket.join(chatSessionID);
-  };
+  } else {
+    const { query: { chatSessionID } } = socket.handshake;
+    const data = await chat.findAll({
+      where: { chatSessionID },
+    });
 
-  createWelcomeChat();
+    console.log(data);
+    socket.join(chatSessionID);
+  }
 
   // SOCKET.IO EVENT LISTENERS
-  socket.on('new-message', async (message) => {
-    chat.create(message);
+  socket.on('new-message', async ({ newMessage, chatSessionID }) => {
+    // chat.create(messageText);
+    io.to(chatSessionID).emit('new-message', newMessage);
+  });
+
+  socket.on('join-room', async (chatSessionID) => {
+    socket.join(chatSessionID);
   });
 
   // End the chat for the user and update active status to FALSE in the datbase
   socket.on('end', (chatSessionID) => {
+    console.log('chat ended');
     chat.update({ active: false }, {
       where: {
         chatSessionID,

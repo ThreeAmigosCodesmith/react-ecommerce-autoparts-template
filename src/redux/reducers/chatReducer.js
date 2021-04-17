@@ -8,6 +8,7 @@ export const chatState = {
   productID: null,
   title: null,
   socket: null,
+  allChats: [],
 };
 
 const authReducer = (state = chatState, action) => {
@@ -16,15 +17,17 @@ const authReducer = (state = chatState, action) => {
       return {
         ...state,
         isOpen: !state.isOpen,
+        messages: [],
       };
     case types.START_CHAT:
       return {
         ...state,
         isOpen: true,
+        customerID: action.payload?.customerID,
         chatSessionID: action.payload.chatSessionID,
         supplierID: action.payload.supplierID,
-        productID: action.payload.productID,
-        title: action.payload.title,
+        productID: action.payload?.productID || null,
+        title: action.payload?.title || null,
       };
     case types.CREATE_SOCKET:
       return {
@@ -35,6 +38,11 @@ const authReducer = (state = chatState, action) => {
       return {
         ...state,
         messages: [...state.messages, action.payload],
+      };
+    case types.ADD_CHATS:
+      return {
+        ...state,
+        allChats: action.payload,
       };
     case types.END_CHAT:
       return {
