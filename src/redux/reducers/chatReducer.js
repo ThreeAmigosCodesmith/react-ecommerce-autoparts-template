@@ -17,15 +17,17 @@ const authReducer = (state = chatState, action) => {
       return {
         ...state,
         isOpen: !state.isOpen,
+        messages: [],
       };
     case types.START_CHAT:
       return {
         ...state,
         isOpen: true,
+        customerID: action.payload?.customerID,
         chatSessionID: action.payload.chatSessionID,
         supplierID: action.payload.supplierID,
-        productID: action.payload.productID,
-        title: action.payload.title,
+        productID: action.payload?.productID || null,
+        title: action.payload?.title || null,
       };
     case types.CREATE_SOCKET:
       return {

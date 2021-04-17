@@ -5,14 +5,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import MaterialTable from 'material-table';
-import { Modal, Checkbox } from '@material-ui/core';
-import Chat from '../../Chat/Chat';
+import { Checkbox } from '@material-ui/core';
+import Chat from '../../Chat/Chat2';
 import * as types from '../../../redux/actions/actionTypes';
 
 const Messages = () => {
-  // eslint-disable-next-line no-console
-  console.log('placeholder');
-  const [modalOpen, setModalOpen] = useState(false);
   const userRole = useSelector((state) => state.auth.userRole);
   const { supplierID } = useSelector((state) => state.auth.user);
   const allChats = useSelector((state) => state.chat.allChats);
@@ -32,21 +29,23 @@ const Messages = () => {
   }, []);
 
   const handleChat = async (e, rowData) => {
-    console.log(rowData);
-
-    setModalOpen(true);
-    // dispatch({ type: types. })
+    const { chatSessionID, customerID } = rowData;
+    console.log('handling chat', customerID, chatSessionID, supplierID);
+    dispatch({
+      type: types.START_CHAT,
+      payload: {
+        supplierID,
+        chatSessionID,
+        customerID,
+      },
+    });
   };
 
   return (
     <div id="messages">
       <h1>Message History</h1>
       <MaterialTable style={tableStyle} title="" data={allChats.map((el) => el[0])} columns={columns} onRowClick={handleChat} />
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <div>
-          <Chat />
-        </div>
-      </Modal>
+      <Chat />
     </div>
   );
 };
@@ -72,12 +71,18 @@ const columns = [
     title: 'Chat Link',
     field: 'chatLink',
     render: (row) => {
-      const { chatID } = row;
-      return (
-        <p style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>
-          {`link.chat.${chatID}`}
-        </p>
-      );
+      const { chatID, active } = row;
+      return active
+        ? (
+          <p style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>
+            {`link.chat.${chatID}`}
+          </p>
+        )
+        : (
+          <p style={{ color: 'black' }}>
+            {`link.chat.${chatID}`}
+          </p>
+        );
     },
   },
   {
