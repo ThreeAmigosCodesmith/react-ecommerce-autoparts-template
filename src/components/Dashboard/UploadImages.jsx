@@ -36,6 +36,7 @@ const UploadImage = () => {
       const file = allFiles[i];
       // eslint-disable-next-line no-await-in-loop
       await handleUpload(file, aws.aws);
+      e.target.files = null;
     }
   };
 
